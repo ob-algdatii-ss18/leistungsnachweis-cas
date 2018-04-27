@@ -1,0 +1,2 @@
+add_library(recursiveDivision RecursiveDivision.cpp)
+target_include_directories(recursiveDivision PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
