@@ -20,10 +20,13 @@ before_install:
 before_script:
   - mkdir build
   - cd build
-  - cmake ..
+
+
 
 script:
-  - ./configure --enable-gcov && make && make check
+  - CXX=/usr/bin/g++-6 CC=/usr/bin/gcc-6 cmake -DCOVERAGE=1 ..
+  - cmake --build .
+  - ./tests
 
 after_success:
   - coveralls --exclude lib --exclude tests --gcov-options '\-lp'
