@@ -1,6 +1,6 @@
+dist: trusty
 language: cpp
 compiler:
-  - clang
   - gcc
 
 os: linux
@@ -12,7 +12,7 @@ addons:
       - llvm-toolchain-trusty-5.0
     packages:
       - g++-6
-- clang-5.0
+      - clang-5.0
 
 before_install:
   - pip install --user cpp-coveralls
@@ -20,7 +20,6 @@ before_install:
 before_script:
   - mkdir build
   - cd build
-
 
 
 script:
