@@ -10,7 +10,8 @@
 void helloFromRecBack();
 
 class RecursiveBacktracker {
-
+    public:
+    double testMethod();
 };
 
 

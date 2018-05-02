@@ -9,3 +9,7 @@ using namespace ::std;
 void helloFromRecBack(){
     cout << "Hello, from Recursive Backtracking" << endl;
 };
+
+double RecursiveBacktracker::testMethod() {
+    return 8.0;
+}

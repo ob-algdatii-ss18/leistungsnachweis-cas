@@ -10,7 +10,8 @@
 void helloFromRecDiv();
 
 class RecursiveDivision {
-
+public:
+    int testMethod();
 };
 
 
