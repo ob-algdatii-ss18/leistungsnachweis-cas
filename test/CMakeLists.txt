@@ -53,5 +53,5 @@ target_link_libraries(recursiveDivisionTest
 
 include_directories("..")
 
-install(TARGETS recursiveBacktrackerTest DESTINATION bin)
+install(TARGETS recursiveDivisionTest DESTINATION bin)
 
