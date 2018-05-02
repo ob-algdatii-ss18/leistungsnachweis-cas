@@ -19,11 +19,6 @@ addons:
       - g++-6
 
 
-
-
-
-
-
 script:
   - pip install --user cpp-coveralls
   - cmake -DENABLE_COVERAGE=ON -DCMAKE_CXX_COMPILER="g++-6" ..
@@ -33,4 +28,4 @@ script:
 
 
 after_success:
-  - coveralls --exclude lib --gcov-options '\-lp'
+  - coveralls --root .. -E ".*external.*" -E ".*CMakeFiles.*" -E ".*test/.*.cpp.*"
