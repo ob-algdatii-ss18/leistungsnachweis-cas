@@ -14,6 +14,13 @@ public:
     enum Orientation {HORIZONTAL, VERTICAL};
 
     int testMethod();
+
+    /**
+     * Choose the orientation of a new wall in a field.
+     * @param width width of the field
+     * @param height height of the field
+     * @return Orientation to use
+     */
     RecursiveDivision::Orientation chooseOrientation(int width, int height);
 };
 
