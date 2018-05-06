@@ -11,7 +11,10 @@ void helloFromRecDiv();
 
 class RecursiveDivision {
 public:
+    enum Orientation {HORIZONTAL, VERTICAL};
+
     int testMethod();
+    RecursiveDivision::Orientation chooseOrientation(int width, int height);
 };
 
 
