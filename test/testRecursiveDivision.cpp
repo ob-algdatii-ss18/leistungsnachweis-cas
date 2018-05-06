@@ -33,3 +33,9 @@ TEST(RecursiveDivisionTest, chooseOrientation){
 
     EXPECT_TRUE(randomOrientation);
 }
+
+TEST(RecursiveDivisionTest, initMaze){
+    RecursiveDivision rD;
+
+    rD.initMaze(10, 10);
+}

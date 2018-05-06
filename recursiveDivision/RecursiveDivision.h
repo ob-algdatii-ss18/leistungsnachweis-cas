@@ -26,6 +26,8 @@ public:
      * @return Orientation to use
      */
     RecursiveDivision::Orientation chooseOrientation(int width, int height);
+
+    bool **initMaze(int width, int height);
 };
 
 
