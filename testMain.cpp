@@ -8,10 +8,17 @@
 
 using namespace std;
 int main(int argc, const char *argv[]){
-    helloFromPrims();
-    helloFromRecBack();
-    helloFromRecDiv();
 
+    helloFromPrims();
+
+    RecursiveBacktracker rb;
+    int answer = rb.startMaze();
+    if (answer != 0)
+    {
+        exit(1);
+    }
+
+    helloFromRecDiv();
 
     return 0;
 }
