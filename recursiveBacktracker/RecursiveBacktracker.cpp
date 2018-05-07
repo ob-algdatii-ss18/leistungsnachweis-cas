@@ -161,6 +161,7 @@ int RecursiveBacktracker::startMaze( )
     getline (cin, input);
     height = stoi(input);
 
+
     //Do not allow negative dimensions
     if ( width <= 0 || height <= 0 )
     {
@@ -200,3 +201,10 @@ int RecursiveBacktracker::startMaze( )
 
 
 
+void helloFromRecBack(){
+    cout << "Hello, from Recursive Backtracking" << endl;
+};
+
+double RecursiveBacktracker::testMethod() {
+    return 8.0;
+}

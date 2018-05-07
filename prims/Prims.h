@@ -9,4 +9,8 @@
 
 void helloFromPrims();
 
+class PrimsAlgorithm {
+    public:
+        int testTest();
+};
 #endif //PROJECT_MAZE_GENERATOR_H

@@ -43,6 +43,8 @@ public:
     void drawMaze( );
     int startMaze( );
 
+
+    double testMethod();
 };
 
 

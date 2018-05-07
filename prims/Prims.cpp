@@ -9,3 +9,5 @@ using namespace ::std;
 void helloFromPrims() {
     cout << "Hello, from Prims" << endl;
 }
+
+int PrimsAlgorithm::testTest() {return 7;}

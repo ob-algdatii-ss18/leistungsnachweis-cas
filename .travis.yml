@@ -1,6 +1,6 @@
+dist: trusty
 language: cpp
 compiler:
-  - clang
   - gcc
 
 os: linux
@@ -8,7 +8,24 @@ os: linux
 before_script:
   - mkdir build
   - cd build
-  - cmake ..
+
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+      - llvm-toolchain-trusty-5.0
+    packages:
+      - gcc-6
+      - g++-6
+
 
 script:
+  - pip install --user cpp-coveralls
+  - cmake -DENABLE_COVERAGE=ON -DCMAKE_CXX_COMPILER="g++-6" ..
   - make
+  - test/mainTest
+  - cd ..
+
+
+after_success:
+  - coveralls --root .. -E ".*external.*" -E ".*CMakeFiles.*" -E ".*test/.*.cpp.*"

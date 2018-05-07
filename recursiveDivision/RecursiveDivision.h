@@ -10,7 +10,24 @@
 void helloFromRecDiv();
 
 class RecursiveDivision {
+public:
+    enum Orientation {
+        HORIZONTAL, VERTICAL
+    };
 
+    int testMethod();
+
+    /**
+     * Choose the orientation of a new wall in a field.
+     *
+     * If height and width are equal the function choose the orientation via random number.
+     * @param width width of the field
+     * @param height height of the field
+     * @return Orientation to use
+     */
+    RecursiveDivision::Orientation chooseOrientation(int width, int height);
+
+    bool **initMaze(int width, int height);
 };
 
 
