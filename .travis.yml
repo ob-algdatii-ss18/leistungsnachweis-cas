@@ -22,7 +22,7 @@ addons:
 
 script:
 
-
+  - cmake -DENABLE_COVERAGE=ON -DCMAKE_CXX_COMPILER="g++-6" ..
   - cmake --build .
   - test/mainTest
 
