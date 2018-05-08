@@ -22,11 +22,11 @@ addons:
 
 script:
 
-  - cmake -DENABLE_COVERAGE=ON -DCMAKE_CXX_COMPILER="g++-6" ..
+
   - cmake --build .
   - test/mainTest
 
 
 
 after_success:
-  - coveralls --root .. --exclude build/CMakeFiles/ --exclude build/googletest-src/ --gcov-options '\-lp'
+  - coveralls --verbose --root .. --exclude build/CMakeFiles/ --exclude build/googletest-src/ --gcov-options '\-lp'
