@@ -22,10 +22,10 @@ addons:
 script:
   - pip install --user cpp-coveralls
   - cmake -DENABLE_COVERAGE=ON -DCMAKE_CXX_COMPILER="g++-6" ..
-  - make
+  - cmake --build .
   - test/mainTest
   - cd ..
 
 
 after_success:
-  - coveralls --exclude build/CMakeFiles/ --exclude build/googletest-src/ --gcov-options '\-lp'
+  - coveralls --root --exclude build/CMakeFiles/ --exclude build/googletest-src/ --gcov-options '\-lp'
