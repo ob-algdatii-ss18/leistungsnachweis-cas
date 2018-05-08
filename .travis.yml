@@ -28,4 +28,4 @@ script:
 
 
 after_success:
-  - coveralls --root .. -E ".*external.*" --exclude build/CMakeFiles/ --exclude build/googletest-src/
+  - coveralls --exclude build/CMakeFiles/ --exclude build/googletest-src/ --gcov-options '\-lp'
