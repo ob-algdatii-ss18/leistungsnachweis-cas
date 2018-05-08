@@ -12,7 +12,7 @@ void helloFromRecDiv();
 class RecursiveDivision {
 public:
     enum Orientation {
-        HORIZONTAL, VERTICAL
+        VERTICAL = 1, HORIZONTAL = 2
     };
 
     int testMethod();
@@ -28,6 +28,10 @@ public:
     RecursiveDivision::Orientation chooseOrientation(int width, int height);
 
     bool **initMaze(int width, int height);
+
+    int generateMaze();
+
+    void divideField(bool **field, int x, int y, int width, int height);
 };
 
 

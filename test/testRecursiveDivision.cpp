@@ -7,26 +7,26 @@
 
 using namespace std;
 
-TEST(RecursiveDivisionTest, simpleTest){
+TEST(RecursiveDivisionTest, simpleTest) {
     RecursiveDivision rD;
     EXPECT_EQ(3, rD.testMethod());
 }
 
-TEST(RecursiveDivisionTest, chooseOrientation){
+TEST(RecursiveDivisionTest, chooseOrientation) {
     RecursiveDivision rD;
 
-    EXPECT_EQ(RecursiveDivision::HORIZONTAL,  rD.chooseOrientation(3,5));
-    EXPECT_EQ(RecursiveDivision::VERTICAL,  rD.chooseOrientation(5,3));
+    EXPECT_EQ(RecursiveDivision::HORIZONTAL, rD.chooseOrientation(3, 5));
+    EXPECT_EQ(RecursiveDivision::VERTICAL, rD.chooseOrientation(5, 3));
 
     // Test random orientation:
     int counter = 0;
     bool randomOrientation = false;
 
     // init orientation.
-    int orientation = rD.chooseOrientation(5,5);
+    int orientation = rD.chooseOrientation(5, 5);
 
     for (counter; counter < 5; counter++) {
-        if (orientation != rD.chooseOrientation(5,5)) {
+        if (orientation != rD.chooseOrientation(5, 5)) {
             randomOrientation = true;
         }
     }
@@ -34,8 +34,13 @@ TEST(RecursiveDivisionTest, chooseOrientation){
     EXPECT_TRUE(randomOrientation);
 }
 
-TEST(RecursiveDivisionTest, initMaze){
+TEST(RecursiveDivisionTest, initMaze) {
     RecursiveDivision rD;
 
-    rD.initMaze(10, 10);
+    auto* maze = rD.initMaze(10, 10);
+//    EXPECT_EQ(10, sizeof(maze));
+//
+//    for (int index = 0; index < 10; index++) {
+//        EXPECT_EQ(10, sizeof(&maze[index]));
+//    }
 }
