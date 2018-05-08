@@ -16,8 +16,8 @@ add_executable(Main ${SOURCE_FILES})
 target_link_libraries(Main LINK_PUBLIC prims recursiveDivision recursiveBacktracker)
 
 if (COVERAGE)
-    target_compile_options(tests PRIVATE --coverage)
-    target_link_libraries(tests PRIVATE --coverage)
+    target_compile_options(test PRIVATE --coverage)
+    target_link_libraries(test PRIVATE --coverage)
 endif()
 
 #Gtests
