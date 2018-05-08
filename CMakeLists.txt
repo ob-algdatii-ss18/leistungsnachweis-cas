@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.9.2)
+cmake_minimum_required(VERSION 3.8.2)
 project(leistungsnachweis-cas)
 
 
@@ -14,7 +14,10 @@ add_executable(Main ${SOURCE_FILES})
 
 target_link_libraries(Main LINK_PUBLIC prims recursiveDivision recursiveBacktracker)
 
-
+if (COVERAGE)
+    target_compile_options(test PRIVATE --coverage)
+    target_link_libraries(test PRIVATE --coverage)
+endif()
 
 #Gtests
 
@@ -36,8 +39,6 @@ add_subdirectory("${CMAKE_BINARY_DIR}/googletest-src"
         "${CMAKE_BINARY_DIR}/googletest-build")
 
 add_subdirectory(test)
-
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fprofile-arcs -ftest-coverage")
 
 enable_testing()
 
