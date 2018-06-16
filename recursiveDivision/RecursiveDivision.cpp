@@ -18,7 +18,7 @@ int RecursiveDivision::testMethod() {
 }
 
 int generateRandomInt(int lower, int upper) {
-    int diff = upper - lower + 1;
+    int diff = upper - lower;
 
     if (diff < 1) {
         diff = 1;
@@ -57,7 +57,7 @@ RecursiveDivision::Orientation RecursiveDivision::chooseOrientation(int width, i
 }
 
 void RecursiveDivision::divideVertical(bool **field, int left, int right, int top, int bottom) {
-    int divide = left + 2 + generateRandomInt(0, ((right - left - 2) / 2)) * 2;
+    int divide = left + generateRandomInt(0, ((right - left - 2) / 2)) * 2;
     if (divide % 2 == 1)
         divide++;
     for (int i = top; i <= bottom; i++) {
@@ -73,7 +73,7 @@ void RecursiveDivision::divideVertical(bool **field, int left, int right, int to
 }
 
 void RecursiveDivision::divideHorizontal(bool **field, int left, int right, int top, int bottom) {
-    int divide = top + 2 + generateRandomInt(0, ((bottom - top - 2) / 2)) * 2;
+    int divide = top + generateRandomInt(0, ((bottom - top - 2) / 2)) * 2;
 
     if (divide % 2 == 1)
         divide++;
