@@ -1,7 +1,3 @@
-//
-// Created by chris on 27.04.18.
-//
-
 #ifndef LEISTUNGSNACHWEIS_CAS_RECURSIVEDIVISION_H
 #define LEISTUNGSNACHWEIS_CAS_RECURSIVEDIVISION_H
 
@@ -32,6 +28,10 @@ public:
     int generateMaze();
 
     void divideField(bool **field, int x, int y, int width, int height);
+
+    void divideVertical(bool **field, int left, int right, int top, int bottom);
+
+    void divideHorizontal(bool **field, int left, int right, int top, int bottom);
 };
 
 

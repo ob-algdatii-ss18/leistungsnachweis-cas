@@ -17,14 +17,28 @@ int RecursiveDivision::testMethod() {
     return 3;
 }
 
-int generateRandom(int lower, int upper) {
-    return (rand() % ((upper + 1) - lower)) + lower;
+int generateRandomInt(int lower, int upper) {
+    int diff = upper - lower + 1;
+
+    if (diff < 1) {
+        diff = 1;
+    }
+    int random = (rand() % diff) + lower;
+    return random;
+}
+
+bool generateRandomBoolean() {
+    if (rand() % 2 == 0) {
+        return true;
+    } else {
+        return false;
+    }
 }
 
 void drawMaze(bool **field) {
     for (int i = 0; i < fieldHeight; i++) {
         for (int j = 0; j < fieldWidth; j++) {
-            cout << (field[i][j] ? "#" : ".");
+            cout << (field[i][j] ? "#" : " ");
         }
         cout << endl;
     }
@@ -42,11 +56,75 @@ RecursiveDivision::Orientation RecursiveDivision::chooseOrientation(int width, i
     }
 }
 
+void RecursiveDivision::divideVertical(bool **field, int left, int right, int top, int bottom) {
+    int divide = left + 2 + generateRandomInt(0, ((right - left - 2) / 2)) * 2;
+    if (divide % 2 == 1)
+        divide++;
+    for (int i = top; i <= bottom; i++) {
+        field[i][divide] = true;
+    }
+
+    int clearSpace = top + generateRandomInt(0, ((bottom - top) / 2)) * 2 + 1;
+
+    field[clearSpace][divide] = false;
+
+    divideField(field, left, divide - 1, top, bottom);
+    divideField(field, divide + 1, right, top, bottom);
+}
+
+void RecursiveDivision::divideHorizontal(bool **field, int left, int right, int top, int bottom) {
+    int divide = top + 2 + generateRandomInt(0, ((bottom - top - 2) / 2)) * 2;
+
+    if (divide % 2 == 1)
+        divide++;
+
+    for (int i = left; i <= right; i++) {
+        field[divide][i] = true;
+    }
+
+    int clearSpace = left + generateRandomInt(0, ((right - left) / 2)) * 2 + 1;
+
+    field[divide][clearSpace] = false;
+
+    divideField(field, left, right, top, divide - 1);
+    divideField(field, left, right, divide + 1, bottom);
+}
+
+void RecursiveDivision::divideField(bool **field, int left, int right, int top, int bottom) {
+    int width, height;
+
+    width = right - left;
+    height = bottom - top;
+
+    drawMaze(field);
+
+    if (width > 2 && height > 2) {
+        if (width > height) {
+            divideVertical(field, left, right, top, bottom);
+        } else if (height > width) {
+            divideHorizontal(field, left, right, top, bottom);
+        } else if (height == width) {
+            bool verticalDivision = generateRandomBoolean();
+
+            if (verticalDivision) {
+                divideVertical(field, left, right, top, bottom);
+            } else {
+                divideHorizontal(field, left, right, top, bottom);
+            }
+        }
+    } else if (width > 2 && height <= 2) {
+        divideVertical(field, left, right, top, bottom);
+    } else if (width <= 2 && height > 2) {
+        divideHorizontal(field, left, right, top, bottom);
+    }
+}
+
 bool **RecursiveDivision::initMaze(int width, int height) {
     fieldHeight = height;
     fieldWidth = width;
 
     auto **mazeField = new bool *[fieldHeight];
+
     for (int i = 0; i < fieldHeight; i++) {
         mazeField[i] = new bool[fieldWidth];
     }
@@ -57,81 +135,44 @@ bool **RecursiveDivision::initMaze(int width, int height) {
         }
     }
 
+    for (int i = 0; i < fieldHeight; i++) {
+        mazeField[i][0] = true;
+        mazeField[i][fieldWidth - 1] = true;
+    }
+    for (int j = 0; j < fieldWidth; j++) {
+        mazeField[0][j] = true;
+        mazeField[fieldHeight - 1][j] = true;
+
+    }
+
     return mazeField;
-}
-
-void RecursiveDivision::divideField(bool **field, int x, int y, int width, int height) {
-    if (width < 3 || height < 3) {
-        return;
-    }
-    drawMaze(field);
-
-    int wallX, wallY;
-    int passageX, passageY;
-    int directionX, directionY;
-    int length;
-
-    // horizontal = true; vertical = false;
-    int horizontal = chooseOrientation(width, height) - 1;
-
-    // calculate coordinates where wall will be placed.
-    wallX = x + (horizontal ? 0 : generateRandom(0, width - 2));
-    wallY = y + (horizontal ? generateRandom(0, height - 2) : 0);
-
-    // calculate coordinates of passage through the wall.
-    passageX = wallX + (horizontal ? generateRandom(0, width) : 0);
-    passageY = wallY + (horizontal ? 0 : generateRandom(0, height));
-
-    directionX = horizontal;
-    directionY = horizontal == 0;
-
-    length = horizontal ? width : height;
-
-    for (int index = 0; index < length; index++) {
-        if ((wallX != passageX) || (wallY != passageY)) {
-            field[wallY][wallX] = true;
-        }
-        wallX += directionX;
-        wallY += directionY;
-    }
-
-    int nextX, nextY, nextWidth, nextHeight;
-
-    nextX = x;
-    nextY = y;
-    nextWidth = (horizontal ? width : wallX - x + 1);
-    nextHeight = (horizontal ? wallY - y + 1 : height);
-
-    divideField(field, nextX, nextY, nextWidth, nextHeight);
-
-    nextX = (horizontal ? x : wallX + 1);
-    nextY = (horizontal ? wallY + 1 : y);
-    nextWidth = (horizontal ? width : x + width - wallX - 1);
-    nextHeight = (horizontal ? y + height - wallY - 1 : height);
-
-    divideField(field, nextX, nextY, nextWidth, nextHeight);
 }
 
 int RecursiveDivision::generateMaze() {
     srand(static_cast<unsigned int>(time(nullptr)));
 
-    int width, height;
+    int width, cols, height, rows;
     string input;
-    cout << "What's the maze width? ";
-    getline(cin, input);
-    width = stoi(input);
-    cout << "What's the maze height ";
-    getline(cin, input);
-    height = stoi(input);
 
-    if ((height < 1) || (width < 1)) {
+    cout << "How many cols? ";
+    getline(cin, input);
+    cols = stoi(input);
+
+    cout << "How many rows? ";
+    getline(cin, input);
+    rows = stoi(input);
+
+    if ((cols < 1) || (rows < 1)) {
         cerr << "Maze dimensions must be positive!" << endl;
         exit(1);
     }
 
+    width = cols * 2 + 2;
+    height = rows * 2 + 2;
+
     auto *mazeField = initMaze(width, height);
 
-    divideField(mazeField, 0, 0, width, height);
+    divideField(mazeField, 1, width - 1, 1, height - 1);
 
     return 0;
 }
