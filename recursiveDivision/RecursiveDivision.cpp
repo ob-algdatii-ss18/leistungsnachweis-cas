@@ -8,6 +8,7 @@
 using namespace ::std;
 
 int fieldWidth, fieldHeight;
+bool debugMode = false;
 
 void helloFromRecDiv() {
     cout << "Hello, from Recursive Division" << endl;
@@ -36,13 +37,15 @@ bool generateRandomBoolean() {
 }
 
 void drawMaze(bool **field) {
-    for (int i = 0; i < fieldHeight; i++) {
-        for (int j = 0; j < fieldWidth; j++) {
-            cout << (field[i][j] ? "#" : " ");
+    if (debugMode) {
+        for (int i = 0; i < fieldHeight; i++) {
+            for (int j = 0; j < fieldWidth; j++) {
+                cout << (field[i][j] ? "#" : " ");
+            }
+            cout << endl;
         }
         cout << endl;
     }
-    cout << endl;
 }
 
 RecursiveDivision::Orientation RecursiveDivision::chooseOrientation(int width, int height) {
@@ -54,6 +57,14 @@ RecursiveDivision::Orientation RecursiveDivision::chooseOrientation(int width, i
         int random = rand() % 2;
         return random == 1 ? RecursiveDivision::HORIZONTAL : RecursiveDivision::VERTICAL;
     }
+}
+
+void RecursiveDivision::makeMazeOpening(bool **field, int rows, int cols) {
+    int start = generateRandomInt(0, (rows - 1)) * 2 + 1;
+    int end = generateRandomInt(0, (rows - 1)) * 2 + 1;
+
+    field[start][0] = false;
+    field[end][cols - 1] = false;
 }
 
 void RecursiveDivision::divideVertical(bool **field, int left, int right, int top, int bottom) {
@@ -149,6 +160,12 @@ bool **RecursiveDivision::initMaze(int width, int height) {
 }
 
 int RecursiveDivision::generateMaze() {
+
+    /**
+     * Enable Debug mode for maze printing:
+     */
+//    debugMode = true;
+
     srand(static_cast<unsigned int>(time(nullptr)));
 
     int width, cols, height, rows;
@@ -173,6 +190,12 @@ int RecursiveDivision::generateMaze() {
     auto *mazeField = initMaze(width, height);
 
     divideField(mazeField, 1, width - 1, 1, height - 1);
+
+    makeMazeOpening(mazeField, rows, width);
+
+    // Enabled for printing result
+    debugMode = true;
+    drawMaze(mazeField);
 
     return 0;
 }

@@ -32,6 +32,8 @@ public:
     void divideVertical(bool **field, int left, int right, int top, int bottom);
 
     void divideHorizontal(bool **field, int left, int right, int top, int bottom);
+
+    void makeMazeOpening(bool **field, int rows, int cols);
 };
 
 
