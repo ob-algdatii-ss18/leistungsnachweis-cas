@@ -1,6 +1,6 @@
-//
-// Created by chris on 27.04.18.
-//
+/**
+* Created by Anja Wimmer on 27.04.18.
+*/
 
 #ifndef LEISTUNGSNACHWEIS_CAS_RECURSIVEBACKTRACKER_H
 #define LEISTUNGSNACHWEIS_CAS_RECURSIVEBACKTRACKER_H
@@ -11,19 +11,17 @@
 #include <ctime>
 #include <cstring>
 #include <vector>
+#include <bitset>
 
 using namespace std;
 
 typedef struct
 {
-    bool up;
-    bool down;
-    bool left;
-    bool right;
+    char directions;
+    //bool directions[4]; //up, down, left, right
     int x, y; //Cell position - little waste of memory, but it allows faster generation
     void *parentCell; //Pointer to parent cell
     char image; //Character to be displayed
-    char dirs; //Directions that still haven't been explored
 
 }Cell;
 
@@ -42,7 +40,6 @@ public:
     Cell *backtracking( Cell *c );
     void drawMaze( );
     int startMaze( );
-
 
     double testMethod();
 };

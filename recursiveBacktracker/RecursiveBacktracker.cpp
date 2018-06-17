@@ -1,11 +1,14 @@
-//
-// Created by chris on 27.04.18.
-//
+/**
+* Created by Anja Wimmer on 27.04.18.
+ * Quelle: (https://en.wikipedia.org/wiki/Maze_generation_algorithm#Recursive_backtracker)
+*/
 
 #include "RecursiveBacktracker.h"
 
 
-//print maze to terminal
+/**print maze to terminal
+ *
+ */
 void RecursiveBacktracker::drawMaze( )
 {
     int k=0;
@@ -20,7 +23,9 @@ void RecursiveBacktracker::drawMaze( )
         }
     }
 }
-//large grid of cells, each cell starting with four walls
+/**large grid of cells, each cell starting with four walls
+ * @return
+ */
 int RecursiveBacktracker::initMaze( )
 {
     newcells.reserve(height * width);
@@ -29,26 +34,18 @@ int RecursiveBacktracker::initMaze( )
     Cell *current;
 
     //Setup crucial cells
-    for ( i = 0; i < width; i++ )
-    {
-        for ( j = 0; j < height; j++ )
-        {
+    for ( i = 0; i < width; i++ ) {
+        for (j = 0; j < height; j++) {
             current = dummy + i + j * width;
             //each cell starting with four walls
             // -> every other cell is a 'path' cell
-            if ( i * j % 2 )
-            {
+            if (i * j % 2) {
                 current->x = i;
                 current->y = j;
-                current->dirs = 15; //Assume that all directions can be explored (4 youngest bits set)
                 current->image = path;
-                current->up = true;
-                current->down = true;
-                current->left = true;
-                current->right = true;
+                current->directions = 15;
                 newcells.push_back(current);
-            }
-            else{
+            } else {
                 current->x = i;
                 current->y = j;
                 current->image = wall;
@@ -56,68 +53,56 @@ int RecursiveBacktracker::initMaze( )
             }
         }
     }
-    return 0;
 }
 
-/* removes the wall between the two cells and marks the new cell as visited.
+/** removes the wall between the two cells and marks the new cell as visited.
  * this continues until a cell that has no unvisited neighbours is reached
  */
 Cell * RecursiveBacktracker::backtracking( Cell *n )
 {
-    int x, y, direction;
+    int x, y;
     Cell *dest;
 
     if ( n == nullptr ) return nullptr;
 
     //While there are directions still unexplored
-    while ( n->up || n->down || n->left || n->right /*n->dirs*/ )
+    while ( n->directions != 0 )
     {
         //Randomly pick one direction
-        direction = (rand() % 4);
-
+        int direction = ( 1 << ( rand( ) % 4 ) );
+        n->directions &= ~direction;
+        //n->directions = n->directions ^ direction;
         switch(direction)
         {
-            case 0:
-                if(!n->up)
-                    continue;
-                else if ( n->y - 2 >= 0 )
-                {
-                    x = n->x;
-                    y = n->y - 2;
-                    n->up = false;
-                }
-                else continue;
-                break;
             case 1:
-                if(!n->down)
-                    continue;
-                else if ( n->y + 2 < height )
+                if ( n->x + 2 < width )
                 {
-                    x = n->x;
-                    y = n->y + 2;
-                    n->down = false;
+                    x = n->x + 2;
+                    y = n->y;
                 }
                 else continue;
                 break;
             case 2:
-                if(!n->left)
-                    continue;
-                else if ( n->x - 2 >= 0 )
+                if ( n->y + 2 < height )
                 {
-                    x = n->x - 2;
-                    y = n->y;
-                    n->left = false;
+                    x = n->x;
+                    y = n->y + 2;
                 }
                 else continue;
                 break;
-            case 3:
-                if(!n->right)
-                    continue;
-                else if ( n->x + 2 < width )
+            case 4:
+                if ( n->x - 2 >= 0 )
                 {
-                    x = n->x + 2;
+                    x = n->x - 2;
                     y = n->y;
-                    n->right = false;
+                }
+                else continue;
+                break;
+            case 8:
+                if ( n->y - 2 >= 0 )
+                {
+                    x = n->x;
+                    y = n->y - 2;
                 }
                 else continue;
                 break;
@@ -137,7 +122,6 @@ Cell * RecursiveBacktracker::backtracking( Cell *n )
 
             //Remove wall between cells
             newcells.at(n->x + ( x - n->x ) / 2 + ( n->y + ( y - n->y ) / 2 ) * width)->image = path;
-
             //Return address of the child node
             return dest;
         }
@@ -181,11 +165,11 @@ int RecursiveBacktracker::startMaze( )
 
     //Initialize maze
     int answer = initMaze();
-    if ( answer != 0 )
+    /*if ( answer != 0 )
     {
-        cerr << " maze : out of memory!\n" << endl;
+        cerr << " maze : init failed!\n" << endl;
         exit( 1 );
-    }
+    }*/
 
     //Setup start node
     start = newcells.front() + 1 + width;
