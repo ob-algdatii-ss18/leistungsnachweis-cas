@@ -71,11 +71,14 @@ void RecursiveDivision::divideVertical(bool **field, int left, int right, int to
     int divide = left + generateRandomInt(0, ((right - left - 2) / 2)) * 2;
     if (divide % 2 == 1)
         divide++;
+
     for (int i = top; i <= bottom; i++) {
         field[i][divide] = true;
     }
 
-    int clearSpace = top + generateRandomInt(0, ((bottom - top) / 2)) * 2 + 1;
+    int clearSpace = top + generateRandomInt(0, ((bottom - top) / 2)) * 2;
+    if (clearSpace % 2 == 0)
+        clearSpace++;
 
     field[clearSpace][divide] = false;
 
@@ -93,7 +96,9 @@ void RecursiveDivision::divideHorizontal(bool **field, int left, int right, int 
         field[divide][i] = true;
     }
 
-    int clearSpace = left + generateRandomInt(0, ((right - left) / 2)) * 2 + 1;
+    int clearSpace = left + generateRandomInt(0, ((right - left) / 2)) * 2;
+    if (clearSpace % 2 == 0)
+        clearSpace++;
 
     field[divide][clearSpace] = false;
 
@@ -164,7 +169,7 @@ int RecursiveDivision::generateMaze() {
     /**
      * Enable Debug mode for maze printing:
      */
-//    debugMode = true;
+    debugMode = true;
 
     srand(static_cast<unsigned int>(time(nullptr)));
 

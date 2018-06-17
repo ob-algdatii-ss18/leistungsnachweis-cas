@@ -77,8 +77,20 @@ std::ostream &operator<<(std::ostream &os, const LabGraph &graph) {
     return os;
 }
 
+LabGraph::LabGraph() {
+    long ms = chrono::system_clock::now().time_since_epoch().count();
+    dirPath = "../Plots/bsp" + to_string(ms);
+    const string sysCom = "mkdir -p " + dirPath;
+    system(sysCom.data());
+    height = LG_HEIGHT;
+    width = LG_WIDTH;
+}
 LabGraph::LabGraph(int w, int h) {
     if(h < 5 || w < 5) throw range_error("height and width must greater 5.");
+    long ms = chrono::system_clock::now().time_since_epoch().count();
+    dirPath = "../Plots/bsp" + to_string(ms);
+    const string sysCom = "mkdir -p " + dirPath;
+    system(sysCom.data());
     height = h;
     width = w;
 }
@@ -146,77 +158,138 @@ void LabGraph::easyTest() {
     n->addEdge(new Edge(8));
 
     initGraph();
-    buildLabWithPrim();
-    graphToPng();
+    buildLabWithRecBac();
+  //  buildLabWithPrim();
+    if(VIDEO)makeVideo();
+    graphToPic("png");
 }
 
 void LabGraph::buildLabWithPrim() {
-    int count = 1;
     bool hasChanged = false;
+    if(VIDEO)graphToPic("jpe");
 
-
-    graphToPng();
+    //Priority queue with all unvisited edges.
     priority_queue<LabGraph::Edge *, vector<LabGraph::Edge*>, LabGraph::Edge::CompareEdges> labEdges;
+    //Random start node. Don't start at the border...
     int x = rand() % (width -2) + 1;
     int y = rand() % (height -2) + 1;
     int random = y*height  + x;
-    auto curNode = graphNodes[random];
-    start = current = curNode;
-    for(auto cur: curNode->edges){
+
+    start = current = graphNodes[random];;
+    //Add all edges of the start node to the queue.
+    for(auto cur: current->edges){
         labEdges.push(cur);
     }
-    curNode->setVisited(true);
+    current->setVisited(true);
+    //While there are undiscovered edges do...
     do{
-
+        //Select edge with minimum weight
         auto curEdge = labEdges.top();
         labEdges.pop();
+        //If the connected node i not already visited, add it to the labyrinth and make the edge a passage.
         if(curEdge->left->isVisited() && curEdge->right->isVisited()){
+
             hasChanged = false;
             //do nothing
         }else{
             hasChanged = true;
             if(curEdge->left->isVisited()){
-                curNode = current = curEdge->right;
+                current = curEdge->right;
             }else if(curEdge->right->isVisited()){
-                curNode = current = curEdge->left;
+                current = curEdge->left;
             }else{
                 throw logic_error("...");
             }
-            count++;
             curEdge->setWall(false);
             curEdge->setVisited(true);
-
-            for(auto cur: curNode->edges){
+            //Add all unvisited edges to the queue.
+            for(auto cur: current->edges){
                 if(!cur->isVisited())labEdges.push(cur);
             }
-            curNode->setVisited(true);
+            current->setVisited(true);
         }
-
-        if(hasChanged) graphToPng();
+        //output
+        if(hasChanged && VIDEO) graphToPic("jpe");
 
     }while(!labEdges.empty());
+    //output
+    if(VIDEO)graphToPic("jpe");
 
-    graphToPng();
-    if(count == (height-2) * (width-2));
-        cout << "all nodes visited !" << endl;
-    cout << "fertig !" << "size:" << graphNodes.size() << " loops:" << count <<endl;
+}
+void LabGraph::buildLabWithRecBac(){
+    if(VIDEO)graphToPic("jpe");
+    int visitedNodes = 1;
+    Edge* curEdge;
+    //Stack to trace back the last visited node.
+    stack<Node*> nodeStack;
+    //Random start node.
+    int x = rand() % (width -2) + 1;
+    int y = rand() % (height -2) + 1;
+    int random = y*height  + x;
+    start = current = graphNodes[random];
+    current->setVisited(true);
+    nodeStack.push(current);
+    do{
+        curEdge = nullptr;
+        random_shuffle(current->edges.begin(),current->edges.end());
+        for(auto c : current->edges){
+            if(!c->isVisited()){
+                if(!c->otherEnd(current)->isVisited()) {
+                    curEdge = c;
+                    break;
+                }
+            }
+        }
+        if(curEdge != nullptr){
+            nodeStack.push(current);
+            if(curEdge->left->isVisited()){
+                current = curEdge->right;
+            }else if(curEdge->right->isVisited()){
+                current = curEdge->left;
+            }else{
+                throw logic_error("...");
+            }
+            curEdge->setVisited(true);
+            curEdge->setWall(false);
+            current->setVisited(true);
+            visitedNodes++;
+        }else{
+            current = nodeStack.top();
+            nodeStack.pop();
+        }
+        if(VIDEO)graphToPic("jpe");
+    }while(!nodeStack.empty() && visitedNodes < (height-2) * (width-2));
+    if(VIDEO)graphToPic("jpe");
+
 }
 
-void LabGraph::graphToPng() {
+
+void LabGraph::graphToPic(string format) {
     ofstream myfile;
+
     long ms = chrono::system_clock::now().time_since_epoch().count();
   //  string fileName = "../Plots/graph" + to_string(ms) + ".dot";
-    string picName = "../Plots/bsp6/graph" + to_string(ms) + ".jpe";
-        string fileName = "graph2.dot";
+    string picName = dirPath + "/graph" + to_string(ms) + "." + format;
+    string fileName = dirPath + "/graph2.dot";
     //  string picName = "graph.png";
-    const string dotExec = "dot -Tjpe -v " + fileName + " -o " + picName;
+    const string dotExec = "dot -T"+format+" -v " + fileName + " -o " + picName;
     myfile.open(fileName);
     myfile << *this;
     myfile.close();
     system(dotExec.data());
 }
 
+void LabGraph::makeVideo() {
+    const string sysCom = "mencoder mf://" + dirPath + "/*.jpe -mf w=800:h=600:fps=15:type=jpg -ovc lavc -lavcopts vcodec=mpeg4:mbd=2:trell -oac copy -o "+ dirPath+"/animation.avi";
+    const string rmCom = "rm "+ dirPath + "/*.jpe";
+    system(sysCom.data());
+    system(rmCom.data());
+}
+
+
 LabGraph::Node::Node(int x, int y) : x_pos(x), y_pos(y) {}
+
+
 
 void LabGraph::Node::addEdge(LabGraph::Edge * newEdge) {
     edges.push_back(newEdge);
@@ -276,4 +349,13 @@ void LabGraph::Edge::setVisited(bool setTo) {
 
 bool LabGraph::Edge::isVisited() {
     return visited;
+}
+
+LabGraph::Node *LabGraph::Edge::otherEnd(LabGraph::Node *oneEnd) {
+    if(left == oneEnd)
+        return right;
+    else if(right == oneEnd)
+        return left;
+    else
+        return nullptr;
 }
