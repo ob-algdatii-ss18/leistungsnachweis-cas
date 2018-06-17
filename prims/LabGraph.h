@@ -13,9 +13,15 @@
 #include <fstream>
 #include <sstream>
 #include <chrono>
+#include <stack>
+#include <algorithm>
+
 
 using namespace std;
 
+#define VIDEO false
+#define LG_WIDTH 30
+#define LG_HEIGHT 30
 
 class LabGraph {
 
@@ -124,6 +130,11 @@ private:
          * @return True if this edge connects the lab with the border.
          */
         bool connectBorder();
+        /**
+         * Returns the other end of this edge.
+         * @return The other end of this edge.
+         */
+        Node* otherEnd(Node *);
     };
     /**
      * A node in the graph. Represents a crossing in the labyrinth.
@@ -183,8 +194,9 @@ private:
         bool isBorder();
     };
 
-
+    string dirPath;
 public:
+    LabGraph();
     /**
      * Constructor.
      * @param height Height of the graph.
@@ -202,7 +214,16 @@ public:
 
     void buildLabWithPrim();
 
-    void graphToPng();
+    void buildLabWithRecBac();
+    /**
+     * Creates a picture of the current graph using graphviz.
+     * @param format Outputformat of the picture e.g. "jpg" "png"...
+     */
+    void graphToPic(string format);
+    /**
+     * Makes a video of the graph creation.
+     */
+    void makeVideo();
 
     void easyTest();
     /**
