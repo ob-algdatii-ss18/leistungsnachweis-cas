@@ -8,6 +8,11 @@
 
 #include <ostream>
 #include <queue>
+#include <cstdlib>
+#include <ctime>
+#include <fstream>
+#include <sstream>
+#include <chrono>
 
 using namespace std;
 
@@ -17,18 +22,56 @@ class LabGraph {
 private:
     struct Node;
     struct Edge;
-
+    /**
+     * Height and width of the Labyrinth
+     */
     int height, width;
-    Node *start = nullptr,*exit = nullptr;
-
-
-
+    /**
+     * Start- and endpoint of the Labyrinth
+     */
+    Node *start = nullptr,*exit = nullptr,*current = nullptr;
+    /**
+     * Vector that holds all the Edges of the Graph
+     */
+    vector<Edge *> graphEdges;
+    /**
+     * Vector that holds all the Nodes of the Graph
+     */
+    vector<LabGraph::Node *> graphNodes;
+    /**
+     * Creates an new edge from start to end. Graph is undirected.
+     * @param start "start node of the edge"
+     * @param end "Endpoint of the edge"
+     */
+    void newEdge(LabGraph::Node *start, LabGraph::Node *end);
+    /**
+     * Creates a new node at position x,y. Sets the border member acoordingliy.
+     * @return Pointer to the new node
+     */
+    Node* newNode(int y, int x);
+    /**
+     * Represents a weighted edge in the graph. Connects two nodes.
+     */
     struct Edge {
-
+        /**
+         * Start and endpoint of the edge.
+         */
         LabGraph::Node *left,*right;
-
+        /**
+         * Weight of the edge.
+         */
         int weight;
-
+        /**
+         * Indicates if this edge is a wall or a passage.
+         */
+        bool wall = true;
+        /**
+         * Indicates if this edge has been visited in creation process of the labyrinth.
+         */
+        bool visited = false;
+        /**
+         * Compare function for two edges. Compares two edges by weight. Needed to manage edgepointers in a priority queue.
+         */
         struct CompareEdges : public std::binary_function<LabGraph::Edge*, LabGraph::Edge*, bool>
         {
             bool operator()(const LabGraph::Edge* lhs, const LabGraph::Edge* rhs) const
@@ -36,37 +79,137 @@ private:
                 return lhs->weight > rhs->weight;
             }
         };
-
-        Edge(int weight);
-
+        /**
+         * Constructor.
+         * @param weight Weight of the edge.
+         */
+        explicit Edge(int weight);
+        /**
+         * Constructor.
+         * @param left Left node.
+         * @param right Right node.
+         * @param weight weight of the edge.
+         */
         Edge(Node *left, Node *right, int weight);
-// friend bool operator<(const Edge &);
+        /**
+         * Just for graphical layout of the graph via graphviz.
+         * @return True if left and right have the same x-coordinate.
+         */
+        bool isHorizontal();
+        /**
+         * Setter for wall.
+         */
+        void setWall(bool);
+        /**
+         * Getter for wall.
+         * @return True if this edge is a wwall.
+         */
+        bool isWall();
+        /**
+         * Setter for visited.
+         */
+        void setVisited(bool);
+        /**
+         * Getter for visited.
+         * @return True if this edge has been visited.
+         */
+        bool isVisited();
+        /**
+         * Tests if this edge is part of the outer boarder of the graph. Outer borders are always a wall and no part of the creation of the actual labyrinth.
+         * @return True if this edge is part of the outer border of the lab.
+         */
+        bool isBorder();
+        /**
+         * Tests if this edge connects the border of the labyrinth to the labyrinth itself. This connectors are not passable but are not shown as a wall in the graphical layout.
+         * @return True if this edge connects the lab with the border.
+         */
+        bool connectBorder();
     };
-
+    /**
+     * A node in the graph. Represents a crossing in the labyrinth.
+     */
     struct Node {
+        /**
+         * Constructor.
+         * @param x X-coordinate of the node.
+         * @param y Y-coordinate of the node.
+         */
         Node(int x, int y);
-
+        /**
+         * Constructor.
+         * @param x X-coordinate of the node.
+         * @param y Y-coordinate of the node.
+         * @param border Is this node part of the outer border of the labyrinth.
+         */
+        Node(int x, int y, bool border);
+        /**
+         * X and y coordinate of the node.
+         */
         int x_pos,y_pos;
-
-        LabGraph::Edge * top,*right,*bot,*left;
-
-        priority_queue<LabGraph::Edge *, vector<LabGraph::Edge*>, LabGraph::Edge::CompareEdges> edges;
-
+        /**
+         * Indicates if this node has been visited in creation process of the labyrinth.
+         */
+        bool visited = false;
+        /**
+         * Marker if this node is part of the outer border. The outer border is not part of the labyrinth.
+         */
+        bool border = false;
+        /**
+         * Holds a pointer to all edges that connect this node.
+         */
+        vector<LabGraph::Edge*>  edges;
+        /**
+         * Connects a new edge to this node.
+         */
         void addEdge(LabGraph::Edge*);
+        /**
+         * For graphical layout. The id is the x and y coordinate of the node. E.g.: "N_X_Y"
+         * @return ID of the node.
+         */
+        string getId();
+        /**
+         * Setter for visited.
+         */
+        void setVisited(bool);
+        /**
+         * Getter for visited.
+         * @return True if this node has been visited.
+         */
+        bool isVisited();
+        /**
+         * Getter for border.
+         * @return
+         */
+        bool isBorder();
     };
 
 
 public:
-
+    /**
+     * Constructor.
+     * @param height Height of the graph.
+     * @param width Width of the graph.
+     */
     LabGraph(int height, int width);
-
+    /**
+     * Destructor of the graph.
+     */
     ~LabGraph();
-
+    /**
+     * Creates a square with heigt x width nodes connected by edges.
+     */
     void initGraph();
 
-    void easyTest();
+    void buildLabWithPrim();
 
-    friend std::ostream &operator<<(std::ostream &os, const LabGraph &graph);
+    void graphToPng();
+
+    void easyTest();
+    /**
+     * Outputs the graph in DOT-form so it can be interpreted by graphviz.
+     * @return
+     */
+    friend std::ostream &operator<<(std::ostream &, const LabGraph &);
 };
 
 
