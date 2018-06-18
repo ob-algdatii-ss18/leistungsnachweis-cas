@@ -31,6 +31,7 @@ include_directories("..")
 
 install(TARGETS primsTest DESTINATION bin)
 
+
 #Tests for recBac
 add_executable(recursiveBacktrackerTest ${SRCS})
 
@@ -45,6 +46,7 @@ target_link_libraries(recursiveBacktrackerTest
 include_directories("..")
 
 install(TARGETS recursiveBacktrackerTest DESTINATION bin)
+
 
 #Tests for recDiv
 add_executable(recursiveDivisionTest ${SRCS})
