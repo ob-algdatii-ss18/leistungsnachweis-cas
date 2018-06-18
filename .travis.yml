@@ -16,10 +16,10 @@ before_script:
 
 
 script:
-  - mkdir build
+  - cmake -H. -Bbuild
   - cd build
-  - cmake -DENABLE_COVERAGE=ON .
-  - test/mainTest
+  - cmake --build .
+  - ctest
 
 
 
