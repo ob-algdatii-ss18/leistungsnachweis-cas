@@ -25,4 +25,4 @@ script:
   - ctest
 
 after_success:
-  - coveralls --root .. --exclude build/CMakeFiles/ --exclude build/googletest-src/
+  - coveralls --root .. --exclude build/CMakeFiles/ --exclude build/googletest-src/ --gcov-options '\-lp'
