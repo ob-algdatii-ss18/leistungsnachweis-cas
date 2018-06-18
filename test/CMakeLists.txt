@@ -2,7 +2,7 @@ file(GLOB SRCS *.cpp)
 
 
 #Test all
-add_executable(mainTest ${SRCS})
+add_executable(mainTest ${SRCS} primTest.cpp testRecursiveDivision.cpp testRecursiveBacktracker.cpp)
 
 target_link_libraries(mainTest
         prims
