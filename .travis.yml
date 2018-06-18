@@ -5,6 +5,12 @@ compiler:
 
 os: linux
 
+addons:
+  apt:
+    packages:
+      - doxygen
+      - graphviz
+
 before_script:
   - pip install --user cpp-coveralls
 
@@ -22,4 +28,4 @@ script:
 
 
 after_success:
-  - coveralls --verbose --root .. --exclude build/CMakeFiles/ --exclude build/googletest-src/ --gcov "llvm-cov gcov" --gcov-options '\-lp'
+  - coveralls --verbose --root .. --exclude build/CMakeFiles/ --exclude build/gtest/ --exclude build/googletest-src/ --gcov "llvm-cov gcov" --gcov-options '\-lp'
