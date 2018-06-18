@@ -8,6 +8,7 @@
 #include "gtest/gtest.h"
 #include "gmock/gmock.h"
 #include "recursiveDivision/RecursiveDivision.h"
+#include "prims/LabGraph.h"
 
 class RecursiveDivisionTest : public ::testing::Test{
 

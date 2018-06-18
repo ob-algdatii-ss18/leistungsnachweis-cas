@@ -21,7 +21,5 @@ install(TARGETS recBacTest DESTINATION bin)
 install(TARGETS recDivTest DESTINATION bin)
 install(TARGETS randPrimTest DESTINATION bin)
 
-add_test(NAME recBac-Test COMMAND recBacTest)
-add_test(NAME recDiv-Test COMMAND recDivTest)
-add_test(NAME randPrim-Test COMMAND randPrimTest)
+
 

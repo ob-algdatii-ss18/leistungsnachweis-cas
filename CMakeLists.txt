@@ -48,3 +48,7 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -ftest-coverage")
 enable_testing()
 add_subdirectory(test)
 
+add_test(recBac-Test test/recBacTest --gtest_output=xml:report.xml)
+add_test(recDiv-Test test/recDivTest --gtest_output=xml:report.xml)
+add_test(randPrim-Test test/randPrimTest --gtest_output=xml:report.xml)
+
