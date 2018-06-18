@@ -9,27 +9,33 @@
 using namespace std;
 int main(int argc, const char *argv[]){
 
-    helloFromPrims();
+    //helloFromPrims();
 
-    auto t = new LabGraph(20,20);//breit,höhe
-    t->easyTest();
+    string input;
+    cout << "Choose your algorithm \n 1: Prim \n 2: RecursiveDivision \n 3: RecursiveBacktracker" ;
+    getline (cin, input);
+    int alg = stoi(input);
 
-    /*
-    RecursiveDivision rb;
-    int answer = rb.generateMaze();
-    if (answer != 0)
-    {
-        exit(1);
+    if(alg == 1) {
+        auto t = new LabGraph(20, 20);//breit,höhe
+        t->easyTest();
     }
 
-    RecursiveBacktracker rb;
-    int result = rb.startMaze();
-    if(result != 0)
-    {
-        exit(1);
+    if(alg == 2) {
+        RecursiveDivision rb;
+        int answer = rb.generateMaze();
+        if (answer != 0) {
+            exit(1);
+        }
     }
+    if(alg == 3) {
+        RecursiveBacktracker rb;
+        int result = rb.startMaze();
+        if (result != 0) {
+            exit(1);
+        }
+    }
+    //helloFromRecDiv();
 
-    helloFromRecDiv();
-*/
     return 0;
 }

@@ -12,8 +12,10 @@
 #include <cstring>
 #include <vector>
 #include <bitset>
+#include <chrono>
 
 using namespace std;
+using namespace std::chrono;
 
 typedef struct
 {

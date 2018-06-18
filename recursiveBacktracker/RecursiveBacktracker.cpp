@@ -163,6 +163,9 @@ int RecursiveBacktracker::startMaze( )
     //It seeds the pseudo random number generator that rand() uses
     srand( time( nullptr ) );
 
+    nanoseconds startTime = duration_cast< nanoseconds >(
+            system_clock::now().time_since_epoch()
+    );
     //Initialize maze
     int answer = initMaze();
     /*if ( answer != 0 )
@@ -180,6 +183,12 @@ int RecursiveBacktracker::startMaze( )
     while ( (end = backtracking(end)) != start );
     drawMaze( );
 
+    nanoseconds endTime = duration_cast< nanoseconds >(
+            system_clock::now().time_since_epoch()
+    );
+
+    nanoseconds diffTime = endTime - startTime;
+    cout << "Bearbeitungszeit: " << diffTime.count() << " ns" << endl;
     return 0;
 }
 
