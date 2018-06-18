@@ -1,25 +1,65 @@
 file(GLOB SRCS *.cpp)
 
-if (APPLE)
-    add_definitions(-DGTEST_USE_OWN_TR1_TUPLE)
-    add_definitions(-D__GLIBCXX__)
-endif (APPLE)
 
 #Test all
-add_executable(recBacTest ${SRCS} testRecursiveBacktracker.cpp ../recursiveBacktracker/RecursiveBacktracker.cpp ../recursiveBacktracker/RecursiveBacktracker.h)
-target_link_libraries(recBacTest PRIVATE gtest gmock)
+add_executable(mainTest ${SRCS})
 
-add_executable(recDivTest ${SRCS} testRecursiveDivision.cpp ../recursiveDivision/RecursiveDivision.h ../recursiveDivision/RecursiveDivision.cpp)
-target_link_libraries(recDivTest PRIVATE gtest gmock)
-
-add_executable(randPrimTest ${SRCS} primTest.cpp ../prims/Prims.h ../prims/Prims.cpp ../prims/LabGraph.h ../prims/LabGraph.cpp)
-target_link_libraries(randPrimTest PRIVATE gtest gmock)
+target_link_libraries(mainTest
+        prims
+        recursiveBacktracker
+        recursiveDivision
+        gtest
+        gmock
+        )
 
 include_directories("..")
 
-install(TARGETS recBacTest DESTINATION bin)
-install(TARGETS recDivTest DESTINATION bin)
-install(TARGETS randPrimTest DESTINATION bin)
+install(TARGETS mainTest DESTINATION bin)
+
+#Test for prims
+add_executable(primsTest ${SRCS})
+
+target_link_libraries(primsTest
+        recursiveBacktracker
+        recursiveDivision
+        prims
+        gtest
+        gmock
+        )
+
+include_directories("..")
+
+install(TARGETS primsTest DESTINATION bin)
+
+#Tests for recBac
+add_executable(recursiveBacktrackerTest ${SRCS})
+
+target_link_libraries(recursiveBacktrackerTest
+        recursiveBacktracker
+        recursiveDivision
+        prims
+        gtest
+        gmock
+        )
+
+include_directories("..")
+
+install(TARGETS recursiveBacktrackerTest DESTINATION bin)
+
+#Tests for recDiv
+add_executable(recursiveDivisionTest ${SRCS})
+
+target_link_libraries(recursiveDivisionTest
+        recursiveBacktracker
+        recursiveDivision
+        prims
+        gtest
+        gmock
+        )
+
+include_directories("..")
+
+install(TARGETS recursiveDivisionTest DESTINATION bin)
 
 
 

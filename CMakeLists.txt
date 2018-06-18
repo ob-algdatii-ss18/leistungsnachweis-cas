@@ -49,7 +49,8 @@ add_subdirectory(test)
 
 enable_testing()
 
-add_test(recBac-Test test/recBacTest --gtest_output=xml:report.xml)
-add_test(recDiv-Test test/recDivTest --gtest_output=xml:report.xml)
-add_test(randPrim-Test test/randPrimTest --gtest_output=xml:report.xml)
+add_test(main-Test test/mainTest --gtest_output=xml:report.xml)
+#add_test(recBac-Test test/recBacTest --gtest_output=xml:report.xml)
+#add_test(recDiv-Test test/recDivTest --gtest_output=xml:report.xml)
+#add_test(randPrim-Test test/randPrimTest --gtest_output=xml:report.xml)
 
