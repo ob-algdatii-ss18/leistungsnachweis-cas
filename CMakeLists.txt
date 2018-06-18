@@ -40,7 +40,7 @@ add_subdirectory("${CMAKE_BINARY_DIR}/googletest-src"
         "${CMAKE_BINARY_DIR}/googletest-build")
 
 add_subdirectory(test)
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fprofile-arcs -ftest-coverage")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -O0 -fprofile-arcs -ftest-coverage")
 enable_testing()
 
 add_test(primTest test/primTest --gtest_output=xml:report.xml)
