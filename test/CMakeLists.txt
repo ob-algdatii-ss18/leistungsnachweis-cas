@@ -20,8 +20,6 @@ install(TARGETS mainTest DESTINATION bin)
 add_executable(primsTest ${SRCS})
 
 target_link_libraries(primsTest
-        recursiveBacktracker
-        recursiveDivision
         prims
         gtest
         gmock
@@ -36,8 +34,6 @@ add_executable(recursiveBacktrackerTest ${SRCS})
 
 target_link_libraries(recursiveBacktrackerTest
         recursiveBacktracker
-        recursiveDivision
-        prims
         gtest
         gmock
         )
@@ -50,7 +46,6 @@ install(TARGETS recursiveBacktrackerTest DESTINATION bin)
 add_executable(recursiveDivisionTest ${SRCS})
 
 target_link_libraries(recursiveDivisionTest
-        recursiveBacktracker
         recursiveDivision
         prims
         gtest
