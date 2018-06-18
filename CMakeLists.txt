@@ -45,6 +45,4 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -ftest-coverage")
 add_subdirectory(test)
 enable_testing()
 
-add_test(primTest test/primTest --gtest_output=xml:report.xml)
-add_test(testRecursiveBacktracker test/testRecursiveBacktracker --gtest_output=xml:report.xml)
-add_test(testRecursiveDivision test/testRecursiveDivision --gtest_output=xml:report.xml)
+add_test(mTest test/mainTest --gtest_output=xml:report.xml)
