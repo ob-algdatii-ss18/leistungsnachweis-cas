@@ -16,7 +16,7 @@ before_install:
   - pip install --user cpp-coveralls
 
 
-b
+
 
 script:
   - cmake -H. -Bbuild
