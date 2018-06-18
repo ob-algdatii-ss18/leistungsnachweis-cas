@@ -6,11 +6,11 @@ add_executable(recBacTest ${SRCS} testRecursiveBacktracker.cpp ../recursiveBackt
 target_link_libraries(recBacTest PRIVATE gtest gmock)
 add_test(NAME recBacTest COMMAND recBacTest)
 
-add_executable(recDivTest ${SRCS} testRecursiveDivision.cpp)
+add_executable(recDivTest ${SRCS} testRecursiveDivision.cpp ../recursiveDivision/RecursiveDivision.cpp ../recursiveDivision/RecursiveDivision.h)
 target_link_libraries(recDivTest PRIVATE gtest gmock)
 add_test(NAME recDivTest COMMAND recDivTest)
 
-add_executable(randPrimTest ${SRCS} primTest.cpp )
+add_executable(randPrimTest ${SRCS} primTest.cpp ../prims/Prims.h ../prims/Prims.cpp ../prims/LabGraph.h ../prims/LabGraph.cpp)
 target_link_libraries(randPrimTest PRIVATE gtest gmock)
 add_test(NAME randPrimTest COMMAND randPrimTest)
 
