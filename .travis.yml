@@ -1,7 +1,7 @@
 dist: trusty
 language: cpp
 compiler:
-  - clang
+
 
 os: linux
 
@@ -13,18 +13,23 @@ addons:
     packages:
       - doxygen
       - graphviz
+      - g++-7
+      - gcc-7
+
+before_install:
+  - pip install --user cpp-coveralls
+  - export CC=/usr/bin/gcc-7
+  - export CXX=/usr/bin/g++-7
 
 before_script:
   - pip install --user cpp-coveralls
 
 
 script:
-  - cmake -H. -Bbuild
-  - cd build
-  - cmake --build .
-  - ctest
-
-
+  - cmake . -B".build" -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_BUILD_TYPE=Debug
+  - cmake --build .build --target all
+  - cmake --build .build --target doc
+  - cd .build && ctest -VV
 
 after_success:
-  - coveralls --verbose --root .. --exclude build/CMakeFiles/ --exclude build/googletest-src/ --gcov-options '\-lp'
+- coveralls -E ".build/googletest.*" -E ".build/CMakeFiles.*" --gcov-options "\-lp"
