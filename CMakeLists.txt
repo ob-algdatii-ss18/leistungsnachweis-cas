@@ -39,11 +39,10 @@ set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 add_subdirectory("${CMAKE_BINARY_DIR}/googletest-src"
         "${CMAKE_BINARY_DIR}/googletest-build")
 
-add_subdirectory(test)
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g ")
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O0")
+
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fprofile-arcs")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -ftest-coverage")
+add_subdirectory(test)
 enable_testing()
 
 add_test(primTest test/primTest --gtest_output=xml:report.xml)
