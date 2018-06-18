@@ -3,6 +3,7 @@
 //
 
 #include <iostream>
+#include <array>
 
 
 #include "LabGraph.h"
@@ -36,7 +37,7 @@ std::ostream &operator<<(std::ostream &os, const LabGraph &graph) {
                 else if(curNode == graph.current)
                     os << "    \"" << curNode->getId() << "\" [label=\"\" color=green style=filled rank="  << curNode->y_pos << "];" << endl;
                 else
-                    os << "    \"" << curNode->getId() << "\" [label=\"\" rank="  << curNode->y_pos << "];" << endl;
+                    os << "    \"" << curNode->getId() << "\" [label=\"\" style=filled color="<< curNode->color <<" rank="  << curNode->y_pos << "];" << endl;
         }
         os << "}" << endl;
 
@@ -281,9 +282,24 @@ void LabGraph::graphToPic(string format) {
 
 void LabGraph::makeVideo() {
     const string sysCom = "mencoder mf://" + dirPath + "/*.jpe -mf w=800:h=600:fps=15:type=jpg -ovc lavc -lavcopts vcodec=mpeg4:mbd=2:trell -oac copy -o "+ dirPath+"/animation.avi";
-    const string rmCom = "rm "+ dirPath + "/*.jpe";
+ //   const string rmCom = "rm "+ dirPath + "/*.jpe";
     system(sysCom.data());
-    system(rmCom.data());
+  //  system(rmCom.data());
+}
+
+void LabGraph::setLab(bool ** boolArray) {
+    for (int i = 0; i < height; i++) {
+        for (int j = 0; j < width; j++) {
+            if(boolArray[i][j]) graphNodes[i*height+j] ->color = BLACK;
+        }
+    }
+}
+
+void LabGraph::setDimensions(int x, int y) {
+    height = y;
+    width = x;
+    initGraph();
+    for(auto e: graphEdges)e->setWall(false);
 }
 
 

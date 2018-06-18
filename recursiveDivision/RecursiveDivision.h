@@ -2,11 +2,13 @@
 #define LEISTUNGSNACHWEIS_CAS_RECURSIVEDIVISION_H
 
 #include <iostream>
+#include "../prims/LabGraph.h"
 
 void helloFromRecDiv();
 
 class RecursiveDivision {
 public:
+    LabGraph* labPrinter;
     enum Orientation {
         VERTICAL = 1, HORIZONTAL = 2
     };
@@ -34,6 +36,8 @@ public:
     void divideHorizontal(bool **field, int left, int right, int top, int bottom);
 
     void makeMazeOpening(bool **field, int rows, int cols);
+
+    void drawMaze(bool **field);
 };
 
 

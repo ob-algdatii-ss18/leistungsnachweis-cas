@@ -1,7 +1,7 @@
 dist: trusty
 language: cpp
 compiler:
-  - gcc
+  - clang
 
 os: linux
 
@@ -15,14 +15,12 @@ addons:
     sources:
       - ubuntu-toolchain-r-test
       - llvm-toolchain-trusty-5.0
-    packages:
-      - gcc-6
-      - g++-6
+
 
 
 script:
 
-  - cmake -DENABLE_COVERAGE=ON -DCMAKE_CXX_COMPILER="g++-6" ..
+  - cmake -DENABLE_COVERAGE=ON  ..
   - cmake --build .
   - test/mainTest
 

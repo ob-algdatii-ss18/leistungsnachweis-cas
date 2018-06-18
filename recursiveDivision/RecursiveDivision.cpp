@@ -36,7 +36,9 @@ bool generateRandomBoolean() {
     }
 }
 
-void drawMaze(bool **field) {
+void RecursiveDivision::drawMaze(bool **field) {
+    labPrinter->setLab(field);
+    labPrinter->graphToPic("jpe");
     if (debugMode) {
         for (int i = 0; i < fieldHeight; i++) {
             for (int j = 0; j < fieldWidth; j++) {
@@ -170,7 +172,7 @@ int RecursiveDivision::generateMaze() {
      * Enable Debug mode for maze printing:
      */
     debugMode = true;
-
+    labPrinter = new LabGraph();
     srand(static_cast<unsigned int>(time(nullptr)));
 
     int width, cols, height, rows;
@@ -191,7 +193,7 @@ int RecursiveDivision::generateMaze() {
 
     width = cols * 2 + 2;
     height = rows * 2 + 2;
-
+    labPrinter->setDimensions(width,height);
     auto *mazeField = initMaze(width, height);
 
     divideField(mazeField, 1, width - 1, 1, height - 1);
@@ -201,6 +203,9 @@ int RecursiveDivision::generateMaze() {
     // Enabled for printing result
     debugMode = true;
     drawMaze(mazeField);
-
+    labPrinter->setLab(mazeField);
+    labPrinter->graphToPic("jpe");
+    labPrinter->graphToPic("bnp");
+    labPrinter->makeVideo();
     return 0;
 }

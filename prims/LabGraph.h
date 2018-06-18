@@ -22,6 +22,8 @@ using namespace std;
 #define VIDEO false
 #define LG_WIDTH 30
 #define LG_HEIGHT 30
+#define  BLACK "black"
+#define WHITE "white"
 
 class LabGraph {
 
@@ -156,6 +158,7 @@ private:
         /**
          * X and y coordinate of the node.
          */
+        string color = WHITE;
         int x_pos,y_pos;
         /**
          * Indicates if this node has been visited in creation process of the labyrinth.
@@ -225,6 +228,10 @@ public:
      */
     void makeVideo();
 
+
+    void setLab(bool **);
+
+    void setDimensions(int, int);
     void easyTest();
     /**
      * Outputs the graph in DOT-form so it can be interpreted by graphviz.
