@@ -1,34 +1,32 @@
 dist: trusty
 language: cpp
-compiler:
+compiler: clang
 
 
 os: linux
 
 addons:
   apt:
-
-    sources:
-      - ubuntu-toolchain-r-test
     packages:
       - doxygen
       - graphviz
-      - g++-7
-      - gcc-7
+
 
 before_install:
   - pip install --user cpp-coveralls
-  - export CC=/usr/bin/gcc-7
-  - export CXX=/usr/bin/g++-7
+
 
 before_script:
-  - pip install --user cpp-coveralls
-
+  - mkdir build
+  - cd build
+  - cmake ..
+  - cd ..
 
 script:
-  - cmake . -B".build" -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_BUILD_TYPE=Debug
-  - cmake --build .build --target all
-  - cd .build && ctest -VV
+  - cd build
+  - cmake --build .
+  - ctest .
+  - cd ..
 
 after_success:
-- coveralls -E ".build/googletest.*" -E ".build/CMakeFiles.*" --gcov-options "\-lp"
+  - coveralls --exclude build/CMakeFiles/ --exclude build/gtest/ --exclude gtest/ --gcov "llvm-cov gcov" --gcov-options '\-lp'
