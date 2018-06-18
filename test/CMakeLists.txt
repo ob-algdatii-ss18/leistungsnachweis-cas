@@ -7,17 +7,19 @@ endif (APPLE)
 
 #Test all
 add_executable(recBacTest ${SRCS} testRecursiveBacktracker.cpp ../recursiveBacktracker/RecursiveBacktracker.cpp ../recursiveBacktracker/RecursiveBacktracker.h)
-target_link_libraries(recBacTest PRIVATE gtest gmock testRecursiveBacktracker)
+target_link_libraries(recBacTest PRIVATE gtest gmock)
 
-add_executable(recDivTest ${SRCS} testRecursiveDivision.cpp )
-target_link_libraries(recDivTest PRIVATE gtest gmock testRecursiveDivision)
+add_executable(recDivTest ${SRCS} testRecursiveDivision.cpp ../recursiveDivision/RecursiveDivision.h ../recursiveDivision/RecursiveDivision.cpp)
+target_link_libraries(recDivTest PRIVATE gtest gmock)
 
 add_executable(randPrimTest ${SRCS} primTest.cpp ../prims/Prims.h ../prims/Prims.cpp ../prims/LabGraph.h ../prims/LabGraph.cpp)
-target_link_libraries(randPrimTest PRIVATE gtest gmock prims)
+target_link_libraries(randPrimTest PRIVATE gtest gmock)
 
 include_directories("..")
 
-install(TARGETS recBacTest randPrimTest recDivTest DESTINATION bin)
+install(TARGETS recBacTest DESTINATION bin)
+install(TARGETS recDivTest DESTINATION bin)
+install(TARGETS randPrimTest DESTINATION bin)
 
 add_test(NAME recBac-Test COMMAND recBacTest)
 add_test(NAME recDiv-Test COMMAND recDivTest)
