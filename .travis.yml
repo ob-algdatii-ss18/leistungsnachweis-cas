@@ -20,29 +20,25 @@ before_install:
   - pip install --user cpp-coveralls
 
 
-
-
-
 script:
   - cmake -H. -Bbuild
   - cd build
   - cmake --build .
   - ctest -V .
-  - ./test/mainTest
+  - doxygen Doxyfile
 
 
 after_success:
   - coveralls --root .. --verbose --exclude build/CMakeFiles/ --exclude build/googletest-src/ --exclude test --gcov-options '\-lp'
-# Generate and deploy documentation
-  - cd $TRAVIS_BUILD_DIR
-  - chmod +x generateDocumentationAndDeploy.sh
-  - ./generateDocumentationAndDeploy.sh
-# Environment variables
-env:
-  global:
-    - GH_REPO_NAME: leistungsnachweis-cas
-    - DOXYFILE: DOXYFILE=$TRAVIS_BUILD_DIR/Doxyfile
-    - GH_REPO_REF: GH_REPO_REF=github.com/ob-algdatii-ss18/leistungsnachweis-cas.git
+
+deploy:
+  provider: pages
+  skip_cleanup: true
+  local_dir: docs/html
+  github_token: $GH_REPO_TOKEN
+  on:
+    branch: master
+
 
 
 notifications:
