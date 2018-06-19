@@ -144,7 +144,7 @@ TEST(primTest, primsAlgoTestEdges){
 TEST(primTest, recursiveBacktrackingTestNodes){
     LabGraph * testG = new LabGraph(10,10);
     testG->initGraph();
-    testG->buildLabWithPrim();
+    testG->buildLabWithRecBac();
 
     for(auto n : testG->graphNodes){
         EXPECT_TRUE(n->isVisited());
@@ -152,9 +152,9 @@ TEST(primTest, recursiveBacktrackingTestNodes){
 }
 TEST(primTest, recursiveBacktrackingEdges){
     LabGraph * testG = new LabGraph(10,10);
-    testG->initGraph();
+
     testG->VIDEO = true;
-    testG->buildLabWithPrim();
+    testG->easyTest();
 
     for(auto e : testG->graphEdges){
         EXPECT_TRUE(e->isVisited());

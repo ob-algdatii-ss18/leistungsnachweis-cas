@@ -242,7 +242,8 @@ void LabGraph::buildLabWithRecBac(){
                 if(!c->otherEnd(current)->isVisited()) {
                     curEdge = c;
                     break;
-                }
+                } else
+                    c->setVisited(true);
             }
         }
         if(curEdge != nullptr){
@@ -283,7 +284,7 @@ void LabGraph::graphToPic(string format) {
     string picName = dirPath + "/graph" + to_string(ms) + "." + format;
     string fileName = dirPath + "/graph.dot";
     //  string picName = "graph.png";
-    const string dotExec = "dot -T"+format+" -v " + fileName + " -o " + picName;
+    const string dotExec = "dot -T"+format+" " + fileName + " -o " + picName;
     myfile.open(fileName);
     myfile << *this;
     myfile.close();
