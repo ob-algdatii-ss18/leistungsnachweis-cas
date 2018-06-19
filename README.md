@@ -9,7 +9,8 @@ Maze generation with three different algorithm:
 
 # How to use
 
-Import project into CLion and start testMain.cpp. Here you can choose which Algorithm to execute.
+Import project into CLion and start testMain.cpp.
+Now you can choose which Algorithm to pick:
 
   1. Prim
   2. Recursive Division
@@ -26,3 +27,6 @@ Import project into CLion and start testMain.cpp. Here you can choose which Algo
  - Anja Wimmer -> [AnyaW](https://github.com/AnyaW)
  - Christoph Hahn -> [jfad](https://github.com/jfad)
  - Sebastian Hartl -> [Sil3ntF0g](https://github.com/Sil3ntF0g)
+
+# Documentation
+[https://ob-algdatii-ss18.github.io/leistungsnachweis-cas/](https://ob-algdatii-ss18.github.io/leistungsnachweis-cas/)
