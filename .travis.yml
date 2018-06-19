@@ -22,7 +22,7 @@ script:
   - cd build
   - cmake --build .
   - ctest -V
-#  - ./test/main-Test
+  - ./test/mainTest
 
 after_success:
   - coveralls --root .. --verbose --exclude build/CMakeFiles/ --exclude build/googletest-src/ --gcov-options '\-lp'
