@@ -22,7 +22,7 @@ before_install:
 
 
 script:
-  - cmake -H. -Bbuild
+  - cmake -H. -Bbuild -DENABLE_COVERAGE=ON -DCMAKE_CXX_COMPILER="g++-6"
   - cd build
   - cmake --build .
   - ctest
