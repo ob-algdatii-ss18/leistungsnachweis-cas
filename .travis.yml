@@ -21,13 +21,16 @@ before_install:
   - pip install --user cpp-coveralls
 
 
-script:
-
-  - cmake -H. -Bbuild
+before_script:
+  - mkdir build
   - cd build
-  - cmake -DENABLE_COVERAGE=ON -DCMAKE_CXX_COMPILER="g++-6" .
-  - ctest -V .
-  - ./test/mainTest
+  - cmake -DENABLE_COVERAGE=ON -DCMAKE_CXX_COMPILER="g++-6" ..
+  - mkdir output
+
+script:
+  - cmake --build .
+  - ctest .
+  - cd ..
 
 after_success:
   - coveralls --root .. --verbose --exclude build/CMakeFiles/ --exclude build/googletest-src/ --exclude tests --gcov-options '\-lp'
