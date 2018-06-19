@@ -8,8 +8,12 @@ addons:
       sources:
         - ubuntu-toolchain-r-test
       packages:
-#      - doxygen
-#      - graphviz
+        - doxygen
+        - doxygen-doc
+        - doxygen-latex
+        - doxygen-gui
+        - graphviz
+        - imagemagick
 
 
 before_install:
@@ -26,6 +30,17 @@ script:
 
 after_success:
   - coveralls --root .. --verbose --exclude build/CMakeFiles/ --exclude build/googletest-src/ --exclude tests --gcov-options '\-lp'
+# Generate and deploy documentation
+  - cd $TRAVIS_BUILD_DIR
+  - chmod +x generateDocumentationAndDeploy.sh
+  - ./generateDocumentationAndDeploy.sh
+# Environment variables
+env:
+  global:
+    - GH_REPO_NAME: leistungsnachweis-cas
+    - DOXYFILE: DOXYFILE=$TRAVIS_BUILD_DIR/Doxyfile
+    - GH_REPO_REF: GH_REPO_REF=github.com/ob-algdatii-ss18/leistungsnachweis-cas.git
+
 
 notifications:
   email: false
