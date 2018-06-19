@@ -273,6 +273,11 @@ void LabGraph::buildLabWithRecBac(){
 void LabGraph::graphToPic(string format) {
     ofstream myfile;
 
+#ifdef __linux__
+    const string sysCom = "mkdir -p " + dirPath;
+    system(sysCom.data());
+#endif
+
     long ms = chrono::system_clock::now().time_since_epoch().count();
   //  string fileName = "../Plots/graph" + to_string(ms) + ".dot";
     string picName = dirPath + "/graph" + to_string(ms) + "." + format;

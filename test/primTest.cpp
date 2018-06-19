@@ -124,7 +124,7 @@ TEST(primTest, otherEndTest){
     EXPECT_EQ(b,e1->otherEnd(a));
 }
 TEST(primTest, primsAlgoTestNodes){
-    LabGraph * testG = new LabGraph();
+    LabGraph * testG = new LabGraph(10,10);
     testG->initGraph();
     testG->buildLabWithPrim();
 
@@ -133,7 +133,7 @@ TEST(primTest, primsAlgoTestNodes){
     }
 }
 TEST(primTest, primsAlgoTestEdges){
-    LabGraph * testG = new LabGraph();
+    LabGraph * testG = new LabGraph(10,10);
     testG->initGraph();
     testG->buildLabWithPrim();
 
@@ -142,7 +142,7 @@ TEST(primTest, primsAlgoTestEdges){
     }
 }
 TEST(primTest, recursiveBacktrackingTestNodes){
-    LabGraph * testG = new LabGraph();
+    LabGraph * testG = new LabGraph(10,10);
     testG->initGraph();
     testG->buildLabWithPrim();
 
@@ -151,8 +151,9 @@ TEST(primTest, recursiveBacktrackingTestNodes){
     }
 }
 TEST(primTest, recursiveBacktrackingEdges){
-    LabGraph * testG = new LabGraph();
+    LabGraph * testG = new LabGraph(10,10);
     testG->initGraph();
+    testG->VIDEO = true;
     testG->buildLabWithPrim();
 
     for(auto e : testG->graphEdges){

@@ -19,9 +19,9 @@
 
 using namespace std;
 
-#define VIDEO true
-#define LG_WIDTH 30
-#define LG_HEIGHT 30
+
+#define LG_WIDTH 10
+#define LG_HEIGHT 10
 #define  BLACK "black"
 #define WHITE "white"
 
@@ -53,7 +53,7 @@ private:
      */
     void newEdge(LabGraph::Node *start, LabGraph::Node *end);
     /**
-     * Creates a new node at position x,y. Sets the border member acoordingliy.
+     * Creates a new node at position x,y. Sets the border member acoordingliy.#define VIDEO true
      * @return Pointer to the new node
      */
     Node* newNode(int y, int x);
@@ -200,6 +200,7 @@ private:
      * Directory for plots and animation. Only set on linux.
      */
     string dirPath;
+    bool VIDEO = false;
     FRIEND_TEST(primTest, innitTestNodes);
     FRIEND_TEST(primTest, innitTestEdges);
     FRIEND_TEST(primTest, compareEdgesTest);
