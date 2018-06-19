@@ -3,20 +3,11 @@
 //
 
 #include "RecursiveDivision.h"
-#include <time.h>
 
 using namespace ::std;
 
 int fieldWidth, fieldHeight;
 bool debugMode = false;
-
-void helloFromRecDiv() {
-    cout << "Hello, from Recursive Division" << endl;
-};
-
-int RecursiveDivision::testMethod() {
-    return 3;
-}
 
 int generateRandomInt(int lower, int upper) {
     int diff = upper - lower;
@@ -29,11 +20,7 @@ int generateRandomInt(int lower, int upper) {
 }
 
 bool generateRandomBoolean() {
-    if (rand() % 2 == 0) {
-        return true;
-    } else {
-        return false;
-    }
+    return rand() % 2 == 0;
 }
 
 void RecursiveDivision::drawMaze(bool **field) {
@@ -47,17 +34,6 @@ void RecursiveDivision::drawMaze(bool **field) {
             cout << endl;
         }
         cout << endl;
-    }
-}
-
-RecursiveDivision::Orientation RecursiveDivision::chooseOrientation(int width, int height) {
-    if (width < height) {
-        return RecursiveDivision::HORIZONTAL;
-    } else if (height < width) {
-        return RecursiveDivision::VERTICAL;
-    } else {
-        int random = rand() % 2;
-        return random == 1 ? RecursiveDivision::HORIZONTAL : RecursiveDivision::VERTICAL;
     }
 }
 
@@ -171,7 +147,7 @@ int RecursiveDivision::generateMaze() {
     /**
      * Enable Debug mode for maze printing:
      */
-    debugMode = true;
+    //debugMode = true;
     labPrinter = new LabGraph();
     srand(static_cast<unsigned int>(time(nullptr)));
 
@@ -193,7 +169,7 @@ int RecursiveDivision::generateMaze() {
 
     width = cols * 2 + 2;
     height = rows * 2 + 2;
-    labPrinter->setDimensions(width,height);
+    labPrinter->setDimensions(width, height);
     auto *mazeField = initMaze(width, height);
 
     divideField(mazeField, 1, width - 1, 1, height - 1);

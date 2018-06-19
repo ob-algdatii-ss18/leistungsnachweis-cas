@@ -4,39 +4,97 @@
 #include <iostream>
 #include "../prims/LabGraph.h"
 
-void helloFromRecDiv();
-
+/**
+ * Class with recursive division algorithm.
+ *
+ * Creates a NxM empty maze field surrounded by a wall.
+ * Each time this field will be separated by a wall with a passage into two smaller fields.
+ * These new small field will be separated in another two smaller fields and so on.
+ *
+ * After each field have the minimum size of 2x2 a start opening and a end opening will be calculated.
+ */
 class RecursiveDivision {
 public:
-    LabGraph* labPrinter;
-    enum Orientation {
-        VERTICAL = 1, HORIZONTAL = 2
-    };
-
-    int testMethod();
+    LabGraph *labPrinter;
 
     /**
-     * Choose the orientation of a new wall in a field.
+     * Method which generate the empty maze field.
      *
-     * If height and width are equal the function choose the orientation via random number.
-     * @param width width of the field
-     * @param height height of the field
-     * @return Orientation to use
+     * Field is surrounded by a wall.
+     *
+     * The generated field is a 2D - boolean array.
+     * @param width Absolute width of the maze.
+     * @param height Absolute height of the maze.
+     * @return The generated maze field as 2D bool array.
      */
-    RecursiveDivision::Orientation chooseOrientation(int width, int height);
-
     bool **initMaze(int width, int height);
 
+    /**
+     * Start method of this class with console.
+     *
+     * It ask for cols and rows of the maze. Theses are the relative sizes of the maze, because of the walls.
+     * A maze with 2 cols have an absolute width of 6. Two for the walls on the left and on the right, two for the
+     * given col amount and 2 for walls between them.
+     *
+     * @return 0 if no exception occurs.
+     */
     int generateMaze();
 
-    void divideField(bool **field, int x, int y, int width, int height);
+    /**
+     * Arbitrator method for the recursive division.
+     *
+     * It consumes the maze and the current coordinates of the field. These coordinates are the four directions.
+     * This method choose by the width and height if the field will be divided and in which direction.
+     * @param field The complete maze field.
+     * @param left The column index of the left column.
+     * @param right The column index of the right column.
+     * @param top The row index of the top row.
+     * @param bottom The row index of the bottom row.
+     */
+    void divideField(bool **field, int left, int right, int top, int bottom);
 
+    /**
+     * Divide the sub-field with a vertical wall.
+     *
+     * It choose a random number for the row index where the wall will be placed. After that the wall will be added and
+     * a random row index is calculated to open the passage. After that, this method calls the generateMaze() Method
+     * again with the new two, smaller fields.
+     * @param field The complete maze field.
+     * @param left The column index of the left column.
+     * @param right The column index of the right column.
+     * @param top The row index of the top row.
+     * @param bottom The row index of the bottom row.
+     */
     void divideVertical(bool **field, int left, int right, int top, int bottom);
 
+    /**
+     * Divide the sub-field with a horizontal wall.
+     *
+     * It choose a random number for the column index where the wall will be placed. After that the wall will be added
+     * and a random column index is calculated to open the passage. After that, this method calls the generateMaze() Method
+     * again with the new two, smaller fields.
+     * @param field The complete maze field.
+     * @param left The column index of the left column.
+     * @param right The column index of the right column.
+     * @param top The row index of the top row.
+     * @param bottom The row index of the bottom row.
+     */
     void divideHorizontal(bool **field, int left, int right, int top, int bottom);
 
+    /**
+     * Make the start and end opening of the maze.
+     *
+     * It consumes the absolute width and the relative rows to calculate a random opening and closing passage.
+     * @param field The complete maze field.
+     * @param rows The relative row count.
+     * @param cols The absolute width.
+     */
     void makeMazeOpening(bool **field, int rows, int cols);
 
+    /**
+     * Consumes the maze field and draw it at the console output.
+     * @param field Maze field.
+     */
     void drawMaze(bool **field);
 };
 
