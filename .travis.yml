@@ -27,7 +27,7 @@ script:
 
 
 after_success:
-  - coveralls --root . --verbose --exclude build/CMakeFiles/ --exclude build/googletest-src/ --exclude test --exclude build/test --gcov-options '\-lp'
+  - coveralls --root . --verbose -E ".build/googletest.*" -E ".build/CMakeFiles.*" --exclude build/CMakeFiles/ --exclude build/googletest-src/ --exclude test --exclude build/test --gcov-options '\-lp'
   - doxygen Doxyfile
 
 deploy:
