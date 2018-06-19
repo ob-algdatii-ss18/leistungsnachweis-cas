@@ -5,6 +5,29 @@
 
 #include "RecursiveBacktracker.h"
 
+int RecursiveBacktracker::getWidth() const {
+    return width;
+}
+
+void RecursiveBacktracker::setWidth(int width) {
+    RecursiveBacktracker::width = width;
+}
+
+int RecursiveBacktracker::getHeight() const {
+    return height;
+}
+
+void RecursiveBacktracker::setHeight(int height) {
+    RecursiveBacktracker::height = height;
+}
+
+const vector<Cell *> &RecursiveBacktracker::getNewcells() const {
+    return newcells;
+}
+
+void RecursiveBacktracker::setNewcells(const vector<Cell *> &newcells) {
+    RecursiveBacktracker::newcells = newcells;
+}
 
 /**print maze to terminal
  *
@@ -24,9 +47,9 @@ void RecursiveBacktracker::drawMaze( )
     }
 }
 /**large grid of cells, each cell starting with four walls
- * @return
+ * @return 0 if there is no error
  */
-int RecursiveBacktracker::initMaze( )
+vector<Cell *> * RecursiveBacktracker::initMaze( )
 {
     newcells.reserve(height * width);
 
@@ -34,32 +57,37 @@ int RecursiveBacktracker::initMaze( )
     Cell *current;
 
     //Setup crucial cells
-    for ( i = 0; i < width; i++ ) {
-        for (j = 0; j < height; j++) {
+    for ( i = 0; i < height; i++ ) {
+        for (j = 0; j < width; j++) {
             current = dummy + i + j * width;
             //each cell starting with four walls
             // -> every other cell is a 'path' cell
             if (i * j % 2) {
                 current->x = i;
                 current->y = j;
-                current->image = path;
+                current->image = PATH;
                 current->directions = 15;
                 newcells.push_back(current);
             } else {
                 current->x = i;
                 current->y = j;
-                current->image = wall;
+                current->image = WALL;
                 newcells.push_back(current);
             }
         }
     }
+    return &newcells;
 }
 
 /** removes the wall between the two cells and marks the new cell as visited.
  * this continues until a cell that has no unvisited neighbours is reached
+ * @return Pointer to the Parent Cell
  */
 Cell * RecursiveBacktracker::backtracking( Cell *n )
 {
+    //It seeds the pseudo random number generator that rand() uses
+    srand( time( nullptr ) );
+
     int x, y;
     Cell *dest;
 
@@ -112,7 +140,7 @@ Cell * RecursiveBacktracker::backtracking( Cell *n )
         dest = newcells.front() + x + y * width;
 
         //Make sure that destination node is not a wall
-        if ( dest->image == path )
+        if ( dest->image == PATH )
         {
             //If destination is a linked node already - abort
             if ( dest->parentCell != nullptr ) continue;
@@ -121,7 +149,7 @@ Cell * RecursiveBacktracker::backtracking( Cell *n )
             dest->parentCell = n;
 
             //Remove wall between cells
-            newcells.at(n->x + ( x - n->x ) / 2 + ( n->y + ( y - n->y ) / 2 ) * width)->image = path;
+            newcells.at(n->x + ( x - n->x ) / 2 + ( n->y + ( y - n->y ) / 2 ) * width)->image = PATH;
             //Return address of the child node
             return dest;
         }
@@ -130,9 +158,10 @@ Cell * RecursiveBacktracker::backtracking( Cell *n )
     return (Cell *) n->parentCell;
 }
 
-
-
-//width, height,
+/**Main function to get/set Maze dimensions
+ * and initilaize the maze generation
+ * measures the elapsed time
+ */
 int RecursiveBacktracker::startMaze( )
 {
     Cell *start, *end;
@@ -160,14 +189,11 @@ int RecursiveBacktracker::startMaze( )
         exit( 1 );
     }
 
-    //It seeds the pseudo random number generator that rand() uses
-    srand( time( nullptr ) );
-
     nanoseconds startTime = duration_cast< nanoseconds >(
             system_clock::now().time_since_epoch()
     );
     //Initialize maze
-    int answer = initMaze();
+    initMaze();
     /*if ( answer != 0 )
     {
         cerr << " maze : init failed!\n" << endl;
@@ -188,11 +214,11 @@ int RecursiveBacktracker::startMaze( )
     );
 
     nanoseconds diffTime = endTime - startTime;
-    cout << "Bearbeitungszeit: " << diffTime.count() << " ns" << endl;
+    cout << "Bearbeitungszeit: " << diffTime.count() << " ns\n" << endl;
+
+    this_thread::sleep_for(milliseconds(20000000));
     return 0;
 }
-
-
 
 void helloFromRecBack(){
     cout << "Hello, from Recursive Backtracking" << endl;

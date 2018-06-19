@@ -13,6 +13,10 @@
 #include <vector>
 #include <bitset>
 #include <chrono>
+#include <thread>
+
+#define PATH '.'
+#define WALL '#'
 
 using namespace std;
 using namespace std::chrono;
@@ -31,19 +35,26 @@ class RecursiveBacktracker {
 
 private:
     vector<Cell *> newcells;
-    Cell *dummy; //Cells array
+    Cell *dummy = new Cell(); //Cells array
     int width, height; //Maze dimension
-    char wall = '#';
-    char path = '.';
 
 public:
 
-    int initMaze( );
+    vector<Cell *> * initMaze( );
     Cell *backtracking( Cell *c );
     void drawMaze( );
     int startMaze( );
 
     double testMethod();
+
+    int getWidth() const;
+    void setWidth(int width);
+    int getHeight() const;
+    void setHeight(int height);
+
+    const vector<Cell *> &getNewcells() const;
+
+    void setNewcells(const vector<Cell *> &newcells);
 };
 
 

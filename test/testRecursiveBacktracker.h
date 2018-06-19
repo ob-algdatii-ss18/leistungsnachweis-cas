@@ -9,7 +9,10 @@
 #include "gmock/gmock.h"
 #include "recursiveBacktracker/RecursiveBacktracker.h"
 
+#define PATH '.'
+#define WALL '#'
 class RecursiveBacktrackerTest : public ::testing::Test{
+
 
 };
 
