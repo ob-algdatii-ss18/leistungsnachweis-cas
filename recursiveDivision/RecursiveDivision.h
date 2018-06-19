@@ -42,10 +42,10 @@ public:
      * It ask for cols and rows of the maze. Theses are the relative sizes of the maze, because of the walls.
      * A maze with 2 cols have an absolute width of 6. Two for the walls on the left and on the right, two for the
      * given col amount and 2 for walls between them.
-     *
+     * @param is input-stream for reading input params.
      * @return 0 if no exception occurs.
      */
-    int generateMaze();
+    int generateMaze(std::istream &is);
 
     /**
      * Arbitrator method for the recursive division.

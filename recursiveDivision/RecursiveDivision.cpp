@@ -138,7 +138,7 @@ bool **RecursiveDivision::initMaze(int width, int height) {
     return mazeField;
 }
 
-int RecursiveDivision::generateMaze() {
+int RecursiveDivision::generateMaze(std::istream &is) {
 
     /**
      * Enable Debug mode for maze printing:
@@ -151,11 +151,11 @@ int RecursiveDivision::generateMaze() {
     string input;
 
     cout << "How many cols? ";
-    getline(cin, input);
+    getline(is, input);
     cols = stoi(input);
 
     cout << "How many rows? ";
-    getline(cin, input);
+    getline(is, input);
     rows = stoi(input);
 
     if ((cols < 1) || (rows < 1)) {

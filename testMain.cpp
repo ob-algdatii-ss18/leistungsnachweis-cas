@@ -23,7 +23,7 @@ int main(int argc, const char *argv[]){
 
     if(alg == 2) {
         RecursiveDivision rb;
-        int answer = rb.generateMaze();
+        int answer = rb.generateMaze(std::cin);
         if (answer != 0) {
             exit(1);
         }

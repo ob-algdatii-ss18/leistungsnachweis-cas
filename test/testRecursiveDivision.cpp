@@ -176,7 +176,7 @@ TEST(RecursiveDivisionTest, testDivideFieldCase1) {
             field[i][j] = false;
         }
     }
-    underTest.divideField(field, 0, 3, 0, 2);
+    underTest.divideField(field, 0, 5, 0, 3);
     bool hasWall = false;
     for (int i = 0; i < 10; i++) {
         for (int j = 0; j < 10; j++) {
@@ -203,7 +203,7 @@ TEST(RecursiveDivisionTest, testDivideFieldCase2) {
             field[i][j] = false;
         }
     }
-    underTest.divideField(field, 0, 2, 0, 3);
+    underTest.divideField(field, 0, 3, 0, 5);
     bool hasWall = false;
     for (int i = 0; i < 10; i++) {
         for (int j = 0; j < 10; j++) {
@@ -352,4 +352,13 @@ TEST(RecursiveDivisionTest, testInitMaze) {
         // Right border
         EXPECT_TRUE(field[index][9]);
     }
+}
+
+
+TEST(RecursiveDivisionTest, testGenerateMaze) {
+    RecursiveDivision underTest{};
+    underTest.debugMode = true;
+
+    std::istringstream ss("3\n3\n");
+    underTest.generateMaze(ss);
 }
