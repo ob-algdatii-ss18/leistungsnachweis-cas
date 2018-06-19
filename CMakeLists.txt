@@ -11,11 +11,11 @@ add_subdirectory(prims)
 add_subdirectory(recursiveDivision)
 add_subdirectory(recursiveBacktracker)
 
-set(SOURCE_FILES testMain.cpp)
-add_executable(Main ${SOURCE_FILES})
+#set(SOURCE_FILES testMain.cpp)
+#add_executable(Main ${SOURCE_FILES})
 #include_directories(D:\\Programme\\gtest\\googletest-master\\googletest-master\\googletes\\include D:\\Programme\\gtest\\googletest-master\\googletest-master\\googletest)
 
-target_link_libraries(Main LINK_PUBLIC prims recursiveDivision recursiveBacktracker)
+#target_link_libraries(Main LINK_PUBLIC prims recursiveDivision recursiveBacktracker)
 
 if (COVERAGE)
     target_compile_options(test PRIVATE --coverage)
