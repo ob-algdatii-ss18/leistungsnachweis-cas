@@ -1,0 +1,44 @@
+dist: trusty
+language: cpp
+
+os: linux
+
+addons:
+  apt:
+      sources:
+        - ubuntu-toolchain-r-test
+      packages:
+        - doxygen
+        - graphviz
+
+
+before_install:
+  - pip install --user cpp-coveralls
+
+
+script:
+  - cmake -H. -Bbuild
+  - cd build
+  - cmake --build .
+  - ctest -V .
+  - cd ..
+
+
+
+after_success:
+  - coveralls --root .. --verbose --exclude build/CMakeFiles/ --exclude build/googletest-src/ --exclude test --gcov-options '\-lp'
+  - doxygen Doxyfile
+
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: $GH_REPO_TOKEN
+  keep-history: true
+
+  on:
+    branch: master
+
+
+
+notifications:
+  email: false

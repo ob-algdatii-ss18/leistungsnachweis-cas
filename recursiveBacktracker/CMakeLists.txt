@@ -1,0 +1,2 @@
+add_library(recursiveBacktracker RecursiveBacktracker.cpp)
+target_include_directories(recursiveBacktracker PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
