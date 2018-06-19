@@ -1,0 +1,240 @@
+\hypertarget{class_recursive_division}{\section{Recursive\-Division Class Reference}
+\label{class_recursive_division}\index{Recursive\-Division@{Recursive\-Division}}
+}
+
+
+{\ttfamily \#include $<$Recursive\-Division.\-h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool $\ast$$\ast$ \hyperlink{class_recursive_division_a3572b23c6eb7d255d1810efe2e40687f}{init\-Maze} (int width, int height)
+\item 
+int \hyperlink{class_recursive_division_a09758db0100db2aa3902535869ba7d7c}{generate\-Maze} (std\-::istream \&is)
+\item 
+void \hyperlink{class_recursive_division_a38669e9dcfc8e9056928333613adbaa1}{divide\-Field} (bool $\ast$$\ast$field, int left, int right, int top, int bottom)
+\item 
+void \hyperlink{class_recursive_division_a16e56a56f3d84644211cff7844c3b4b8}{divide\-Vertical} (bool $\ast$$\ast$field, int left, int right, int top, int bottom)
+\item 
+void \hyperlink{class_recursive_division_a2d4bb0a2bd69216c35b27e8448e4b1af}{divide\-Horizontal} (bool $\ast$$\ast$field, int left, int right, int top, int bottom)
+\item 
+void \hyperlink{class_recursive_division_a22f4a67b74499117e6d38cb2de49b9c6}{make\-Maze\-Opening} (bool $\ast$$\ast$field, int rows, int cols)
+\item 
+void \hyperlink{class_recursive_division_a16d033f98dd8d407d7ccf4828b3391e7}{draw\-Maze} (bool $\ast$$\ast$field, std\-::ostream \&output)
+\item 
+int \hyperlink{class_recursive_division_aba7306d64093888306f2479fd3e629e6}{generate\-Random\-Int} (int lower, int upper)
+\item 
+bool \hyperlink{class_recursive_division_a64a45071f78e79f4edd29578d92388e0}{generate\-Random\-Boolean} ()
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_lab_graph}{Lab\-Graph} $\ast$ \hyperlink{class_recursive_division_ac2402e5bb64bd4444f584ac6b237f84b}{lab\-Printer}
+\item 
+bool \hyperlink{class_recursive_division_a3ee7d465c3a8637c37a08de75ced22c1}{debug\-Mode} = false
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Class with recursive division algorithm.
+
+Creates a Nx\-M empty maze field surrounded by a wall. Each time this field will be separated by a wall with a passage into two smaller fields. These new small field will be separated in another two smaller fields and so on.
+
+After each field have the minimum size of 2x2 a start opening and a end opening will be calculated. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_recursive_division_a38669e9dcfc8e9056928333613adbaa1}{\index{Recursive\-Division@{Recursive\-Division}!divide\-Field@{divide\-Field}}
+\index{divide\-Field@{divide\-Field}!RecursiveDivision@{Recursive\-Division}}
+\subsubsection[{divide\-Field}]{\setlength{\rightskip}{0pt plus 5cm}void Recursive\-Division\-::divide\-Field (
+\begin{DoxyParamCaption}
+\item[{bool $\ast$$\ast$}]{field, }
+\item[{int}]{left, }
+\item[{int}]{right, }
+\item[{int}]{top, }
+\item[{int}]{bottom}
+\end{DoxyParamCaption}
+)}}\label{class_recursive_division_a38669e9dcfc8e9056928333613adbaa1}
+Arbitrator method for the recursive division.
+
+It consumes the maze and the current coordinates of the field. These coordinates are the four directions. This method choose by the width and height if the field will be divided and in which direction. 
+\begin{DoxyParams}{Parameters}
+{\em field} & The complete maze field. \\
+\hline
+{\em left} & The column index of the left column. \\
+\hline
+{\em right} & The column index of the right column. \\
+\hline
+{\em top} & The row index of the top row. \\
+\hline
+{\em bottom} & The row index of the bottom row. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_recursive_division_a2d4bb0a2bd69216c35b27e8448e4b1af}{\index{Recursive\-Division@{Recursive\-Division}!divide\-Horizontal@{divide\-Horizontal}}
+\index{divide\-Horizontal@{divide\-Horizontal}!RecursiveDivision@{Recursive\-Division}}
+\subsubsection[{divide\-Horizontal}]{\setlength{\rightskip}{0pt plus 5cm}void Recursive\-Division\-::divide\-Horizontal (
+\begin{DoxyParamCaption}
+\item[{bool $\ast$$\ast$}]{field, }
+\item[{int}]{left, }
+\item[{int}]{right, }
+\item[{int}]{top, }
+\item[{int}]{bottom}
+\end{DoxyParamCaption}
+)}}\label{class_recursive_division_a2d4bb0a2bd69216c35b27e8448e4b1af}
+Divide the sub-\/field with a horizontal wall.
+
+It choose a random number for the column index where the wall will be placed. After that the wall will be added and a random column index is calculated to open the passage. After that, this method calls the \hyperlink{class_recursive_division_a09758db0100db2aa3902535869ba7d7c}{generate\-Maze()} Method again with the new two, smaller fields. 
+\begin{DoxyParams}{Parameters}
+{\em field} & The complete maze field. \\
+\hline
+{\em left} & The column index of the left column. \\
+\hline
+{\em right} & The column index of the right column. \\
+\hline
+{\em top} & The row index of the top row. \\
+\hline
+{\em bottom} & The row index of the bottom row. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_recursive_division_a16e56a56f3d84644211cff7844c3b4b8}{\index{Recursive\-Division@{Recursive\-Division}!divide\-Vertical@{divide\-Vertical}}
+\index{divide\-Vertical@{divide\-Vertical}!RecursiveDivision@{Recursive\-Division}}
+\subsubsection[{divide\-Vertical}]{\setlength{\rightskip}{0pt plus 5cm}void Recursive\-Division\-::divide\-Vertical (
+\begin{DoxyParamCaption}
+\item[{bool $\ast$$\ast$}]{field, }
+\item[{int}]{left, }
+\item[{int}]{right, }
+\item[{int}]{top, }
+\item[{int}]{bottom}
+\end{DoxyParamCaption}
+)}}\label{class_recursive_division_a16e56a56f3d84644211cff7844c3b4b8}
+Divide the sub-\/field with a vertical wall.
+
+It choose a random number for the row index where the wall will be placed. After that the wall will be added and a random row index is calculated to open the passage. After that, this method calls the \hyperlink{class_recursive_division_a09758db0100db2aa3902535869ba7d7c}{generate\-Maze()} Method again with the new two, smaller fields. 
+\begin{DoxyParams}{Parameters}
+{\em field} & The complete maze field. \\
+\hline
+{\em left} & The column index of the left column. \\
+\hline
+{\em right} & The column index of the right column. \\
+\hline
+{\em top} & The row index of the top row. \\
+\hline
+{\em bottom} & The row index of the bottom row. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_recursive_division_a16d033f98dd8d407d7ccf4828b3391e7}{\index{Recursive\-Division@{Recursive\-Division}!draw\-Maze@{draw\-Maze}}
+\index{draw\-Maze@{draw\-Maze}!RecursiveDivision@{Recursive\-Division}}
+\subsubsection[{draw\-Maze}]{\setlength{\rightskip}{0pt plus 5cm}void Recursive\-Division\-::draw\-Maze (
+\begin{DoxyParamCaption}
+\item[{bool $\ast$$\ast$}]{field, }
+\item[{std\-::ostream \&}]{output}
+\end{DoxyParamCaption}
+)}}\label{class_recursive_division_a16d033f98dd8d407d7ccf4828b3391e7}
+Consumes the maze field and draw it at the console output. 
+\begin{DoxyParams}{Parameters}
+{\em field} & Maze field. \\
+\hline
+{\em output} & output stream (only for testing purpose). \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_recursive_division_a09758db0100db2aa3902535869ba7d7c}{\index{Recursive\-Division@{Recursive\-Division}!generate\-Maze@{generate\-Maze}}
+\index{generate\-Maze@{generate\-Maze}!RecursiveDivision@{Recursive\-Division}}
+\subsubsection[{generate\-Maze}]{\setlength{\rightskip}{0pt plus 5cm}int Recursive\-Division\-::generate\-Maze (
+\begin{DoxyParamCaption}
+\item[{std\-::istream \&}]{is}
+\end{DoxyParamCaption}
+)}}\label{class_recursive_division_a09758db0100db2aa3902535869ba7d7c}
+Start method of this class with console.
+
+It ask for cols and rows of the maze. Theses are the relative sizes of the maze, because of the walls. A maze with 2 cols have an absolute width of 6. Two for the walls on the left and on the right, two for the given col amount and 2 for walls between them. 
+\begin{DoxyParams}{Parameters}
+{\em is} & input-\/stream for reading input params. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 if no exception occurs. 
+\end{DoxyReturn}
+Enable Debug mode for maze printing\-:\hypertarget{class_recursive_division_a64a45071f78e79f4edd29578d92388e0}{\index{Recursive\-Division@{Recursive\-Division}!generate\-Random\-Boolean@{generate\-Random\-Boolean}}
+\index{generate\-Random\-Boolean@{generate\-Random\-Boolean}!RecursiveDivision@{Recursive\-Division}}
+\subsubsection[{generate\-Random\-Boolean}]{\setlength{\rightskip}{0pt plus 5cm}bool Recursive\-Division\-::generate\-Random\-Boolean (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_recursive_division_a64a45071f78e79f4edd29578d92388e0}
+Generate a random boolean value. \begin{DoxyReturn}{Returns}
+random true or false. 
+\end{DoxyReturn}
+\hypertarget{class_recursive_division_aba7306d64093888306f2479fd3e629e6}{\index{Recursive\-Division@{Recursive\-Division}!generate\-Random\-Int@{generate\-Random\-Int}}
+\index{generate\-Random\-Int@{generate\-Random\-Int}!RecursiveDivision@{Recursive\-Division}}
+\subsubsection[{generate\-Random\-Int}]{\setlength{\rightskip}{0pt plus 5cm}int Recursive\-Division\-::generate\-Random\-Int (
+\begin{DoxyParamCaption}
+\item[{int}]{lower, }
+\item[{int}]{upper}
+\end{DoxyParamCaption}
+)}}\label{class_recursive_division_aba7306d64093888306f2479fd3e629e6}
+Generate a random integer value between the lower and the upper boundary. 
+\begin{DoxyParams}{Parameters}
+{\em lower} & Lower bound. \\
+\hline
+{\em upper} & Upper bound. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+random value. 
+\end{DoxyReturn}
+\hypertarget{class_recursive_division_a3572b23c6eb7d255d1810efe2e40687f}{\index{Recursive\-Division@{Recursive\-Division}!init\-Maze@{init\-Maze}}
+\index{init\-Maze@{init\-Maze}!RecursiveDivision@{Recursive\-Division}}
+\subsubsection[{init\-Maze}]{\setlength{\rightskip}{0pt plus 5cm}bool $\ast$$\ast$ Recursive\-Division\-::init\-Maze (
+\begin{DoxyParamCaption}
+\item[{int}]{width, }
+\item[{int}]{height}
+\end{DoxyParamCaption}
+)}}\label{class_recursive_division_a3572b23c6eb7d255d1810efe2e40687f}
+Method which generate the empty maze field.
+
+Field is surrounded by a wall.
+
+The generated field is a 2\-D -\/ boolean array. 
+\begin{DoxyParams}{Parameters}
+{\em width} & Absolute width of the maze. \\
+\hline
+{\em height} & Absolute height of the maze. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The generated maze field as 2\-D bool array. 
+\end{DoxyReturn}
+\hypertarget{class_recursive_division_a22f4a67b74499117e6d38cb2de49b9c6}{\index{Recursive\-Division@{Recursive\-Division}!make\-Maze\-Opening@{make\-Maze\-Opening}}
+\index{make\-Maze\-Opening@{make\-Maze\-Opening}!RecursiveDivision@{Recursive\-Division}}
+\subsubsection[{make\-Maze\-Opening}]{\setlength{\rightskip}{0pt plus 5cm}void Recursive\-Division\-::make\-Maze\-Opening (
+\begin{DoxyParamCaption}
+\item[{bool $\ast$$\ast$}]{field, }
+\item[{int}]{rows, }
+\item[{int}]{cols}
+\end{DoxyParamCaption}
+)}}\label{class_recursive_division_a22f4a67b74499117e6d38cb2de49b9c6}
+Make the start and end opening of the maze.
+
+It consumes the absolute width and the relative rows to calculate a random opening and closing passage. 
+\begin{DoxyParams}{Parameters}
+{\em field} & The complete maze field. \\
+\hline
+{\em rows} & The relative row count. \\
+\hline
+{\em cols} & The absolute width. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_recursive_division_a3ee7d465c3a8637c37a08de75ced22c1}{\index{Recursive\-Division@{Recursive\-Division}!debug\-Mode@{debug\-Mode}}
+\index{debug\-Mode@{debug\-Mode}!RecursiveDivision@{Recursive\-Division}}
+\subsubsection[{debug\-Mode}]{\setlength{\rightskip}{0pt plus 5cm}bool Recursive\-Division\-::debug\-Mode = false}}\label{class_recursive_division_a3ee7d465c3a8637c37a08de75ced22c1}
+Var to print maze after every division on console. \hypertarget{class_recursive_division_ac2402e5bb64bd4444f584ac6b237f84b}{\index{Recursive\-Division@{Recursive\-Division}!lab\-Printer@{lab\-Printer}}
+\index{lab\-Printer@{lab\-Printer}!RecursiveDivision@{Recursive\-Division}}
+\subsubsection[{lab\-Printer}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Lab\-Graph}$\ast$ Recursive\-Division\-::lab\-Printer}}\label{class_recursive_division_ac2402e5bb64bd4444f584ac6b237f84b}
+For U\-I printing; 
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+recursive\-Division/Recursive\-Division.\-h\item 
+recursive\-Division/Recursive\-Division.\-cpp\end{DoxyCompactItemize}

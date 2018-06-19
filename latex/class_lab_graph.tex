@@ -1,0 +1,110 @@
+\hypertarget{class_lab_graph}{\section{Lab\-Graph Class Reference}
+\label{class_lab_graph}\index{Lab\-Graph@{Lab\-Graph}}
+}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_lab_graph_aa10dea2f824ce99b6175952650ea7349}{Lab\-Graph} (int height, int width)
+\item 
+\hyperlink{class_lab_graph_ac37389ef1300ceb90c81fc482971471f}{$\sim$\-Lab\-Graph} ()
+\item 
+void \hyperlink{class_lab_graph_ab54dc4e91349cfeca4e501ab7bd340af}{init\-Graph} ()
+\item 
+\hypertarget{class_lab_graph_ab9767076b66b28dae3c47b9c3177b498}{void {\bfseries build\-Lab\-With\-Prim} ()}\label{class_lab_graph_ab9767076b66b28dae3c47b9c3177b498}
+
+\item 
+\hypertarget{class_lab_graph_a04d781d9fe079eef7374babe6318c498}{void {\bfseries build\-Lab\-With\-Rec\-Bac} ()}\label{class_lab_graph_a04d781d9fe079eef7374babe6318c498}
+
+\item 
+void \hyperlink{class_lab_graph_a478f4acb3c4da8d81b079d26d83c9f42}{graph\-To\-Pic} (string format)
+\item 
+void \hyperlink{class_lab_graph_afca83817aa9ca4996f49fbd2dd2618f5}{make\-Video} ()
+\item 
+\hypertarget{class_lab_graph_a1b88384d6363809ae16384205ecff4e2}{void {\bfseries set\-Lab} (bool $\ast$$\ast$)}\label{class_lab_graph_a1b88384d6363809ae16384205ecff4e2}
+
+\item 
+\hypertarget{class_lab_graph_a44653d0495a05c3ba03e661d342b15e7}{void {\bfseries set\-Dimensions} (int, int)}\label{class_lab_graph_a44653d0495a05c3ba03e661d342b15e7}
+
+\item 
+\hypertarget{class_lab_graph_a5a9e4661d1b03a3de1e7b669ba9aa8e5}{void {\bfseries easy\-Test} ()}\label{class_lab_graph_a5a9e4661d1b03a3de1e7b669ba9aa8e5}
+
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+std\-::ostream \& \hyperlink{class_lab_graph_a98ed4ce18d06e538a4ef79d43997a19f}{operator$<$$<$} (std\-::ostream \&, const \hyperlink{class_lab_graph}{Lab\-Graph} \&)
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_lab_graph_aa10dea2f824ce99b6175952650ea7349}{\index{Lab\-Graph@{Lab\-Graph}!Lab\-Graph@{Lab\-Graph}}
+\index{Lab\-Graph@{Lab\-Graph}!LabGraph@{Lab\-Graph}}
+\subsubsection[{Lab\-Graph}]{\setlength{\rightskip}{0pt plus 5cm}Lab\-Graph\-::\-Lab\-Graph (
+\begin{DoxyParamCaption}
+\item[{int}]{height, }
+\item[{int}]{width}
+\end{DoxyParamCaption}
+)}}\label{class_lab_graph_aa10dea2f824ce99b6175952650ea7349}
+Constructor. 
+\begin{DoxyParams}{Parameters}
+{\em height} & Height of the graph. \\
+\hline
+{\em width} & Width of the graph. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_lab_graph_ac37389ef1300ceb90c81fc482971471f}{\index{Lab\-Graph@{Lab\-Graph}!$\sim$\-Lab\-Graph@{$\sim$\-Lab\-Graph}}
+\index{$\sim$\-Lab\-Graph@{$\sim$\-Lab\-Graph}!LabGraph@{Lab\-Graph}}
+\subsubsection[{$\sim$\-Lab\-Graph}]{\setlength{\rightskip}{0pt plus 5cm}Lab\-Graph\-::$\sim$\-Lab\-Graph (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [default]}}}\label{class_lab_graph_ac37389ef1300ceb90c81fc482971471f}
+Destructor of the graph. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_lab_graph_a478f4acb3c4da8d81b079d26d83c9f42}{\index{Lab\-Graph@{Lab\-Graph}!graph\-To\-Pic@{graph\-To\-Pic}}
+\index{graph\-To\-Pic@{graph\-To\-Pic}!LabGraph@{Lab\-Graph}}
+\subsubsection[{graph\-To\-Pic}]{\setlength{\rightskip}{0pt plus 5cm}void Lab\-Graph\-::graph\-To\-Pic (
+\begin{DoxyParamCaption}
+\item[{string}]{format}
+\end{DoxyParamCaption}
+)}}\label{class_lab_graph_a478f4acb3c4da8d81b079d26d83c9f42}
+Creates a picture of the current graph using graphviz. 
+\begin{DoxyParams}{Parameters}
+{\em format} & Outputformat of the picture e.\-g. \char`\"{}jpg\char`\"{} \char`\"{}png\char`\"{}... \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_lab_graph_ab54dc4e91349cfeca4e501ab7bd340af}{\index{Lab\-Graph@{Lab\-Graph}!init\-Graph@{init\-Graph}}
+\index{init\-Graph@{init\-Graph}!LabGraph@{Lab\-Graph}}
+\subsubsection[{init\-Graph}]{\setlength{\rightskip}{0pt plus 5cm}void Lab\-Graph\-::init\-Graph (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_lab_graph_ab54dc4e91349cfeca4e501ab7bd340af}
+Creates a square with heigt x width nodes connected by edges. \hypertarget{class_lab_graph_afca83817aa9ca4996f49fbd2dd2618f5}{\index{Lab\-Graph@{Lab\-Graph}!make\-Video@{make\-Video}}
+\index{make\-Video@{make\-Video}!LabGraph@{Lab\-Graph}}
+\subsubsection[{make\-Video}]{\setlength{\rightskip}{0pt plus 5cm}void Lab\-Graph\-::make\-Video (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_lab_graph_afca83817aa9ca4996f49fbd2dd2618f5}
+Makes a video of the graph creation. 
+
+\subsection{Friends And Related Function Documentation}
+\hypertarget{class_lab_graph_a98ed4ce18d06e538a4ef79d43997a19f}{\index{Lab\-Graph@{Lab\-Graph}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!LabGraph@{Lab\-Graph}}
+\subsubsection[{operator$<$$<$}]{\setlength{\rightskip}{0pt plus 5cm}std\-::ostream\& operator$<$$<$ (
+\begin{DoxyParamCaption}
+\item[{std\-::ostream \&}]{os, }
+\item[{const {\bf Lab\-Graph} \&}]{graph}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [friend]}}}\label{class_lab_graph_a98ed4ce18d06e538a4ef79d43997a19f}
+Outputs the graph in D\-O\-T-\/form so it can be interpreted by graphviz. \begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+prims/Lab\-Graph.\-h\item 
+prims/Lab\-Graph.\-cpp\end{DoxyCompactItemize}
