@@ -11,7 +11,9 @@ Maze generation with three different algorithm:
 
 ## How to use
 
-Import project into CLion and start testMain.cpp.
+You need cmake, CLion and Graphviz to run the maze generator.
+
+Import the project into CLion and start testMain.cpp.
 Now you can choose which Algorithm to pick:
 
   1. Prim
