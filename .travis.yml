@@ -33,6 +33,7 @@ after_success:
   - doxygen Doxyfile
   - cp ./README.md ./doxygen_doc/README.md
   - cp ./_config.yml ./doxygen_doc/_config.yml
+  - cp -r ./Plots ./doxygen_doc/Plots
 
 deploy:
   provider: pages
