@@ -19,7 +19,7 @@ before_install:
 script:
   - cmake -H. -Bbuild
   - cd build
-  - cmake --build ..
+  - cmake --build .
   - ctest -V .
   - cd ..
 
@@ -34,6 +34,7 @@ deploy:
   skip_cleanup: true
   github_token: $GH_REPO_TOKEN
   keep-history: true
+
   on:
     branch: master
 
