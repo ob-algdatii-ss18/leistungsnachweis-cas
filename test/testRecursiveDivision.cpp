@@ -6,33 +6,33 @@
 
 
 using namespace std;
-
-TEST(RecursiveDivisionTest, simpleTest) {
-    RecursiveDivision rD;
-    EXPECT_EQ(3, rD.testMethod());
-}
-
-TEST(RecursiveDivisionTest, chooseOrientation) {
-    RecursiveDivision rD;
-
-    EXPECT_EQ(RecursiveDivision::HORIZONTAL, rD.chooseOrientation(3, 5));
-    EXPECT_EQ(RecursiveDivision::VERTICAL, rD.chooseOrientation(5, 3));
-
-    // Test random orientation:
-    int counter = 0;
-    bool randomOrientation = false;
-
-    // init orientation.
-    int orientation = rD.chooseOrientation(5, 5);
-
-    for (counter; counter < 5; counter++) {
-        if (orientation != rD.chooseOrientation(5, 5)) {
-            randomOrientation = true;
-        }
-    }
-
-    EXPECT_TRUE(randomOrientation);
-}
+//
+//TEST(RecursiveDivisionTest, simpleTest) {
+//    RecursiveDivision rD;
+//    EXPECT_EQ(3, rD.testMethod());
+//}
+//
+//TEST(RecursiveDivisionTest, chooseOrientation) {
+//    RecursiveDivision rD;
+//
+//    EXPECT_EQ(RecursiveDivision::HORIZONTAL, rD.chooseOrientation(3, 5));
+//    EXPECT_EQ(RecursiveDivision::VERTICAL, rD.chooseOrientation(5, 3));
+//
+//    // Test random orientation:
+//    int counter = 0;
+//    bool randomOrientation = false;
+//
+//    // init orientation.
+//    int orientation = rD.chooseOrientation(5, 5);
+//
+//    for (counter; counter < 5; counter++) {
+//        if (orientation != rD.chooseOrientation(5, 5)) {
+//            randomOrientation = true;
+//        }
+//    }
+//
+//    EXPECT_TRUE(randomOrientation);
+//}
 
 TEST(RecursiveDivisionTest, initMaze) {
     RecursiveDivision rD;
