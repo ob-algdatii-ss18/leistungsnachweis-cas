@@ -1,37 +1,33 @@
-## Welcome to GitHub Pages
+# leistungsnachweis-cas
+[![Build Status](https://travis-ci.org/ob-algdatii-ss18/leistungsnachweis-cas.svg?branch=master)](https://travis-ci.org/ob-algdatii-ss18/leistungsnachweis-cas)
+[![Coverage Status](https://coveralls.io/repos/github/ob-algdatii-ss18/leistungsnachweis-cas/badge.svg?branch=master)](https://coveralls.io/github/ob-algdatii-ss18/leistungsnachweis-cas?branch=master)
 
-You can use the [editor on GitHub](https://github.com/ob-algdatii-ss18/leistungsnachweis-cas/edit/gh-pages/README.md) to maintain and preview the content for your website in Markdown files.
+Maze generation with three different algorithm:
+  - Prim's
+  - Recursive Backtracking
+  - Recursive Division
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+# How to use
 
-### Markdown
+Import project into CLion and start testMain.cpp.
+Now you can choose which Algorithm to pick:
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+  1. Prim
+  2. Recursive Division
+  3. Recursive Backtracker
+  
+# Used Tools, IDE, Frameworks, etc.
 
-```markdown
-Syntax highlighted code block
+ - CMake Version >= 3.8.2
+ - Doxygen 1.8.15
+ - CLion
+ - Googletest
+ - Graphviz
+ 
+# Contributor
+ - Anja Wimmer -> [AnyaW](https://github.com/AnyaW)
+ - Christoph Hahn -> [jfad](https://github.com/jfad)
+ - Sebastian Hartl -> [Sil3ntF0g](https://github.com/Sil3ntF0g)
 
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/ob-algdatii-ss18/leistungsnachweis-cas/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+# Documentation
+[https://ob-algdatii-ss18.github.io/leistungsnachweis-cas/](https://ob-algdatii-ss18.github.io/leistungsnachweis-cas/)
