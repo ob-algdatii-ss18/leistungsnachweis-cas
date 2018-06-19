@@ -21,6 +21,7 @@ script:
   - cd build
   - cmake --build .
   - ctest -V
+  - cd ..
   - doxygen Doxyfile
 
 after_success:
