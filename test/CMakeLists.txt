@@ -17,5 +17,5 @@ include_directories("..")
 install(TARGETS mainTest DESTINATION bin)
 
 
-
+enable_testing()
 

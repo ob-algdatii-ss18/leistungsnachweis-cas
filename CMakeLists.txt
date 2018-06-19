@@ -4,6 +4,8 @@ project(leistungsnachweis-cas)
 
 
 set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fprofile-arcs")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -ftest-coverage")
 
 add_subdirectory(prims)
 add_subdirectory(recursiveDivision)
@@ -38,8 +40,7 @@ add_subdirectory("${CMAKE_BINARY_DIR}/googletest-src"
 
 
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fprofile-arcs")
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -ftest-coverage")
+
 
 
 
