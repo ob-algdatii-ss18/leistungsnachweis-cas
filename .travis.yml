@@ -11,8 +11,6 @@ addons:
         - ubuntu-toolchain-r-test
         - llvm-toolchain-trusty-5.0
       packages:
-        - gcc-6
-        - g++-6
 #      - doxygen
 #      - graphviz
 
@@ -22,10 +20,10 @@ before_install:
 
 
 script:
-  - cmake -H. -Bbuild -DENABLE_COVERAGE=1
+  - cmake -H. -Bbuild
   - cd build
-  - cmake --build .
-  - ctest -v
+  - cmake --build -DENABLE_COVERAGE=1 .
+  - ctest -V
 
 after_success:
   - coveralls --root .. --verbose --exclude build/CMakeFiles/ --exclude build/googletest-src/ --gcov-options '\-lp'
