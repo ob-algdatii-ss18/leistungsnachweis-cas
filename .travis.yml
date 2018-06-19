@@ -17,9 +17,9 @@ before_install:
 
 
 script:
-  - mkdir build
+  - cmake -H. -Bbuild
   - cd build
-  - cmake --build ..
+  - cmake --build .
   - ctest -V
   - cd ..
 
