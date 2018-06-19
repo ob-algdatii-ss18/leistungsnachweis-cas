@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['_7elabgraph',['~LabGraph',['../class_lab_graph.html#ac37389ef1300ceb90c81fc482971471f',1,'LabGraph']]]
+  ['white',['WHITE',['../_lab_graph_8h.html#a87b537f5fa5c109d3c05c13d6b18f382',1,'LabGraph.h']]]
 ];

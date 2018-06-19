@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['labprinter',['labPrinter',['../class_recursive_division.html#ac2402e5bb64bd4444f584ac6b237f84b',1,'RecursiveDivision']]]
+  ['image',['image',['../struct_cell.html#ad7cbb10d42690e0e3d566456899d8204',1,'Cell']]]
 ];
