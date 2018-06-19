@@ -159,12 +159,6 @@ LabGraph::Node* LabGraph::newNode(int y, int x) {
 
 void LabGraph::easyTest() {
 
-
-    Node* n = new Node(0,0);
-    n->addEdge(new Edge(5));
-    n->addEdge(new Edge(3));
-    n->addEdge(new Edge(8));
-
     initGraph();
  //   buildLabWithRecBac();
     buildLabWithPrim();

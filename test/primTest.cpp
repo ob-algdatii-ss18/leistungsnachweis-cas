@@ -88,7 +88,7 @@ TEST(primTest, compareEdgesTest){
     EXPECT_TRUE(edges.empty());
 }
 TEST(primTest, setDimensionsTest){
-    LabGraph * testG = new LabGraph();
+    LabGraph * testG = new LabGraph(LG_WIDTH,LG_HEIGHT);
     EXPECT_EQ(testG->height, LG_HEIGHT);
     EXPECT_EQ(testG->width, LG_WIDTH);
     testG->setDimensions(10,20);
@@ -115,4 +115,8 @@ TEST(primTest, setLabTest){
             EXPECT_EQ(toggle = !toggle, testG->graphNodes[i*20+j]->color == BLACK);
         }
     }
+}
+TEST(primTest, otherEndTest){
+    LabGraph::Node *a = new LabGraph::Node(1,1,true);
+
 }

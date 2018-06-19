@@ -205,6 +205,7 @@ private:
     FRIEND_TEST(primTest, compareEdgesTest);
     FRIEND_TEST(primTest, setDimensionsTest);
     FRIEND_TEST(primTest, setLabTest);
+    FRIEND_TEST(primTest, otherEndTest);
 public:
     LabGraph();
     /**
