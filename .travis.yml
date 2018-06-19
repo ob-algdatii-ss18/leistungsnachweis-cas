@@ -23,7 +23,7 @@ script:
   - ctest -V
   - cd ..
   - ls -la
-  - ls build/ la
+  - ls build/ -la
 
 
 after_success:
@@ -35,7 +35,7 @@ deploy:
   skip_cleanup: true
   github_token: $GH_REPO_TOKEN
   keep-history: true
-  local-dir: doxygen_doc
+  local-dir: doxygen_doc/html
   on:
     branch: master
 
