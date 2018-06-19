@@ -50,13 +50,7 @@ set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} --coverage")
 
 enable_testing()
 
-add_executable(mainTest test/main.cpp test/primTest.cpp test/primTest.h test/testRecursiveBacktracker.cpp test/testRecursiveBacktracker.h test/testRecursiveDivision.cpp test/testRecursiveDivision.h prims/LabGraph.cpp prims/LabGraph.h recursiveBacktracker/RecursiveBacktracker.h recursiveBacktracker/RecursiveBacktracker.cpp recursiveDivision/RecursiveDivision.h recursiveDivision/RecursiveDivision.cpp)
 
-target_link_libraries(mainTest
-        gtest
-        gtest_main
-        gmock
-        )
 add_test(main-Test test/mainTest --gtest_output=xml:report.xml)
 
 
