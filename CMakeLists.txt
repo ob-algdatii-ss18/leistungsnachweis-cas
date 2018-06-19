@@ -47,13 +47,14 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fprofile-arcs")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -ftest-coverage")
 set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} --coverage")
 
-add_subdirectory(test)
 
 enable_testing()
+
+add_subdirectory(test)
 
 #add_test(prims-Test test/primsTest --gtest_output=xml:report.xml)
 #add_test(recBac-Test test/recursiveBacktrackerTest --gtest_output=xml:report.xml)
 #add_test(recDiv-Test test/recursiveDivisionTest --gtest_output=xml:report.xml)
-add_test(main-Test test/mainTest --gtest_output=xml:report.xml)
+add_test(main-Test test/main-Test --gtest_output=xml:report.xml)
 #add_test(randPrim-Test test/randPrimTest --gtest_output=xml:report.xml)
 
