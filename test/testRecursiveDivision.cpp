@@ -9,6 +9,7 @@ using namespace std;
 
 TEST(RecursiveDivisionTest, testRandomInt) {
     RecursiveDivision underTest{};
+
     int lower = 2;
     int upper = 9;
 
@@ -20,6 +21,15 @@ TEST(RecursiveDivisionTest, testRandomInt) {
         EXPECT_TRUE(random != lastInt);
         lastInt = random;
     }
+}
+
+TEST(RecursiveDivisionTest, testRandomIntDiff) {
+    RecursiveDivision underTest{};
+
+    int lower = 2;
+    int upper = 2;
+
+    EXPECT_TRUE(underTest.generateRandomInt(lower, upper) > 0);
 }
 
 TEST(RecursiveDivisionTest, testRandomBool) {
@@ -37,46 +47,35 @@ TEST(RecursiveDivisionTest, testRandomBool) {
     EXPECT_NE (firstTry, nextTry);
 }
 
-//
-//std::stringstream ss;
-//toBeTested(ss);
-//assert(ss.str() == "this is the correct output");
+TEST(RecursiveDivisionTest, testMakeMazeOpening) {
+    RecursiveDivision underTest{};
 
-//
-//TEST(RecursiveDivisionTest, simpleTest) {
-//    RecursiveDivision rD;
-//    EXPECT_EQ(3, rD.testMethod());
-//}
-//
-//TEST(RecursiveDivisionTest, chooseOrientation) {
-//    RecursiveDivision rD;
-//
-//    EXPECT_EQ(RecursiveDivision::HORIZONTAL, rD.chooseOrientation(3, 5));
-//    EXPECT_EQ(RecursiveDivision::VERTICAL, rD.chooseOrientation(5, 3));
-//
-//    // Test random orientation:
-//    int counter = 0;
-//    bool randomOrientation = false;
-//
-//    // init orientation.
-//    int orientation = rD.chooseOrientation(5, 5);
-//
-//    for (counter; counter < 5; counter++) {
-//        if (orientation != rD.chooseOrientation(5, 5)) {
-//            randomOrientation = true;
-//        }
-//    }
-//
-//    EXPECT_TRUE(randomOrientation);
-//}
+    auto **field = new bool *[6];
+    for (int index = 0; index < 6; index++) {
+        field[index] = new bool[6];
+        for (int index2 = 0; index2 < 6; index2++) {
+            field[index][index2] = true;
+        }
+    }
 
-TEST(RecursiveDivisionTest, initMaze) {
-    RecursiveDivision rD;
+    underTest.makeMazeOpening(field, 2, 6);
 
-    auto *maze = rD.initMaze(10, 10);
-//    EXPECT_EQ(10, sizeof(maze));
-//
-//    for (int index = 0; index < 10; index++) {
-//        EXPECT_EQ(10, sizeof(&maze[index]));
-//    }
+    bool hasStart = false;
+    bool hasEnd = false;
+
+    for (int index = 0; index < 6; index++) {
+        if (field[index][0]) {
+            hasStart = true;
+            break;
+        }
+    }
+    for (int index = 0; index < 6; index++) {
+        if (field[index][5]) {
+            hasEnd = true;
+            break;
+        }
+    }
+
+    EXPECT_TRUE(hasStart);
+    EXPECT_TRUE(hasEnd);
 }
