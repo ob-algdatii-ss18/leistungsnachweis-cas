@@ -15,7 +15,14 @@
  */
 class RecursiveDivision {
 public:
+    /**
+     * For UI printing;
+     */
     LabGraph *labPrinter;
+    /**
+     * Var to print maze after every division on console.
+     */
+    bool debugMode = false;
 
     /**
      * Method which generate the empty maze field.

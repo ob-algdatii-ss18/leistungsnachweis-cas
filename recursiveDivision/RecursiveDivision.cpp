@@ -3,7 +3,6 @@
 using namespace ::std;
 
 int fieldWidth, fieldHeight;
-bool debugMode = false;
 
 int RecursiveDivision::generateRandomInt(int lower, int upper) {
     int diff = upper - lower;
@@ -20,9 +19,6 @@ bool RecursiveDivision::generateRandomBoolean() {
 }
 
 void RecursiveDivision::drawMaze(bool **field, std::ostream &output) {
-    labPrinter->setLab(field);
-    labPrinter->graphToPic("jpe");
-
     if (debugMode) {
         for (int i = 0; i < fieldHeight; i++) {
             for (int j = 0; j < fieldWidth; j++) {
@@ -31,6 +27,9 @@ void RecursiveDivision::drawMaze(bool **field, std::ostream &output) {
             output << endl;
         }
         output << endl;
+    } else {
+        labPrinter->setLab(field);
+        labPrinter->graphToPic("jpe");
     }
 }
 
