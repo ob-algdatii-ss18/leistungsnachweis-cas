@@ -118,5 +118,40 @@ TEST(primTest, setLabTest){
 }
 TEST(primTest, otherEndTest){
     LabGraph::Node *a = new LabGraph::Node(1,1,true);
-
+    LabGraph::Node *b = new LabGraph::Node(2,2);
+    LabGraph::Edge *e1 = new LabGraph::Edge(a,b,2);
+    EXPECT_EQ(a,e1->otherEnd(b));
+    EXPECT_EQ(b,e1->otherEnd(a));
+}
+TEST(primTest, primsAlgoTestNodes){
+    LabGraph * testG = new LabGraph();
+    testG->initGraph();
+    testG->buildLabWithPrim();
+    for(auto n : testG->graphNodes){
+        EXPECT_TRUE(n->isVisited());
+    }
+}
+TEST(primTest, primsAlgoTestEdges){
+    LabGraph * testG = new LabGraph();
+    testG->initGraph();
+    testG->buildLabWithPrim();
+    for(auto e : testG->graphEdges){
+        EXPECT_TRUE(e->isVisited());
+    }
+}
+TEST(primTest, recursiveBacktrackingTestNodes){
+    LabGraph * testG = new LabGraph();
+    testG->initGraph();
+    testG->buildLabWithPrim();
+    for(auto n : testG->graphNodes){
+        EXPECT_TRUE(n->isVisited());
+    }
+}
+TEST(primTest, recursiveBacktrackingEdges){
+    LabGraph * testG = new LabGraph();
+    testG->initGraph();
+    testG->buildLabWithPrim();
+    for(auto e : testG->graphEdges){
+        EXPECT_TRUE(e->isVisited());
+    }
 }

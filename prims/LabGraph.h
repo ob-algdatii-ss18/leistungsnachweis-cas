@@ -206,6 +206,10 @@ private:
     FRIEND_TEST(primTest, setDimensionsTest);
     FRIEND_TEST(primTest, setLabTest);
     FRIEND_TEST(primTest, otherEndTest);
+    FRIEND_TEST(primTest, primsAlgoTestNodes);
+    FRIEND_TEST(primTest, primsAlgoTestEdges);
+    FRIEND_TEST(primTest, recursiveBacktrackingTestNodes);
+    FRIEND_TEST(primTest, recursiveBacktrackingEdges);
 public:
     LabGraph();
     /**

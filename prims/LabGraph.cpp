@@ -190,7 +190,7 @@ void LabGraph::buildLabWithPrim() {
         labEdges.pop();
         //If the connected node i not already visited, add it to the labyrinth and make the edge a passage.
         if(curEdge->left->isVisited() && curEdge->right->isVisited()){
-
+            curEdge->setVisited(true);
             hasChanged = false;
             //do nothing
         }else{
