@@ -5,12 +5,9 @@ project(leistungsnachweis-cas)
 
 set(CMAKE_CXX_STANDARD 11)
 
-SET(COVERAGE OFF CACHE BOOL "Coverage")
-
 add_subdirectory(prims)
 add_subdirectory(recursiveDivision)
 add_subdirectory(recursiveBacktracker)
-add_subdirectory(test)
 
 #set(SOURCE_FILES testMain.cpp)
 add_executable(Main ${SOURCE_FILES} testMain.cpp)
@@ -18,10 +15,7 @@ add_executable(Main ${SOURCE_FILES} testMain.cpp)
 
 target_link_libraries(Main LINK_PUBLIC prims recursiveDivision recursiveBacktracker)
 
-if (COVERAGE)
-    target_compile_options(test PRIVATE --coverage)
-    target_link_libraries(test PRIVATE --coverage)
-endif()
+
 
 #Gtests
 
@@ -43,11 +37,13 @@ add_subdirectory("${CMAKE_BINARY_DIR}/googletest-src"
         "${CMAKE_BINARY_DIR}/googletest-build")
 
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g ")
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O0")
+
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fprofile-arcs")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -ftest-coverage")
-set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} --coverage")
+
+
+
+add_subdirectory(test)
 
 enable_testing()
 
