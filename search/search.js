@@ -10,7 +10,8 @@ var indexSectionsWithContent =
   0: "bcdgilmor~",
   1: "clr",
   2: "bdgilm~",
-  3: "o"
+  3: "dl",
+  4: "o"
 };
 
 var indexSectionNames =
@@ -18,7 +19,8 @@ var indexSectionNames =
   0: "all",
   1: "classes",
   2: "functions",
-  3: "related"
+  3: "variables",
+  4: "related"
 };
 
 function convertToId(search)

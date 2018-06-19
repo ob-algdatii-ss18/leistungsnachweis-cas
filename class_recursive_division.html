@@ -70,7 +70,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Friends</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Friends</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -115,9 +115,10 @@ Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:ac2402e5bb64bd4444f584ac6b237f84b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac2402e5bb64bd4444f584ac6b237f84b"></a>
-<a class="el" href="class_lab_graph.html">LabGraph</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>labPrinter</b></td></tr>
+<tr class="memitem:ac2402e5bb64bd4444f584ac6b237f84b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_lab_graph.html">LabGraph</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_recursive_division.html#ac2402e5bb64bd4444f584ac6b237f84b">labPrinter</a></td></tr>
 <tr class="separator:ac2402e5bb64bd4444f584ac6b237f84b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3ee7d465c3a8637c37a08de75ced22c1"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_recursive_division.html#a3ee7d465c3a8637c37a08de75ced22c1">debugMode</a> = false</td></tr>
+<tr class="separator:a3ee7d465c3a8637c37a08de75ced22c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Class with recursive division algorithm.</p>
@@ -473,6 +474,33 @@ Public Attributes</h2></td></tr>
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a class="anchor" id="a3ee7d465c3a8637c37a08de75ced22c1"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool RecursiveDivision::debugMode = false</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Var to print maze after every division on console. </p>
+
+</div>
+</div>
+<a class="anchor" id="ac2402e5bb64bd4444f584ac6b237f84b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_lab_graph.html">LabGraph</a>* RecursiveDivision::labPrinter</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>For UI printing; </p>
 
 </div>
 </div>
