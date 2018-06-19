@@ -24,6 +24,7 @@ script:
   - cd ..
   - ls -la
   - ls build/ -la
+  - ls Plots/ -la
 
 
 
