@@ -6,6 +6,9 @@
 
 using namespace std;
 
+TEST(primTest, useHeader) {
+    LabGraph underTest{};
+}
 
 TEST(primTest, innitTest){
     LabGraph * testG = new LabGraph();
