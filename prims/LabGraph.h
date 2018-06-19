@@ -15,7 +15,7 @@
 #include <chrono>
 #include <stack>
 #include <algorithm>
-
+#include "gtest/gtest.h"
 
 using namespace std;
 
@@ -196,8 +196,11 @@ private:
          */
         bool isBorder();
     };
-
+    /**
+     * Directory for plots and animation. Only set on linux.
+     */
     string dirPath;
+    FRIEND_TEST(primTest, innitTest);
 public:
     LabGraph();
     /**

@@ -80,9 +80,16 @@ std::ostream &operator<<(std::ostream &os, const LabGraph &graph) {
 
 LabGraph::LabGraph() {
     long ms = chrono::system_clock::now().time_since_epoch().count();
+
+
+#ifdef __linux__
     dirPath = "../Plots/bsp" + to_string(ms);
     const string sysCom = "mkdir -p " + dirPath;
     system(sysCom.data());
+#else
+    dirPath = "";
+#endif
+
     height = LG_HEIGHT;
     width = LG_WIDTH;
 }

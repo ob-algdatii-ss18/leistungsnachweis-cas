@@ -1,7 +1,7 @@
 //
 // Created by chris on 27.04.18.
 //
-#include "prims/Prims.h"
+
 #include "LabGraph.h"
 #include "recursiveDivision/RecursiveDivision.h"
 #include "recursiveBacktracker/RecursiveBacktracker.h"
