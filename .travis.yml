@@ -1,7 +1,7 @@
 dist: trusty
 language: cpp
 compiler:
-  - clang
+  - gcc
 
 os: linux
 
@@ -20,8 +20,9 @@ before_install:
 
 
 script:
-  - cmake -H. -Bbuild -DENABLE_COVERAGE=1
+  - cmake -H. -Bbuild
   - cd build
+  - CXX=/usr/bin/g++-6 CC=/usr/bin/gcc-6 cmake -DCOVERAGE=1 .
   - cmake --build .
   - ctest -V
 
