@@ -24,7 +24,7 @@ script:
   - cd ..
   - ls -la
   - ls build/ -la
-  - ls build/Plots/ -la
+
 
 
 after_success:
