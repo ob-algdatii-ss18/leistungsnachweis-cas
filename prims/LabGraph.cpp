@@ -260,7 +260,8 @@ void LabGraph::buildLabWithRecBac(){
             nodeStack.pop();
         }
         if(VIDEO)graphToPic("jpe");
-    }while(!nodeStack.empty() && visitedNodes < (height-2) * (width-2));
+    }while(!nodeStack.empty() );
+//&& visitedNodes < (height-2) * (width-2)
     if(VIDEO)graphToPic("jpe");
 
 }
