@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['makevideo',['makeVideo',['../class_lab_graph.html#afca83817aa9ca4996f49fbd2dd2618f5',1,'LabGraph']]]
+  ['_7elabgraph',['~LabGraph',['../class_lab_graph.html#ac37389ef1300ceb90c81fc482971471f',1,'LabGraph']]]
 ];

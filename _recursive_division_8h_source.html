@@ -92,40 +92,36 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;../prims/LabGraph.h&quot;</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keywordtype">void</span> helloFromRecDiv();</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;</div>
-<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="class_recursive_division.html">    9</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_recursive_division.html">RecursiveDivision</a> {</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    <a class="code" href="class_lab_graph.html">LabGraph</a>* labPrinter;</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <span class="keyword">enum</span> Orientation {</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;        VERTICAL = 1, HORIZONTAL = 2</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    };</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <span class="keywordtype">int</span> testMethod();</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    RecursiveDivision::Orientation <a class="code" href="class_recursive_division.html#a564c1b71d8327f3830be4fe0be973c9a">chooseOrientation</a>(<span class="keywordtype">int</span> width, <span class="keywordtype">int</span> height);</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keywordtype">bool</span> **initMaze(<span class="keywordtype">int</span> width, <span class="keywordtype">int</span> height);</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="class_recursive_division.html#a28104b1c404466b1c5add48cbc34cee7">generateMaze</a>();</div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="class_recursive_division.html">   16</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_recursive_division.html">RecursiveDivision</a> {</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <a class="code" href="class_lab_graph.html">LabGraph</a> *labPrinter;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keywordtype">bool</span> **<a class="code" href="class_recursive_division.html#a3572b23c6eb7d255d1810efe2e40687f">initMaze</a>(<span class="keywordtype">int</span> width, <span class="keywordtype">int</span> height);</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keywordtype">void</span> divideField(<span class="keywordtype">bool</span> **field, <span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y, <span class="keywordtype">int</span> width, <span class="keywordtype">int</span> height);</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="keywordtype">void</span> divideVertical(<span class="keywordtype">bool</span> **field, <span class="keywordtype">int</span> left, <span class="keywordtype">int</span> right, <span class="keywordtype">int</span> top, <span class="keywordtype">int</span> bottom);</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keywordtype">void</span> divideHorizontal(<span class="keywordtype">bool</span> **field, <span class="keywordtype">int</span> left, <span class="keywordtype">int</span> right, <span class="keywordtype">int</span> top, <span class="keywordtype">int</span> bottom);</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keywordtype">void</span> makeMazeOpening(<span class="keywordtype">bool</span> **field, <span class="keywordtype">int</span> rows, <span class="keywordtype">int</span> cols);</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keywordtype">void</span> drawMaze(<span class="keywordtype">bool</span> **field);</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;};</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="class_recursive_division.html#a28104b1c404466b1c5add48cbc34cee7">generateMaze</a>();</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="preprocessor">#endif //LEISTUNGSNACHWEIS_CAS_RECURSIVEDIVISION_H</span></div>
-<div class="ttc" id="class_recursive_division_html_a564c1b71d8327f3830be4fe0be973c9a"><div class="ttname"><a href="class_recursive_division.html#a564c1b71d8327f3830be4fe0be973c9a">RecursiveDivision::chooseOrientation</a></div><div class="ttdeci">RecursiveDivision::Orientation chooseOrientation(int width, int height)</div><div class="ttdef"><b>Definition:</b> RecursiveDivision.cpp:53</div></div>
-<div class="ttc" id="class_recursive_division_html_a28104b1c404466b1c5add48cbc34cee7"><div class="ttname"><a href="class_recursive_division.html#a28104b1c404466b1c5add48cbc34cee7">RecursiveDivision::generateMaze</a></div><div class="ttdeci">int generateMaze()</div><div class="ttdef"><b>Definition:</b> RecursiveDivision.cpp:169</div></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_recursive_division.html#a38669e9dcfc8e9056928333613adbaa1">divideField</a>(<span class="keywordtype">bool</span> **field, <span class="keywordtype">int</span> left, <span class="keywordtype">int</span> right, <span class="keywordtype">int</span> top, <span class="keywordtype">int</span> bottom);</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_recursive_division.html#a16e56a56f3d84644211cff7844c3b4b8">divideVertical</a>(<span class="keywordtype">bool</span> **field, <span class="keywordtype">int</span> left, <span class="keywordtype">int</span> right, <span class="keywordtype">int</span> top, <span class="keywordtype">int</span> bottom);</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_recursive_division.html#a2d4bb0a2bd69216c35b27e8448e4b1af">divideHorizontal</a>(<span class="keywordtype">bool</span> **field, <span class="keywordtype">int</span> left, <span class="keywordtype">int</span> right, <span class="keywordtype">int</span> top, <span class="keywordtype">int</span> bottom);</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_recursive_division.html#a22f4a67b74499117e6d38cb2de49b9c6">makeMazeOpening</a>(<span class="keywordtype">bool</span> **field, <span class="keywordtype">int</span> rows, <span class="keywordtype">int</span> cols);</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_recursive_division.html#a4fab5d28d0004ab5274aa91df3069d01">drawMaze</a>(<span class="keywordtype">bool</span> **field);</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;};</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="preprocessor">#endif //LEISTUNGSNACHWEIS_CAS_RECURSIVEDIVISION_H</span></div>
+<div class="ttc" id="class_recursive_division_html_a4fab5d28d0004ab5274aa91df3069d01"><div class="ttname"><a href="class_recursive_division.html#a4fab5d28d0004ab5274aa91df3069d01">RecursiveDivision::drawMaze</a></div><div class="ttdeci">void drawMaze(bool **field)</div><div class="ttdef"><b>Definition:</b> RecursiveDivision.cpp:26</div></div>
+<div class="ttc" id="class_recursive_division_html_a3572b23c6eb7d255d1810efe2e40687f"><div class="ttname"><a href="class_recursive_division.html#a3572b23c6eb7d255d1810efe2e40687f">RecursiveDivision::initMaze</a></div><div class="ttdeci">bool ** initMaze(int width, int height)</div><div class="ttdef"><b>Definition:</b> RecursiveDivision.cpp:116</div></div>
+<div class="ttc" id="class_recursive_division_html_a2d4bb0a2bd69216c35b27e8448e4b1af"><div class="ttname"><a href="class_recursive_division.html#a2d4bb0a2bd69216c35b27e8448e4b1af">RecursiveDivision::divideHorizontal</a></div><div class="ttdeci">void divideHorizontal(bool **field, int left, int right, int top, int bottom)</div><div class="ttdef"><b>Definition:</b> RecursiveDivision.cpp:67</div></div>
+<div class="ttc" id="class_recursive_division_html_a28104b1c404466b1c5add48cbc34cee7"><div class="ttname"><a href="class_recursive_division.html#a28104b1c404466b1c5add48cbc34cee7">RecursiveDivision::generateMaze</a></div><div class="ttdeci">int generateMaze()</div><div class="ttdef"><b>Definition:</b> RecursiveDivision.cpp:145</div></div>
+<div class="ttc" id="class_recursive_division_html_a16e56a56f3d84644211cff7844c3b4b8"><div class="ttname"><a href="class_recursive_division.html#a16e56a56f3d84644211cff7844c3b4b8">RecursiveDivision::divideVertical</a></div><div class="ttdeci">void divideVertical(bool **field, int left, int right, int top, int bottom)</div><div class="ttdef"><b>Definition:</b> RecursiveDivision.cpp:48</div></div>
+<div class="ttc" id="class_recursive_division_html_a38669e9dcfc8e9056928333613adbaa1"><div class="ttname"><a href="class_recursive_division.html#a38669e9dcfc8e9056928333613adbaa1">RecursiveDivision::divideField</a></div><div class="ttdeci">void divideField(bool **field, int left, int right, int top, int bottom)</div><div class="ttdef"><b>Definition:</b> RecursiveDivision.cpp:87</div></div>
 <div class="ttc" id="class_lab_graph_html"><div class="ttname"><a href="class_lab_graph.html">LabGraph</a></div><div class="ttdef"><b>Definition:</b> LabGraph.h:28</div></div>
-<div class="ttc" id="class_recursive_division_html"><div class="ttname"><a href="class_recursive_division.html">RecursiveDivision</a></div><div class="ttdef"><b>Definition:</b> RecursiveDivision.h:9</div></div>
+<div class="ttc" id="class_recursive_division_html_a22f4a67b74499117e6d38cb2de49b9c6"><div class="ttname"><a href="class_recursive_division.html#a22f4a67b74499117e6d38cb2de49b9c6">RecursiveDivision::makeMazeOpening</a></div><div class="ttdeci">void makeMazeOpening(bool **field, int rows, int cols)</div><div class="ttdef"><b>Definition:</b> RecursiveDivision.cpp:40</div></div>
+<div class="ttc" id="class_recursive_division_html"><div class="ttname"><a href="class_recursive_division.html">RecursiveDivision</a></div><div class="ttdef"><b>Definition:</b> RecursiveDivision.h:16</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
