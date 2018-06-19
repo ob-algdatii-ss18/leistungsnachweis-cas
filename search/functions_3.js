@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['easytest',['easyTest',['../class_lab_graph.html#a5a9e4661d1b03a3de1e7b669ba9aa8e5',1,'LabGraph']]]
+  ['generatemaze',['generateMaze',['../class_recursive_division.html#a28104b1c404466b1c5add48cbc34cee7',1,'RecursiveDivision']]],
+  ['graphtopic',['graphToPic',['../class_lab_graph.html#a478f4acb3c4da8d81b079d26d83c9f42',1,'LabGraph']]]
 ];
