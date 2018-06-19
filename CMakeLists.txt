@@ -48,13 +48,20 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fprofile-arcs")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -ftest-coverage")
 set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} --coverage")
 
-
 enable_testing()
+
+add_executable(mainTest test/main.cpp test/primTest.cpp test/primTest.h test/testRecursiveBacktracker.cpp test/testRecursiveBacktracker.h test/testRecursiveDivision.cpp test/testRecursiveDivision.h prims/LabGraph.cpp prims/LabGraph.h recursiveBacktracker/RecursiveBacktracker.h recursiveBacktracker/RecursiveBacktracker.cpp recursiveDivision/RecursiveDivision.h recursiveDivision/RecursiveDivision.cpp)
+
+target_link_libraries(mainTest
+        gtest
+        gtest_main
+        gmock
+        )
+add_test(main-Test test/mainTest --gtest_output=xml:report.xml)
 
 
 #add_test(prims-Test test/primsTest --gtest_output=xml:report.xml)
 #add_test(recBac-Test test/recursiveBacktrackerTest --gtest_output=xml:report.xml)
 #add_test(recDiv-Test test/recursiveDivisionTest --gtest_output=xml:report.xml)
-add_test(main-Test test/mainTest --gtest_output=xml:report.xml)
 #add_test(randPrim-Test test/randPrimTest --gtest_output=xml:report.xml)
 
