@@ -203,6 +203,8 @@ private:
     FRIEND_TEST(primTest, innitTestNodes);
     FRIEND_TEST(primTest, innitTestEdges);
     FRIEND_TEST(primTest, compareEdgesTest);
+    FRIEND_TEST(primTest, setDimensionsTest);
+    FRIEND_TEST(primTest, setLabTest);
 public:
     LabGraph();
     /**
@@ -219,9 +221,13 @@ public:
      * Creates a square with heigt x width nodes connected by edges.
      */
     void initGraph();
-
+    /**
+     * Creates a Labyrinth on the Graph with prims algorithm.
+     */
     void buildLabWithPrim();
-
+    /**
+     * Creates a Labyrinth on the Graph with recursive backtracing algorithm.
+     */
     void buildLabWithRecBac();
     /**
      * Creates a picture of the current graph using graphviz.
@@ -233,10 +239,17 @@ public:
      */
     void makeVideo();
 
-
+    /**
+     * Sets the color of all edges to black or white. This is used to diplay the labyrinth created by recursive division.
+     */
     void setLab(bool **);
-
+    /**
+     * Can only be used on an uninizialized graph. Sets the height and width and initializes the graph. This is used to diplay the labyrinth created by recursive division.
+     */
     void setDimensions(int, int);
+    /**
+     * Once a simple test method this became the starter:).
+     */
     void easyTest();
     /**
      * Outputs the graph in DOT-form so it can be interpreted by graphviz.

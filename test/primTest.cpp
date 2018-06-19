@@ -87,3 +87,33 @@ TEST(primTest, compareEdgesTest){
     edges.pop();
     EXPECT_TRUE(edges.empty());
 }
+TEST(primTest, setDimensionsTest){
+    LabGraph * testG = new LabGraph();
+    EXPECT_EQ(testG->height, LG_HEIGHT);
+    EXPECT_EQ(testG->width, LG_WIDTH);
+    testG->setDimensions(10,20);
+    EXPECT_EQ(testG->height, 20);
+    EXPECT_EQ(testG->width, 10);
+}
+TEST(primTest, setLabTest){
+    bool toggle = true;
+    LabGraph * testG = new LabGraph();
+    auto **mazeField = new bool *[20];
+    for (int i = 0; i < 20; i++) {
+        mazeField[i] = new bool[20];
+    }
+    for (int i = 0; i < 20; i++) {
+        for (int j = 0; j < 20; j++) {
+            mazeField[i][j] = toggle = !toggle;
+        }
+    }
+    testG->setDimensions(20,20);
+    testG->setLab(mazeField);
+    toggle=true;
+    for (int i = 0; i < 20; i++) {
+        for (int j = 0; j < 20; j++) {
+            EXPECT_EQ(toggle = !toggle, testG->graphNodes[i*20+j]->color == BLACK);
+        }
+    }
+
+}

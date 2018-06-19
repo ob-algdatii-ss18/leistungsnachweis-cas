@@ -166,8 +166,8 @@ void LabGraph::easyTest() {
     n->addEdge(new Edge(8));
 
     initGraph();
-    buildLabWithRecBac();
-  //  buildLabWithPrim();
+ //   buildLabWithRecBac();
+    buildLabWithPrim();
     if(VIDEO)makeVideo();
     graphToPic("png");
 }
@@ -297,7 +297,7 @@ void LabGraph::makeVideo() {
 void LabGraph::setLab(bool ** boolArray) {
     for (int i = 0; i < height; i++) {
         for (int j = 0; j < width; j++) {
-            if(boolArray[i][j]) graphNodes[i*height+j] ->color = BLACK;
+            if(boolArray[i][j]) graphNodes[i*height+j]->color = BLACK;
         }
     }
 }
