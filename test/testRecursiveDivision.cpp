@@ -13,13 +13,10 @@ TEST(RecursiveDivisionTest, testRandomInt) {
     int lower = 2;
     int upper = 9;
 
-    int lastInt = 0;
-    for (int index = 0; index < 10; index++) {
+    for (int index = 0; index < 20; index++) {
         int random = underTest.generateRandomInt(lower, upper);
         EXPECT_TRUE(random >= lower);
         EXPECT_TRUE(random < upper);
-        EXPECT_TRUE(random != lastInt);
-        lastInt = random;
     }
 }
 
