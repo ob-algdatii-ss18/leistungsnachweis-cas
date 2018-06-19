@@ -11,6 +11,7 @@ addons:
         - ubuntu-toolchain-r-test
         - llvm-toolchain-trusty-5.0
       packages:
+        - clang-5.0
 #      - doxygen
 #      - graphviz
 
@@ -20,9 +21,9 @@ before_install:
 
 
 script:
+  - CXX=/usr/bin/g++-6 CC=/usr/bin/gcc-6 cmake -DCOVERAGE=1 .
   - cmake -H. -Bbuild
   - cd build
-  - CXX=/usr/bin/g++-6 CC=/usr/bin/gcc-6 cmake -DCOVERAGE=1 .
   - cmake --build .
   - ctest -V
 
