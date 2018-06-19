@@ -2,17 +2,19 @@ file(GLOB SRCS *.cpp)
 
 
 #Test all
-add_executable(mainTest main.cpp primTest.cpp primTest.h testRecursiveBacktracker.cpp testRecursiveBacktracker.h testRecursiveDivision.cpp testRecursiveDivision.h ../prims/LabGraph.cpp ../prims/LabGraph.h ../recursiveBacktracker/RecursiveBacktracker.h ../recursiveBacktracker/RecursiveBacktracker.cpp ../recursiveDivision/RecursiveDivision.h ../recursiveDivision/RecursiveDivision.cpp)
+add_executable(mainTest ${SRCS} testRecursiveDivision.cpp testRecursiveBacktracker.cpp primTest.cpp)
 
 target_link_libraries(mainTest
+        prims
+        recursiveBacktracker
+        recursiveDivision
         gtest
         gmock
         )
 
+include_directories("..")
 
-#include_directories("..")
-
-#install(TARGETS mainTest DESTINATION bin)
+install(TARGETS mainTest DESTINATION bin)
 
 
 
