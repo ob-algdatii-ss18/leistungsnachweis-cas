@@ -115,5 +115,4 @@ TEST(primTest, setLabTest){
             EXPECT_EQ(toggle = !toggle, testG->graphNodes[i*20+j]->color == BLACK);
         }
     }
-
 }
