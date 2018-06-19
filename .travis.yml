@@ -22,18 +22,18 @@ script:
   - cmake --build .
   - ctest -V
   - cd ..
-  - doxygen Doxyfile
+
 
 after_success:
   - coveralls --root .. --verbose --exclude build/CMakeFiles/ --exclude build/googletest-src/ --exclude test --gcov-options '\-lp'
-
+  - doxygen Doxyfile
 
 deploy:
   provider: pages
   skip_cleanup: true
   github_token: $GH_REPO_TOKEN
   keep-history: true
-  local-dir: /docs/html
+  local-dir: docs/html
   on:
     branch: master
 
