@@ -55,6 +55,6 @@ add_subdirectory(test)
 #add_test(prims-Test test/primsTest --gtest_output=xml:report.xml)
 #add_test(recBac-Test test/recursiveBacktrackerTest --gtest_output=xml:report.xml)
 #add_test(recDiv-Test test/recursiveDivisionTest --gtest_output=xml:report.xml)
-add_test(main-Test test/main-Test --gtest_output=xml:report.xml)
+add_test(main-Test test/mainTest --gtest_output=xml:report.xml)
 #add_test(randPrim-Test test/randPrimTest --gtest_output=xml:report.xml)
 
