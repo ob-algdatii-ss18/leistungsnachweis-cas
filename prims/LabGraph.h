@@ -19,7 +19,7 @@
 
 using namespace std;
 
-#define VIDEO false
+#define VIDEO true
 #define LG_WIDTH 30
 #define LG_HEIGHT 30
 #define  BLACK "black"

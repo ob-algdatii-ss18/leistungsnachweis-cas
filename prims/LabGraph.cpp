@@ -160,10 +160,13 @@ LabGraph::Node* LabGraph::newNode(int y, int x) {
 void LabGraph::easyTest() {
 
     initGraph();
- //   buildLabWithRecBac();
-    buildLabWithPrim();
+    buildLabWithRecBac();
+ //   buildLabWithPrim();
     if(VIDEO)makeVideo();
     graphToPic("png");
+    cout << "Dot file created under " << dirPath << "/graph.dot" << endl;
+    cout << "Picture created under " << dirPath << "/graph<time ms>.png" << endl;
+
 }
 
 void LabGraph::buildLabWithPrim() {
@@ -273,7 +276,7 @@ void LabGraph::graphToPic(string format) {
     long ms = chrono::system_clock::now().time_since_epoch().count();
   //  string fileName = "../Plots/graph" + to_string(ms) + ".dot";
     string picName = dirPath + "/graph" + to_string(ms) + "." + format;
-    string fileName = dirPath + "/graph2.dot";
+    string fileName = dirPath + "/graph.dot";
     //  string picName = "graph.png";
     const string dotExec = "dot -T"+format+" -v " + fileName + " -o " + picName;
     myfile.open(fileName);
@@ -283,10 +286,13 @@ void LabGraph::graphToPic(string format) {
 }
 
 void LabGraph::makeVideo() {
-    const string sysCom = "mencoder mf://" + dirPath + "/*.jpe -mf w=800:h=600:fps=15:type=jpg -ovc lavc -lavcopts vcodec=mpeg4:mbd=2:trell -oac copy -o "+ dirPath+"/animation.avi";
- //   const string rmCom = "rm "+ dirPath + "/*.jpe";
+    const string sysCom = "mencoder mf://" + dirPath + "/*.jpe -mf w=800:h=600:fps=10:type=jpg -ovc lavc -lavcopts vcodec=mpeg4:mbd=2:trell -oac copy -o "+ dirPath+"/animation.avi";
     system(sysCom.data());
-  //  system(rmCom.data());
+#ifdef __linux__
+    const string rmCom = "rm "+ dirPath + "/*.jpe";
+    system(rmCom.data());
+#endif
+
 }
 
 void LabGraph::setLab(bool ** boolArray) {
