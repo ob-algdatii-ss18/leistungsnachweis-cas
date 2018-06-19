@@ -9,7 +9,7 @@ Maze generation with three different algorithm:
   - Recursive Backtracking
   - Recursive Division
 
-# How to use
+## How to use
 
 Import project into CLion and start testMain.cpp.
 Now you can choose which Algorithm to pick:
@@ -18,7 +18,7 @@ Now you can choose which Algorithm to pick:
   2. Recursive Division
   3. Recursive Backtracker
   
-# Used Tools, IDE, Frameworks, etc.
+## Used Tools, IDE, Frameworks, etc.
 
  - CMake Version >= 3.8.2
  - Doxygen 1.8.15
@@ -26,9 +26,9 @@ Now you can choose which Algorithm to pick:
  - Googletest
  - Graphviz
  
-# Contributor
+## Contributor
  - Anja Wimmer -> [AnyaW](https://github.com/AnyaW)
  - Christoph Hahn -> [jfad](https://github.com/jfad)
  - Sebastian Hartl -> [Sil3ntF0g](https://github.com/Sil3ntF0g)
 
-# [Doxygen Documentation](https://ob-algdatii-ss18.github.io/leistungsnachweis-cas/html/)
+## [Doxygen Documentation](https://ob-algdatii-ss18.github.io/leistungsnachweis-cas/html/)
