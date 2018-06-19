@@ -6,3 +6,20 @@ Maze generation with three different algorithm:
   - Prim's
   - Recursive Backtracking
   - Recursive Division
+
+# How to use
+
+Import project into CLion and start testMain.cpp. Here you can choose which Algorithm to execute.
+
+  1. Prim
+  2. Recursive Division
+  3. Recursive Backtracker
+  
+# Used Tools, IDE, Frameworks, etc.
+
+ - CMake Version >= 3.8.2
+ - Doxygen 1.8.15
+ - CLion
+ - Googletest
+ 
+ 
