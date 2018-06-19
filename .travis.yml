@@ -25,15 +25,15 @@ before_script:
   - mkdir build
   - cd build
   - cmake -DENABLE_COVERAGE=ON -DCMAKE_CXX_COMPILER="g++-6" ..
-  - mkdir output
+
 
 script:
   - cmake --build .
-  - ctest .
-  - cd ..
+  - ctest -V .
+
 
 after_success:
-  - coveralls --root .. --verbose --exclude build/CMakeFiles/ --exclude build/googletest-src/ --exclude tests --gcov-options '\-lp'
+  - coveralls --root .. --verbose --exclude build/CMakeFiles/ --exclude build/googletest-src/ --exclude test --gcov-options '\-lp'
 # Generate and deploy documentation
   - cd $TRAVIS_BUILD_DIR
   - chmod +x generateDocumentationAndDeploy.sh
