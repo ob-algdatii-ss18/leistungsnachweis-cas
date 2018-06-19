@@ -20,8 +20,11 @@ script:
 
   - cmake -H. -Bbuild
   - cd build
-  - cmake -DCOVERAGE=1 --build .
+  - cmake --build .
   - ctest -V
 
 after_success:
   - coveralls --root .. --verbose --exclude build/CMakeFiles/ --exclude build/googletest-src/ --gcov-options '\-lp'
+
+notifications:
+  email: false
