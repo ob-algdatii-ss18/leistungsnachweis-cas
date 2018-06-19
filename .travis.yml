@@ -29,6 +29,8 @@ script:
 after_success:
   - coveralls --root . --verbose --exclude build/CMakeFiles/ --exclude build/googletest-src/ --gcov-options '\-lp'
   - doxygen Doxyfile
+  - cp README.md /doxygen_doc/README.md
+  - cp _config.yml /doxygen_doc/_config.yml
 
 deploy:
   provider: pages
