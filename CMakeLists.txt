@@ -5,6 +5,8 @@ project(leistungsnachweis-cas)
 
 set(CMAKE_CXX_STANDARD 11)
 
+SET(COVERAGE OFF CACHE BOOL "Coverage")
+
 add_subdirectory(prims)
 add_subdirectory(recursiveDivision)
 add_subdirectory(recursiveBacktracker)
