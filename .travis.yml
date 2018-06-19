@@ -10,9 +10,6 @@ addons:
       packages:
 
         - doxygen
-        - doxygen-doc
-        - doxygen-latex
-        - doxygen-gui
         - graphviz
 
 
@@ -25,6 +22,7 @@ script:
   - cd build
   - cmake --build .
   - ctest -V .
+  - cd ..
   - doxygen Doxyfile
 
 
