@@ -23,8 +23,8 @@ script:
   - ctest -V
   - cd ..
   - ls -la
-  - ls build/ -la
-  - ls build/Plots/ -la
+  - ls ./build/ -la
+  - ls ./build/Plots/ -la
 
 
 after_success:
