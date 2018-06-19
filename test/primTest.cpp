@@ -10,7 +10,7 @@ TEST(primTest, useHeader) {
     LabGraph underTest{};
 }
 
-TEST(primTest, innitTest){
+TEST(primTest, innitTestNodes){
     LabGraph * testG = new LabGraph();
     testG->initGraph();
     EXPECT_EQ(LG_WIDTH*LG_HEIGHT, testG->graphNodes.size());
@@ -44,4 +44,46 @@ TEST(primTest, innitTest){
             EXPECT_TRUE(testG->graphNodes[h * LG_WIDTH + LG_HEIGHT - 1]->isBorder());
         }
     }
+}
+TEST(primTest, innitTestEdges){
+    LabGraph * testG = new LabGraph();
+    testG->initGraph();
+    int vis =0, border = 0, conectBorder =0, hor =0;
+    EXPECT_EQ((LG_WIDTH-1)*LG_HEIGHT*2, testG->graphEdges.size());
+    for(auto e : testG->graphEdges){
+        if(e->isBorder())border++;
+        if(e->connectBorder())conectBorder++;
+        if(e->isVisited())vis++;
+        if(e->isHorizontal())hor++;
+    }
+    EXPECT_EQ(2*(LG_WIDTH-1)+2*(LG_HEIGHT-1),border);
+    EXPECT_EQ(2*(LG_WIDTH-2)+2*(LG_HEIGHT-2),conectBorder);
+    EXPECT_EQ(border+conectBorder,vis);
+    EXPECT_EQ(testG->graphEdges.size()/2,hor);
+
+
+}
+TEST(primTest, compareEdgesTest){
+    auto b = new LabGraph::Edge(2);
+    auto d = new LabGraph::Edge(33);
+    auto c = new LabGraph::Edge(3);
+    auto a = new LabGraph::Edge(1);
+    auto e = new LabGraph::Edge(7);
+    priority_queue<LabGraph::Edge *, vector<LabGraph::Edge*>, LabGraph::Edge::CompareEdges> edges;
+    edges.push(b);
+    edges.push(d);
+    edges.push(c);
+    edges.push(a);
+    edges.push(e);
+    EXPECT_EQ(a, edges.top());
+    edges.pop();
+    EXPECT_EQ(b, edges.top());
+    edges.pop();
+    EXPECT_EQ(c, edges.top());
+    edges.pop();
+    EXPECT_EQ(e, edges.top());
+    edges.pop();
+    EXPECT_EQ(d, edges.top());
+    edges.pop();
+    EXPECT_TRUE(edges.empty());
 }

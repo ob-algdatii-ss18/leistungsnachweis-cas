@@ -200,7 +200,9 @@ private:
      * Directory for plots and animation. Only set on linux.
      */
     string dirPath;
-    FRIEND_TEST(primTest, innitTest);
+    FRIEND_TEST(primTest, innitTestNodes);
+    FRIEND_TEST(primTest, innitTestEdges);
+    FRIEND_TEST(primTest, compareEdgesTest);
 public:
     LabGraph();
     /**
