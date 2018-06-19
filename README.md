@@ -22,4 +22,7 @@ Import project into CLion and start testMain.cpp. Here you can choose which Algo
  - CLion
  - Googletest
  
- 
+# Contributor
+ - Anja Wimmer -> [AnyaW](https://github.com/AnyaW)
+ - Christoph Hahn -> [jfad](https://github.com/jfad)
+ - Sebastian Hartl -> [Sil3ntF0g](https://github.com/Sil3ntF0g)
