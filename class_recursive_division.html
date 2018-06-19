@@ -106,8 +106,12 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a2d4bb0a2bd69216c35b27e8448e4b1af"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a22f4a67b74499117e6d38cb2de49b9c6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_recursive_division.html#a22f4a67b74499117e6d38cb2de49b9c6">makeMazeOpening</a> (bool **field, int rows, int cols)</td></tr>
 <tr class="separator:a22f4a67b74499117e6d38cb2de49b9c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4fab5d28d0004ab5274aa91df3069d01"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_recursive_division.html#a4fab5d28d0004ab5274aa91df3069d01">drawMaze</a> (bool **field)</td></tr>
-<tr class="separator:a4fab5d28d0004ab5274aa91df3069d01"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a16d033f98dd8d407d7ccf4828b3391e7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_recursive_division.html#a16d033f98dd8d407d7ccf4828b3391e7">drawMaze</a> (bool **field, std::ostream &amp;output)</td></tr>
+<tr class="separator:a16d033f98dd8d407d7ccf4828b3391e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aba7306d64093888306f2479fd3e629e6"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_recursive_division.html#aba7306d64093888306f2479fd3e629e6">generateRandomInt</a> (int lower, int upper)</td></tr>
+<tr class="separator:aba7306d64093888306f2479fd3e629e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a64a45071f78e79f4edd29578d92388e0"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_recursive_division.html#a64a45071f78e79f4edd29578d92388e0">generateRandomBoolean</a> ()</td></tr>
+<tr class="separator:a64a45071f78e79f4edd29578d92388e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -288,7 +292,7 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a4fab5d28d0004ab5274aa91df3069d01"></a>
+<a class="anchor" id="a16d033f98dd8d407d7ccf4828b3391e7"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -296,8 +300,18 @@ Public Attributes</h2></td></tr>
           <td class="memname">void RecursiveDivision::drawMaze </td>
           <td>(</td>
           <td class="paramtype">bool **&#160;</td>
-          <td class="paramname"><em>field</em></td><td>)</td>
+          <td class="paramname"><em>field</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">std::ostream &amp;&#160;</td>
+          <td class="paramname"><em>output</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -305,6 +319,7 @@ Public Attributes</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">field</td><td>Maze field. </td></tr>
+    <tr><td class="paramname">output</td><td>output stream (only for testing purpose). </td></tr>
   </table>
   </dd>
 </dl>
@@ -327,6 +342,58 @@ Public Attributes</h2></td></tr>
 <p>It ask for cols and rows of the maze. Theses are the relative sizes of the maze, because of the walls. A maze with 2 cols have an absolute width of 6. Two for the walls on the left and on the right, two for the given col amount and 2 for walls between them.</p>
 <dl class="section return"><dt>Returns</dt><dd>0 if no exception occurs. </dd></dl>
 <p>Enable Debug mode for maze printing:</p>
+
+</div>
+</div>
+<a class="anchor" id="a64a45071f78e79f4edd29578d92388e0"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool RecursiveDivision::generateRandomBoolean </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Generate a random boolean value. </p>
+<dl class="section return"><dt>Returns</dt><dd>random true or false. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="aba7306d64093888306f2479fd3e629e6"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int RecursiveDivision::generateRandomInt </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>lower</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>upper</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Generate a random integer value between the lower and the upper boundary. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">lower</td><td>Lower bound. </td></tr>
+    <tr><td class="paramname">upper</td><td>Upper bound. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>random value. </dd></dl>
 
 </div>
 </div>
