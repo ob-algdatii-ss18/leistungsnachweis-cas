@@ -22,6 +22,8 @@ script:
   - cmake --build .
   - ctest -V
   - cd ..
+  - ls -la
+  - ls build/ la
 
 
 after_success:
