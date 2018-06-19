@@ -7,7 +7,7 @@
 
 #include "gtest/gtest.h"
 #include "gmock/gmock.h"
-#include "prims/LabGraph.h"
+#include "LabGraph.h"
 
 class primTest : public ::testing::Test {
 
