@@ -22,6 +22,7 @@ Now you can choose which Algorithm to pick:
  - Doxygen 1.8.15
  - CLion
  - Googletest
+ - Graphviz
  
 # Contributor
  - Anja Wimmer -> [AnyaW](https://github.com/AnyaW)
