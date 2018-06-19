@@ -1,5 +1,7 @@
 var searchData=
 [
-  ['initgraph',['initGraph',['../class_lab_graph.html#ab54dc4e91349cfeca4e501ab7bd340af',1,'LabGraph']]],
-  ['initmaze',['initMaze',['../class_recursive_backtracker.html#a114ae44592829d9ddd93f82985ac8cc3',1,'RecursiveBacktracker::initMaze()'],['../class_recursive_division.html#a3572b23c6eb7d255d1810efe2e40687f',1,'RecursiveDivision::initMaze()']]]
+  ['generatemaze',['generateMaze',['../class_recursive_division.html#a09758db0100db2aa3902535869ba7d7c',1,'RecursiveDivision']]],
+  ['generaterandomboolean',['generateRandomBoolean',['../class_recursive_division.html#a64a45071f78e79f4edd29578d92388e0',1,'RecursiveDivision']]],
+  ['generaterandomint',['generateRandomInt',['../class_recursive_division.html#aba7306d64093888306f2479fd3e629e6',1,'RecursiveDivision']]],
+  ['graphtopic',['graphToPic',['../class_lab_graph.html#a478f4acb3c4da8d81b079d26d83c9f42',1,'LabGraph']]]
 ];

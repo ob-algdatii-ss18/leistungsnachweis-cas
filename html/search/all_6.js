@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['makemazeopening',['makeMazeOpening',['../class_recursive_division.html#a22f4a67b74499117e6d38cb2de49b9c6',1,'RecursiveDivision']]],
-  ['makevideo',['makeVideo',['../class_lab_graph.html#afca83817aa9ca4996f49fbd2dd2618f5',1,'LabGraph']]]
+  ['labgraph',['LabGraph',['../class_lab_graph.html',1,'LabGraph'],['../class_lab_graph.html#aa10dea2f824ce99b6175952650ea7349',1,'LabGraph::LabGraph()']]],
+  ['labprinter',['labPrinter',['../class_recursive_division.html#ac2402e5bb64bd4444f584ac6b237f84b',1,'RecursiveDivision']]]
 ];

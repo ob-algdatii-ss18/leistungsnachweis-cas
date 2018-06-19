@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['recursivebacktracker',['RecursiveBacktracker',['../class_recursive_backtracker.html',1,'']]],
-  ['recursivedivision',['RecursiveDivision',['../class_recursive_division.html',1,'']]]
+  ['operator_3c_3c',['operator&lt;&lt;',['../class_lab_graph.html#a98ed4ce18d06e538a4ef79d43997a19f',1,'LabGraph']]]
 ];
