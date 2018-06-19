@@ -30,4 +30,4 @@ Now you can choose which Algorithm to pick:
  - Sebastian Hartl -> [Sil3ntF0g](https://github.com/Sil3ntF0g)
 
 # Documentation
-[https://ob-algdatii-ss18.github.io/leistungsnachweis-cas/html/](https://ob-algdatii-ss18.github.io/leistungsnachweis-cas/html/)
+[Doxygen](https://ob-algdatii-ss18.github.io/leistungsnachweis-cas/html/)
