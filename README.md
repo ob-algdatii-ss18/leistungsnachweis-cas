@@ -1,4 +1,4 @@
-# leistungsnachweis-cas
+# Leistungsnachweis-cas
 [![Build Status](https://travis-ci.org/ob-algdatii-ss18/leistungsnachweis-cas.svg?branch=master)](https://travis-ci.org/ob-algdatii-ss18/leistungsnachweis-cas)
 [![Coverage Status](https://coveralls.io/repos/github/ob-algdatii-ss18/leistungsnachweis-cas/badge.svg?branch=master)](https://coveralls.io/github/ob-algdatii-ss18/leistungsnachweis-cas?branch=master)
 
@@ -29,5 +29,4 @@ Now you can choose which Algorithm to pick:
  - Christoph Hahn -> [jfad](https://github.com/jfad)
  - Sebastian Hartl -> [Sil3ntF0g](https://github.com/Sil3ntF0g)
 
-# Documentation
-[Doxygen](https://ob-algdatii-ss18.github.io/leistungsnachweis-cas/html/)
+[Doxygen Documentation](https://ob-algdatii-ss18.github.io/leistungsnachweis-cas/html/)
