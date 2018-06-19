@@ -1,0 +1,313 @@
+graph Labyrinth {
+graph [ratio=fill size="10,10" splines=line  rankdir="TB"];
+{ node [style=invis root=true color=green] "root" }
+{ node [style=invis] "end" }
+{ node [fixedsize=true shape=square width=3 style=dotted] 
+    "N_0_0" [label="" style=filled color=black rank=0];
+    "N_1_0" [label="" style=filled color=black rank=0];
+    "N_2_0" [label="" style=filled color=black rank=0];
+    "N_3_0" [label="" style=filled color=black rank=0];
+    "N_4_0" [label="" style=filled color=black rank=0];
+    "N_5_0" [label="" style=filled color=black rank=0];
+    "N_6_0" [label="" style=filled color=black rank=0];
+    "N_7_0" [label="" style=filled color=black rank=0];
+    "N_8_0" [label="" style=filled color=black rank=0];
+    "N_9_0" [label="" style=filled color=black rank=0];
+    "N_0_1" [label="" style=filled color=black rank=1];
+    "N_1_1" [label="" style=filled color=white rank=1];
+    "N_2_1" [label="" style=filled color=white rank=1];
+    "N_3_1" [label="" style=filled color=white rank=1];
+    "N_4_1" [label="" style=filled color=white rank=1];
+    "N_5_1" [label="" style=filled color=white rank=1];
+    "N_6_1" [label="" style=filled color=white rank=1];
+    "N_7_1" [label="" style=filled color=white rank=1];
+    "N_8_1" [label="" style=filled color=white rank=1];
+    "N_9_1" [label="" style=filled color=black rank=1];
+    "N_0_2" [label="" style=filled color=black rank=2];
+    "N_1_2" [label="" style=filled color=white rank=2];
+    "N_2_2" [label="" style=filled color=white rank=2];
+    "N_3_2" [label="" style=filled color=white rank=2];
+    "N_4_2" [label="" style=filled color=white rank=2];
+    "N_5_2" [label="" style=filled color=white rank=2];
+    "N_6_2" [label="" style=filled color=white rank=2];
+    "N_7_2" [label="" style=filled color=white rank=2];
+    "N_8_2" [label="" style=filled color=white rank=2];
+    "N_9_2" [label="" style=filled color=black rank=2];
+    "N_0_3" [label="" style=filled color=black rank=3];
+    "N_1_3" [label="" style=filled color=white rank=3];
+    "N_2_3" [label="" style=filled color=white rank=3];
+    "N_3_3" [label="" style=filled color=white rank=3];
+    "N_4_3" [label="" style=filled color=white rank=3];
+    "N_5_3" [label="" style=filled color=white rank=3];
+    "N_6_3" [label="" style=filled color=white rank=3];
+    "N_7_3" [label="" style=filled color=white rank=3];
+    "N_8_3" [label="" style=filled color=white rank=3];
+    "N_9_3" [label="" style=filled color=black rank=3];
+    "N_0_4" [label="" style=filled color=black rank=4];
+    "N_1_4" [label="" style=filled color=white rank=4];
+    "N_2_4" [label="" style=filled color=white rank=4];
+    "N_3_4" [label="" style=filled color=white rank=4];
+    "N_4_4" [label="" style=filled color=white rank=4];
+    "N_5_4" [label="" style=filled color=white rank=4];
+    "N_6_4" [label="" style=filled color=white rank=4];
+    "N_7_4" [label="" style=filled color=white rank=4];
+    "N_8_4" [label="" style=filled color=white rank=4];
+    "N_9_4" [label="" style=filled color=black rank=4];
+    "N_0_5" [label="" style=filled color=black rank=5];
+    "N_1_5" [label="" style=filled color=white rank=5];
+    "N_2_5" [label="" style=filled color=white rank=5];
+    "N_3_5" [label="" style=filled color=white rank=5];
+    "N_4_5" [label="" style=filled color=white rank=5];
+    "N_5_5" [label="" style=filled color=white rank=5];
+    "N_6_5" [label="" style=filled color=white rank=5];
+    "N_7_5" [label="" style=filled color=white rank=5];
+    "N_8_5" [label="" style=filled color=white rank=5];
+    "N_9_5" [label="" style=filled color=black rank=5];
+    "N_0_6" [label="" style=filled color=black rank=6];
+    "N_1_6" [label="" style=filled color=white rank=6];
+    "N_2_6" [label="" style=filled color=white rank=6];
+    "N_3_6" [label="" style=filled color=white rank=6];
+    "N_4_6" [label="" style=filled color=white rank=6];
+    "N_5_6" [label="" style=filled color=white rank=6];
+    "N_6_6" [label="" style=filled color=white rank=6];
+    "N_7_6" [label="" style=filled color=white rank=6];
+    "N_8_6" [label="" style=filled color=white rank=6];
+    "N_9_6" [label="" style=filled color=black rank=6];
+    "N_0_7" [label="" style=filled color=black rank=7];
+    "N_1_7" [label="" style=filled color=white rank=7];
+    "N_2_7" [label="" style=filled color=white rank=7];
+    "N_3_7" [label="" style=filled color=white rank=7];
+    "N_4_7" [label="" style=filled color=white rank=7];
+    "N_5_7" [label="" style=filled color=white rank=7];
+    "N_6_7" [label="" style=filled color=white rank=7];
+    "N_7_7" [label="" color=red style=filled rank=7];
+    "N_8_7" [label="" style=filled color=white rank=7];
+    "N_9_7" [label="" style=filled color=black rank=7];
+    "N_0_8" [label="" style=filled color=black rank=8];
+    "N_1_8" [label="" style=filled color=white rank=8];
+    "N_2_8" [label="" style=filled color=white rank=8];
+    "N_3_8" [label="" style=filled color=white rank=8];
+    "N_4_8" [label="" style=filled color=white rank=8];
+    "N_5_8" [label="" style=filled color=white rank=8];
+    "N_6_8" [label="" style=filled color=white rank=8];
+    "N_7_8" [label="" style=filled color=white rank=8];
+    "N_8_8" [label="" style=filled color=white rank=8];
+    "N_9_8" [label="" style=filled color=black rank=8];
+    "N_0_9" [label="" style=filled color=black rank=9];
+    "N_1_9" [label="" style=filled color=black rank=9];
+    "N_2_9" [label="" style=filled color=black rank=9];
+    "N_3_9" [label="" style=filled color=black rank=9];
+    "N_4_9" [label="" style=filled color=black rank=9];
+    "N_5_9" [label="" style=filled color=black rank=9];
+    "N_6_9" [label="" style=filled color=black rank=9];
+    "N_7_9" [label="" style=filled color=black rank=9];
+    "N_8_9" [label="" style=filled color=black rank=9];
+    "N_9_9" [label="" style=filled color=black rank=9];
+}
+{ edge [style=invis len=0.01 ] 
+"root" -- "N_0_0"
+"root" -- "N_1_0"
+"root" -- "N_2_0"
+"root" -- "N_3_0"
+"root" -- "N_4_0"
+"root" -- "N_5_0"
+"root" -- "N_6_0"
+"root" -- "N_7_0"
+"root" -- "N_8_0"
+"root" -- "N_9_0"
+}
+{ edge [style=invis len=0.01] 
+"N_0_9" -- "end"
+"N_1_9" -- "end"
+"N_2_9" -- "end"
+"N_3_9" -- "end"
+"N_4_9" -- "end"
+"N_5_9" -- "end"
+"N_6_9" -- "end"
+"N_7_9" -- "end"
+"N_8_9" -- "end"
+"N_9_9" -- "end"
+}
+{ edge [penwidth=255  len=0.01] 
+    "N_0_0" -- "N_1_0" [constraint=false style="" penwidth=210];
+    "N_1_0" -- "N_2_0" [constraint=false style="" penwidth=210];
+    "N_2_0" -- "N_3_0" [constraint=false style="" penwidth=210];
+    "N_3_0" -- "N_4_0" [constraint=false style="" penwidth=210];
+    "N_4_0" -- "N_5_0" [constraint=false style="" penwidth=210];
+    "N_5_0" -- "N_6_0" [constraint=false style="" penwidth=210];
+    "N_6_0" -- "N_7_0" [constraint=false style="" penwidth=210];
+    "N_7_0" -- "N_8_0" [constraint=false style="" penwidth=210];
+    "N_8_0" -- "N_9_0" [constraint=false style="" penwidth=210];
+    "N_0_0" -- "N_0_1" [constraint=true style="" penwidth=210];
+    "N_0_1" -- "N_1_1" [constraint=false style=invis];
+    "N_1_0" -- "N_1_1" [constraint=true style=invis];
+    "N_1_1" -- "N_2_1" [constraint=false style=invis];
+    "N_2_0" -- "N_2_1" [constraint=true style=invis];
+    "N_2_1" -- "N_3_1" [constraint=false style=""];
+    "N_3_0" -- "N_3_1" [constraint=true style=invis];
+    "N_3_1" -- "N_4_1" [constraint=false style=invis];
+    "N_4_0" -- "N_4_1" [constraint=true style=invis];
+    "N_4_1" -- "N_5_1" [constraint=false style=invis];
+    "N_5_0" -- "N_5_1" [constraint=true style=invis];
+    "N_5_1" -- "N_6_1" [constraint=false style=""];
+    "N_6_0" -- "N_6_1" [constraint=true style=invis];
+    "N_6_1" -- "N_7_1" [constraint=false style=invis];
+    "N_7_0" -- "N_7_1" [constraint=true style=invis];
+    "N_7_1" -- "N_8_1" [constraint=false style=invis];
+    "N_8_0" -- "N_8_1" [constraint=true style=invis];
+    "N_8_1" -- "N_9_1" [constraint=false style=invis];
+    "N_9_0" -- "N_9_1" [constraint=true style="" penwidth=210];
+    "N_0_1" -- "N_0_2" [constraint=true style="" penwidth=210];
+    "N_0_2" -- "N_1_2" [constraint=false style=invis];
+    "N_1_1" -- "N_1_2" [constraint=true style=invis];
+    "N_1_2" -- "N_2_2" [constraint=false style=""];
+    "N_2_1" -- "N_2_2" [constraint=true style=""];
+    "N_2_2" -- "N_3_2" [constraint=false style=invis];
+    "N_3_1" -- "N_3_2" [constraint=true style=invis];
+    "N_3_2" -- "N_4_2" [constraint=false style=""];
+    "N_4_1" -- "N_4_2" [constraint=true style=invis];
+    "N_4_2" -- "N_5_2" [constraint=false style=""];
+    "N_5_1" -- "N_5_2" [constraint=true style=invis];
+    "N_5_2" -- "N_6_2" [constraint=false style=invis];
+    "N_6_1" -- "N_6_2" [constraint=true style=""];
+    "N_6_2" -- "N_7_2" [constraint=false style=invis];
+    "N_7_1" -- "N_7_2" [constraint=true style=""];
+    "N_7_2" -- "N_8_2" [constraint=false style=invis];
+    "N_8_1" -- "N_8_2" [constraint=true style=invis];
+    "N_8_2" -- "N_9_2" [constraint=false style=invis];
+    "N_9_1" -- "N_9_2" [constraint=true style="" penwidth=210];
+    "N_0_2" -- "N_0_3" [constraint=true style="" penwidth=210];
+    "N_0_3" -- "N_1_3" [constraint=false style=invis];
+    "N_1_2" -- "N_1_3" [constraint=true style=invis];
+    "N_1_3" -- "N_2_3" [constraint=false style=""];
+    "N_2_2" -- "N_2_3" [constraint=true style=invis];
+    "N_2_3" -- "N_3_3" [constraint=false style=""];
+    "N_3_2" -- "N_3_3" [constraint=true style=""];
+    "N_3_3" -- "N_4_3" [constraint=false style=""];
+    "N_4_2" -- "N_4_3" [constraint=true style=invis];
+    "N_4_3" -- "N_5_3" [constraint=false style=invis];
+    "N_5_2" -- "N_5_3" [constraint=true style=""];
+    "N_5_3" -- "N_6_3" [constraint=false style=invis];
+    "N_6_2" -- "N_6_3" [constraint=true style=""];
+    "N_6_3" -- "N_7_3" [constraint=false style=""];
+    "N_7_2" -- "N_7_3" [constraint=true style=""];
+    "N_7_3" -- "N_8_3" [constraint=false style=invis];
+    "N_8_2" -- "N_8_3" [constraint=true style=""];
+    "N_8_3" -- "N_9_3" [constraint=false style=invis];
+    "N_9_2" -- "N_9_3" [constraint=true style="" penwidth=210];
+    "N_0_3" -- "N_0_4" [constraint=true style="" penwidth=210];
+    "N_0_4" -- "N_1_4" [constraint=false style=invis];
+    "N_1_3" -- "N_1_4" [constraint=true style=invis];
+    "N_1_4" -- "N_2_4" [constraint=false style=""];
+    "N_2_3" -- "N_2_4" [constraint=true style=invis];
+    "N_2_4" -- "N_3_4" [constraint=false style=invis];
+    "N_3_3" -- "N_3_4" [constraint=true style=invis];
+    "N_3_4" -- "N_4_4" [constraint=false style=invis];
+    "N_4_3" -- "N_4_4" [constraint=true style=""];
+    "N_4_4" -- "N_5_4" [constraint=false style=""];
+    "N_5_3" -- "N_5_4" [constraint=true style=""];
+    "N_5_4" -- "N_6_4" [constraint=false style=""];
+    "N_6_3" -- "N_6_4" [constraint=true style=invis];
+    "N_6_4" -- "N_7_4" [constraint=false style=invis];
+    "N_7_3" -- "N_7_4" [constraint=true style=invis];
+    "N_7_4" -- "N_8_4" [constraint=false style=""];
+    "N_8_3" -- "N_8_4" [constraint=true style=invis];
+    "N_8_4" -- "N_9_4" [constraint=false style=invis];
+    "N_9_3" -- "N_9_4" [constraint=true style="" penwidth=210];
+    "N_0_4" -- "N_0_5" [constraint=true style="" penwidth=210];
+    "N_0_5" -- "N_1_5" [constraint=false style=invis];
+    "N_1_4" -- "N_1_5" [constraint=true style=invis];
+    "N_1_5" -- "N_2_5" [constraint=false style=""];
+    "N_2_4" -- "N_2_5" [constraint=true style=""];
+    "N_2_5" -- "N_3_5" [constraint=false style=invis];
+    "N_3_4" -- "N_3_5" [constraint=true style=""];
+    "N_3_5" -- "N_4_5" [constraint=false style=invis];
+    "N_4_4" -- "N_4_5" [constraint=true style=invis];
+    "N_4_5" -- "N_5_5" [constraint=false style=""];
+    "N_5_4" -- "N_5_5" [constraint=true style=invis];
+    "N_5_5" -- "N_6_5" [constraint=false style=""];
+    "N_6_4" -- "N_6_5" [constraint=true style=""];
+    "N_6_5" -- "N_7_5" [constraint=false style=invis];
+    "N_7_4" -- "N_7_5" [constraint=true style=""];
+    "N_7_5" -- "N_8_5" [constraint=false style=""];
+    "N_8_4" -- "N_8_5" [constraint=true style=invis];
+    "N_8_5" -- "N_9_5" [constraint=false style=invis];
+    "N_9_4" -- "N_9_5" [constraint=true style="" penwidth=210];
+    "N_0_5" -- "N_0_6" [constraint=true style="" penwidth=210];
+    "N_0_6" -- "N_1_6" [constraint=false style=invis];
+    "N_1_5" -- "N_1_6" [constraint=true style=invis];
+    "N_1_6" -- "N_2_6" [constraint=false style=""];
+    "N_2_5" -- "N_2_6" [constraint=true style=invis];
+    "N_2_6" -- "N_3_6" [constraint=false style=invis];
+    "N_3_5" -- "N_3_6" [constraint=true style=""];
+    "N_3_6" -- "N_4_6" [constraint=false style=invis];
+    "N_4_5" -- "N_4_6" [constraint=true style=""];
+    "N_4_6" -- "N_5_6" [constraint=false style=invis];
+    "N_5_5" -- "N_5_6" [constraint=true style=invis];
+    "N_5_6" -- "N_6_6" [constraint=false style=""];
+    "N_6_5" -- "N_6_6" [constraint=true style=invis];
+    "N_6_6" -- "N_7_6" [constraint=false style=""];
+    "N_7_5" -- "N_7_6" [constraint=true style=invis];
+    "N_7_6" -- "N_8_6" [constraint=false style=invis];
+    "N_8_5" -- "N_8_6" [constraint=true style=invis];
+    "N_8_6" -- "N_9_6" [constraint=false style=invis];
+    "N_9_5" -- "N_9_6" [constraint=true style="" penwidth=210];
+    "N_0_6" -- "N_0_7" [constraint=true style="" penwidth=210];
+    "N_0_7" -- "N_1_7" [constraint=false style=invis];
+    "N_1_6" -- "N_1_7" [constraint=true style=invis];
+    "N_1_7" -- "N_2_7" [constraint=false style=""];
+    "N_2_6" -- "N_2_7" [constraint=true style=""];
+    "N_2_7" -- "N_3_7" [constraint=false style=invis];
+    "N_3_6" -- "N_3_7" [constraint=true style=""];
+    "N_3_7" -- "N_4_7" [constraint=false style=""];
+    "N_4_6" -- "N_4_7" [constraint=true style=invis];
+    "N_4_7" -- "N_5_7" [constraint=false style=""];
+    "N_5_6" -- "N_5_7" [constraint=true style=""];
+    "N_5_7" -- "N_6_7" [constraint=false style=invis];
+    "N_6_6" -- "N_6_7" [constraint=true style=invis];
+    "N_6_7" -- "N_7_7" [constraint=false style=""];
+    "N_7_6" -- "N_7_7" [constraint=true style=""];
+    "N_7_7" -- "N_8_7" [constraint=false style=""];
+    "N_8_6" -- "N_8_7" [constraint=true style=invis];
+    "N_8_7" -- "N_9_7" [constraint=false style=invis];
+    "N_9_6" -- "N_9_7" [constraint=true style="" penwidth=210];
+    "N_0_7" -- "N_0_8" [constraint=true style="" penwidth=210];
+    "N_0_8" -- "N_1_8" [constraint=false style=invis];
+    "N_1_7" -- "N_1_8" [constraint=true style=invis];
+    "N_1_8" -- "N_2_8" [constraint=false style=invis];
+    "N_2_7" -- "N_2_8" [constraint=true style=invis];
+    "N_2_8" -- "N_3_8" [constraint=false style=""];
+    "N_3_7" -- "N_3_8" [constraint=true style=invis];
+    "N_3_8" -- "N_4_8" [constraint=false style=invis];
+    "N_4_7" -- "N_4_8" [constraint=true style=invis];
+    "N_4_8" -- "N_5_8" [constraint=false style=""];
+    "N_5_7" -- "N_5_8" [constraint=true style=invis];
+    "N_5_8" -- "N_6_8" [constraint=false style=invis];
+    "N_6_7" -- "N_6_8" [constraint=true style=""];
+    "N_6_8" -- "N_7_8" [constraint=false style=invis];
+    "N_7_7" -- "N_7_8" [constraint=true style=invis];
+    "N_7_8" -- "N_8_8" [constraint=false style=""];
+    "N_8_7" -- "N_8_8" [constraint=true style=invis];
+    "N_8_8" -- "N_9_8" [constraint=false style=invis];
+    "N_9_7" -- "N_9_8" [constraint=true style="" penwidth=210];
+    "N_0_8" -- "N_0_9" [constraint=true style="" penwidth=210];
+    "N_0_9" -- "N_1_9" [constraint=false style="" penwidth=210];
+    "N_1_8" -- "N_1_9" [constraint=true style=invis];
+    "N_1_9" -- "N_2_9" [constraint=false style="" penwidth=210];
+    "N_2_8" -- "N_2_9" [constraint=true style=invis];
+    "N_2_9" -- "N_3_9" [constraint=false style="" penwidth=210];
+    "N_3_8" -- "N_3_9" [constraint=true style=invis];
+    "N_3_9" -- "N_4_9" [constraint=false style="" penwidth=210];
+    "N_4_8" -- "N_4_9" [constraint=true style=invis];
+    "N_4_9" -- "N_5_9" [constraint=false style="" penwidth=210];
+    "N_5_8" -- "N_5_9" [constraint=true style=invis];
+    "N_5_9" -- "N_6_9" [constraint=false style="" penwidth=210];
+    "N_6_8" -- "N_6_9" [constraint=true style=invis];
+    "N_6_9" -- "N_7_9" [constraint=false style="" penwidth=210];
+    "N_7_8" -- "N_7_9" [constraint=true style=invis];
+    "N_7_9" -- "N_8_9" [constraint=false style="" penwidth=210];
+    "N_8_8" -- "N_8_9" [constraint=true style=invis];
+    "N_8_9" -- "N_9_9" [constraint=false style="" penwidth=210];
+    "N_9_8" -- "N_9_9" [constraint=true style="" penwidth=210];
+}
+}
