@@ -25,7 +25,7 @@ script:
 
 
 after_success:
-  - coveralls --root .. --verbose --exclude build/CMakeFiles/ --exclude build/googletest-src/ --exclude test --gcov-options '\-lp'
+  - coveralls --root . --verbose --exclude build/CMakeFiles/ --exclude build/googletest-src/ --exclude test --gcov-options '\-lp'
   - doxygen Doxyfile
 
 deploy:
