@@ -31,4 +31,4 @@ Now you can choose which Algorithm to pick:
  - Christoph Hahn -> [jfad](https://github.com/jfad)
  - Sebastian Hartl -> [Sil3ntF0g](https://github.com/Sil3ntF0g)
 
-[Doxygen Documentation](https://ob-algdatii-ss18.github.io/leistungsnachweis-cas/html/)
+# [Doxygen Documentation](https://ob-algdatii-ss18.github.io/leistungsnachweis-cas/html/)
