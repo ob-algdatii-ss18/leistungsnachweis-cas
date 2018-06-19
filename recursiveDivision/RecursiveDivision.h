@@ -94,8 +94,23 @@ public:
     /**
      * Consumes the maze field and draw it at the console output.
      * @param field Maze field.
+     * @param output output stream (only for testing purpose).
      */
-    void drawMaze(bool **field);
+    void drawMaze(bool **field, std::ostream &output);
+
+    /**
+     * Generate a random integer value between the lower and the upper boundary.
+     * @param lower Lower bound.
+     * @param upper Upper bound.
+     * @return random value.
+     */
+    int generateRandomInt(int lower, int upper);
+
+    /**
+     * Generate a random boolean value.
+     * @return random true or false.
+     */
+    bool generateRandomBoolean();
 };
 
 

@@ -1,7 +1,3 @@
-//
-// Created by chris on 27.04.18.
-//
-
 #include "RecursiveDivision.h"
 
 using namespace ::std;
@@ -9,7 +5,7 @@ using namespace ::std;
 int fieldWidth, fieldHeight;
 bool debugMode = false;
 
-int generateRandomInt(int lower, int upper) {
+int RecursiveDivision::generateRandomInt(int lower, int upper) {
     int diff = upper - lower;
 
     if (diff < 1) {
@@ -19,21 +15,22 @@ int generateRandomInt(int lower, int upper) {
     return random;
 }
 
-bool generateRandomBoolean() {
+bool RecursiveDivision::generateRandomBoolean() {
     return rand() % 2 == 0;
 }
 
-void RecursiveDivision::drawMaze(bool **field) {
+void RecursiveDivision::drawMaze(bool **field, std::ostream &output) {
     labPrinter->setLab(field);
     labPrinter->graphToPic("jpe");
+
     if (debugMode) {
         for (int i = 0; i < fieldHeight; i++) {
             for (int j = 0; j < fieldWidth; j++) {
-                cout << (field[i][j] ? "#" : " ");
+                output << (field[i][j] ? "#" : " ");
             }
-            cout << endl;
+            output << endl;
         }
-        cout << endl;
+        output << endl;
     }
 }
 
@@ -90,7 +87,7 @@ void RecursiveDivision::divideField(bool **field, int left, int right, int top, 
     width = right - left;
     height = bottom - top;
 
-    drawMaze(field);
+    drawMaze(field, std::cout);
 
     if (width > 2 && height > 2) {
         if (width > height) {
@@ -178,7 +175,7 @@ int RecursiveDivision::generateMaze() {
 
     // Enabled for printing result
     debugMode = true;
-    drawMaze(mazeField);
+    drawMaze(mazeField, std::cout);
     labPrinter->setLab(mazeField);
     labPrinter->graphToPic("jpe");
     labPrinter->graphToPic("bnp");
