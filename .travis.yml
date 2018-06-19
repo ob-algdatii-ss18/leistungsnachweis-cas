@@ -25,7 +25,7 @@ script:
   - cmake -H. -Bbuild -DENABLE_COVERAGE=1 -DCMAKE_CXX_COMPILER="g++-6"
   - cd build
   - cmake --build .
-  - ctest
+  - ctest -v
 
 after_success:
   - coveralls --root .. --exclude build/CMakeFiles/ --exclude build/googletest-src/ --gcov-options '\-lp'
