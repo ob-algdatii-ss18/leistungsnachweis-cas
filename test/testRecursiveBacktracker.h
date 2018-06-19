@@ -7,7 +7,7 @@
 
 #include "gtest/gtest.h"
 #include "gmock/gmock.h"
-#include "RecursiveBacktracker.h"
+#include "../recursiveBacktracker/RecursiveBacktracker.h"
 
 
 class RecursiveBacktrackerTest : public ::testing::Test{

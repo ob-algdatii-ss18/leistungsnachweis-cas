@@ -10,6 +10,7 @@ SET(COVERAGE OFF CACHE BOOL "Coverage")
 add_subdirectory(prims)
 add_subdirectory(recursiveDivision)
 add_subdirectory(recursiveBacktracker)
+add_subdirectory(test)
 
 #set(SOURCE_FILES testMain.cpp)
 add_executable(Main ${SOURCE_FILES} testMain.cpp)
@@ -50,7 +51,6 @@ set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} --coverage")
 
 enable_testing()
 
-add_subdirectory(test)
 
 #add_test(prims-Test test/primsTest --gtest_output=xml:report.xml)
 #add_test(recBac-Test test/recursiveBacktrackerTest --gtest_output=xml:report.xml)
