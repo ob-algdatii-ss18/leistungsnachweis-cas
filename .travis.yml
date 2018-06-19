@@ -33,6 +33,7 @@ deploy:
   skip_cleanup: true
   github_token: $GH_REPO_TOKEN
   keep-history: true
+  local-dir: doxygen_doc
   on:
     branch: master
 
