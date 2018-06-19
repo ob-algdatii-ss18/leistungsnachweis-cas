@@ -96,8 +96,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a3572b23c6eb7d255d1810efe2e40687f"><td class="memItemLeft" align="right" valign="top">bool **&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_recursive_division.html#a3572b23c6eb7d255d1810efe2e40687f">initMaze</a> (int width, int height)</td></tr>
 <tr class="separator:a3572b23c6eb7d255d1810efe2e40687f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a28104b1c404466b1c5add48cbc34cee7"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_recursive_division.html#a28104b1c404466b1c5add48cbc34cee7">generateMaze</a> ()</td></tr>
-<tr class="separator:a28104b1c404466b1c5add48cbc34cee7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a09758db0100db2aa3902535869ba7d7c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_recursive_division.html#a09758db0100db2aa3902535869ba7d7c">generateMaze</a> (std::istream &amp;is)</td></tr>
+<tr class="separator:a09758db0100db2aa3902535869ba7d7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a38669e9dcfc8e9056928333613adbaa1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_recursive_division.html#a38669e9dcfc8e9056928333613adbaa1">divideField</a> (bool **field, int left, int right, int top, int bottom)</td></tr>
 <tr class="separator:a38669e9dcfc8e9056928333613adbaa1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a16e56a56f3d84644211cff7844c3b4b8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_recursive_division.html#a16e56a56f3d84644211cff7844c3b4b8">divideVertical</a> (bool **field, int left, int right, int top, int bottom)</td></tr>
@@ -223,7 +223,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>Divide the sub-field with a horizontal wall.</p>
-<p>It choose a random number for the column index where the wall will be placed. After that the wall will be added and a random column index is calculated to open the passage. After that, this method calls the <a class="el" href="class_recursive_division.html#a28104b1c404466b1c5add48cbc34cee7">generateMaze()</a> Method again with the new two, smaller fields. </p>
+<p>It choose a random number for the column index where the wall will be placed. After that the wall will be added and a random column index is calculated to open the passage. After that, this method calls the <a class="el" href="class_recursive_division.html#a09758db0100db2aa3902535869ba7d7c">generateMaze()</a> Method again with the new two, smaller fields. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">field</td><td>The complete maze field. </td></tr>
@@ -279,7 +279,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>Divide the sub-field with a vertical wall.</p>
-<p>It choose a random number for the row index where the wall will be placed. After that the wall will be added and a random row index is calculated to open the passage. After that, this method calls the <a class="el" href="class_recursive_division.html#a28104b1c404466b1c5add48cbc34cee7">generateMaze()</a> Method again with the new two, smaller fields. </p>
+<p>It choose a random number for the row index where the wall will be placed. After that the wall will be added and a random row index is calculated to open the passage. After that, this method calls the <a class="el" href="class_recursive_division.html#a09758db0100db2aa3902535869ba7d7c">generateMaze()</a> Method again with the new two, smaller fields. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">field</td><td>The complete maze field. </td></tr>
@@ -327,20 +327,27 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a28104b1c404466b1c5add48cbc34cee7"></a>
+<a class="anchor" id="a09758db0100db2aa3902535869ba7d7c"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">int RecursiveDivision::generateMaze </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">std::istream &amp;&#160;</td>
+          <td class="paramname"><em>is</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 <p>Start method of this class with console.</p>
-<p>It ask for cols and rows of the maze. Theses are the relative sizes of the maze, because of the walls. A maze with 2 cols have an absolute width of 6. Two for the walls on the left and on the right, two for the given col amount and 2 for walls between them.</p>
+<p>It ask for cols and rows of the maze. Theses are the relative sizes of the maze, because of the walls. A maze with 2 cols have an absolute width of 6. Two for the walls on the left and on the right, two for the given col amount and 2 for walls between them. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">is</td><td>input-stream for reading input params. </td></tr>
+  </table>
+  </dd>
+</dl>
 <dl class="section return"><dt>Returns</dt><dd>0 if no exception occurs. </dd></dl>
 <p>Enable Debug mode for maze printing:</p>
 
