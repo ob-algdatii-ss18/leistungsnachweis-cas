@@ -173,11 +173,12 @@ int RecursiveDivision::generateMaze() {
     makeMazeOpening(mazeField, rows, width);
 
     // Enabled for printing result
-    debugMode = true;
     drawMaze(mazeField, std::cout);
-    labPrinter->setLab(mazeField);
-    labPrinter->graphToPic("jpe");
-    labPrinter->graphToPic("bnp");
-    labPrinter->makeVideo();
+    if (!debugMode) {
+        labPrinter->setLab(mazeField);
+        labPrinter->graphToPic("jpe");
+        labPrinter->graphToPic("bnp");
+        labPrinter->makeVideo();
+    }
     return 0;
 }

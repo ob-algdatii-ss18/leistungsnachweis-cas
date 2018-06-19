@@ -130,7 +130,6 @@ TEST(RecursiveDivisionTest, testDivideVertical) {
     EXPECT_TRUE(hasWall2);
 }
 
-
 TEST(RecursiveDivisionTest, testDivideHorizontal) {
     RecursiveDivision underTest{};
     underTest.debugMode = true;
@@ -164,4 +163,193 @@ TEST(RecursiveDivisionTest, testDivideHorizontal) {
 
     EXPECT_TRUE(hasWall1);
     EXPECT_TRUE(hasWall2);
+}
+
+TEST(RecursiveDivisionTest, testDivideFieldCase1) {
+    RecursiveDivision underTest{};
+    underTest.debugMode = true;
+
+    auto **field = new bool *[10];
+    for (int i = 0; i < 10; i++) {
+        field[i] = new bool[10];
+        for (int j = 0; j < 10; j++) {
+            field[i][j] = false;
+        }
+    }
+    underTest.divideField(field, 0, 3, 0, 2);
+    bool hasWall = false;
+    for (int i = 0; i < 10; i++) {
+        for (int j = 0; j < 10; j++) {
+            if (field[i][j]) {
+                if (!hasWall) {
+                    hasWall = true;
+                    break;
+                }
+            }
+        }
+    }
+
+    EXPECT_TRUE(hasWall);
+}
+
+TEST(RecursiveDivisionTest, testDivideFieldCase2) {
+    RecursiveDivision underTest{};
+    underTest.debugMode = true;
+
+    auto **field = new bool *[10];
+    for (int i = 0; i < 10; i++) {
+        field[i] = new bool[10];
+        for (int j = 0; j < 10; j++) {
+            field[i][j] = false;
+        }
+    }
+    underTest.divideField(field, 0, 2, 0, 3);
+    bool hasWall = false;
+    for (int i = 0; i < 10; i++) {
+        for (int j = 0; j < 10; j++) {
+            if (field[i][j]) {
+                if (!hasWall) {
+                    hasWall = true;
+                    break;
+                }
+            }
+        }
+    }
+
+    EXPECT_TRUE(hasWall);
+}
+
+TEST(RecursiveDivisionTest, testDivideFieldCase3) {
+    RecursiveDivision underTest{};
+    underTest.debugMode = true;
+
+    auto **field = new bool *[10];
+    for (int i = 0; i < 10; i++) {
+        field[i] = new bool[10];
+        for (int j = 0; j < 10; j++) {
+            field[i][j] = false;
+        }
+    }
+
+    // Because of random orientation: execute several times:
+
+    for (int iteration = 0; iteration < 10; iteration++) {
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 10; j++) {
+                field[i][j] = false;
+            }
+        }
+        underTest.divideField(field, 0, 3, 0, 3);
+        bool hasWall = false;
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 10; j++) {
+                if (field[i][j]) {
+                    if (!hasWall) {
+                        hasWall = true;
+                        break;
+                    }
+                }
+            }
+        }
+        EXPECT_TRUE(hasWall);
+    }
+}
+
+TEST(RecursiveDivisionTest, testDivideFieldCase4) {
+    RecursiveDivision underTest{};
+    underTest.debugMode = true;
+
+    auto **field = new bool *[10];
+    for (int i = 0; i < 10; i++) {
+        field[i] = new bool[10];
+        for (int j = 0; j < 10; j++) {
+            field[i][j] = false;
+        }
+    }
+    underTest.divideField(field, 0, 4, 0, 1);
+    bool hasWall = false;
+    for (int i = 0; i < 10; i++) {
+        for (int j = 0; j < 10; j++) {
+            if (field[i][j]) {
+                if (!hasWall) {
+                    hasWall = true;
+                    break;
+                }
+            }
+        }
+    }
+    EXPECT_TRUE(hasWall);
+}
+
+TEST(RecursiveDivisionTest, testDivideFieldCase5) {
+    RecursiveDivision underTest{};
+    underTest.debugMode = true;
+
+    auto **field = new bool *[10];
+    for (int i = 0; i < 10; i++) {
+        field[i] = new bool[10];
+        for (int j = 0; j < 10; j++) {
+            field[i][j] = false;
+        }
+    }
+    underTest.divideField(field, 0, 1, 0, 4);
+    bool hasWall = false;
+    for (int i = 0; i < 10; i++) {
+        for (int j = 0; j < 10; j++) {
+            if (field[i][j]) {
+                if (!hasWall) {
+                    hasWall = true;
+                    break;
+                }
+            }
+        }
+    }
+    EXPECT_TRUE(hasWall);
+}
+
+TEST(RecursiveDivisionTest, testDivideFieldCase6) {
+    RecursiveDivision underTest{};
+    underTest.debugMode = true;
+
+    auto **field = new bool *[10];
+    for (int i = 0; i < 10; i++) {
+        field[i] = new bool[10];
+        for (int j = 0; j < 10; j++) {
+            field[i][j] = false;
+        }
+    }
+    underTest.divideField(field, 0, 1, 0, 1);
+    bool hasWall = false;
+    for (int i = 0; i < 10; i++) {
+        for (int j = 0; j < 10; j++) {
+            if (field[i][j]) {
+                if (!hasWall) {
+                    hasWall = true;
+                    break;
+                }
+            }
+        }
+    }
+    EXPECT_FALSE(hasWall);
+}
+
+TEST(RecursiveDivisionTest, testInitMaze) {
+    RecursiveDivision underTest{};
+    underTest.debugMode = true;
+
+    int width = 10;
+    int height = 10;
+
+    bool **field = underTest.initMaze(width, height);
+
+    for (int index = 0; index < 10; index++) {
+        // Top border
+        EXPECT_TRUE(field[0][index]);
+        // Bottom border
+        EXPECT_TRUE(field[9][index]);
+        // Left border
+        EXPECT_TRUE(field[index][0]);
+        // Right border
+        EXPECT_TRUE(field[index][9]);
+    }
 }
