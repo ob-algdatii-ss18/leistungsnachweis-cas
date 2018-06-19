@@ -20,9 +20,9 @@ before_install:
 
 
 script:
-  - cmake -H. -Bbuild
+  - cmake -H. -Bbuild -DENABLE_COVERAGE=1
   - cd build
-  - cmake --build -DENABLE_COVERAGE=1 .
+  - cmake --build .
   - ctest -V
 
 after_success:
