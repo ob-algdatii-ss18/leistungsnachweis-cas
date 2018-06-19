@@ -21,10 +21,10 @@ before_install:
 
 
 script:
-  - CXX=/usr/bin/g++-6 CC=/usr/bin/gcc-6 cmake -DCOVERAGE=1 .
-  - cmake -H. -Bbuild
+
+  - cmake -H. -Bbuild -DCOVERAGE=1
   - cd build
-  - cmake --build .
+  - cmake -DCOVERAGE=1 --build .
   - ctest -V
 
 after_success:
