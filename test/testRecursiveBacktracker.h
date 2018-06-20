@@ -7,7 +7,8 @@
 
 #include "gtest/gtest.h"
 #include "gmock/gmock.h"
-#include "recursiveBacktracker/RecursiveBacktracker.h"
+#include "../recursiveBacktracker/RecursiveBacktracker.h"
+
 
 #define PATH '.'
 #define WALL '#'

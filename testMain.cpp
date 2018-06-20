@@ -1,7 +1,7 @@
 //
 // Created by chris on 27.04.18.
 //
-#include "prims/Prims.h"
+
 #include "LabGraph.h"
 #include "recursiveDivision/RecursiveDivision.h"
 #include "recursiveBacktracker/RecursiveBacktracker.h"
@@ -23,7 +23,7 @@ int main(int argc, const char *argv[]){
 
     if(alg == 2) {
         RecursiveDivision rb;
-        int answer = rb.generateMaze();
+        int answer = rb.generateMaze(std::cin);
         if (answer != 0) {
             exit(1);
         }

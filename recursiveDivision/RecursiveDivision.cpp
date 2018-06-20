@@ -1,24 +1,10 @@
-//
-// Created by chris on 27.04.18.
-//
-
 #include "RecursiveDivision.h"
-#include <time.h>
 
 using namespace ::std;
 
 int fieldWidth, fieldHeight;
-bool debugMode = false;
 
-void helloFromRecDiv() {
-    cout << "Hello, from Recursive Division" << endl;
-};
-
-int RecursiveDivision::testMethod() {
-    return 3;
-}
-
-int generateRandomInt(int lower, int upper) {
+int RecursiveDivision::generateRandomInt(int lower, int upper) {
     int diff = upper - lower;
 
     if (diff < 1) {
@@ -28,34 +14,22 @@ int generateRandomInt(int lower, int upper) {
     return random;
 }
 
-bool generateRandomBoolean() {
-    if (rand() % 2 == 0) {
-        return true;
-    } else {
-        return false;
-    }
+bool RecursiveDivision::generateRandomBoolean() {
+    return rand() % 2 == 0;
 }
 
-void drawMaze(bool **field) {
+void RecursiveDivision::drawMaze(bool **field, std::ostream &output) {
     if (debugMode) {
         for (int i = 0; i < fieldHeight; i++) {
             for (int j = 0; j < fieldWidth; j++) {
-                cout << (field[i][j] ? "#" : " ");
+                output << (field[i][j] ? "#" : " ");
             }
-            cout << endl;
+            output << endl;
         }
-        cout << endl;
-    }
-}
-
-RecursiveDivision::Orientation RecursiveDivision::chooseOrientation(int width, int height) {
-    if (width < height) {
-        return RecursiveDivision::HORIZONTAL;
-    } else if (height < width) {
-        return RecursiveDivision::VERTICAL;
+        output << endl;
     } else {
-        int random = rand() % 2;
-        return random == 1 ? RecursiveDivision::HORIZONTAL : RecursiveDivision::VERTICAL;
+        labPrinter->setLab(field);
+        labPrinter->graphToPic("jpe");
     }
 }
 
@@ -112,7 +86,7 @@ void RecursiveDivision::divideField(bool **field, int left, int right, int top, 
     width = right - left;
     height = bottom - top;
 
-    drawMaze(field);
+    drawMaze(field, std::cout);
 
     if (width > 2 && height > 2) {
         if (width > height) {
@@ -164,24 +138,24 @@ bool **RecursiveDivision::initMaze(int width, int height) {
     return mazeField;
 }
 
-int RecursiveDivision::generateMaze() {
+int RecursiveDivision::generateMaze(std::istream &is) {
 
     /**
      * Enable Debug mode for maze printing:
      */
-    debugMode = true;
-
+    //debugMode = true;
+    labPrinter = new LabGraph();
     srand(static_cast<unsigned int>(time(nullptr)));
 
     int width, cols, height, rows;
     string input;
 
     cout << "How many cols? ";
-    getline(cin, input);
+    getline(is, input);
     cols = stoi(input);
 
     cout << "How many rows? ";
-    getline(cin, input);
+    getline(is, input);
     rows = stoi(input);
 
     if ((cols < 1) || (rows < 1)) {
@@ -191,7 +165,7 @@ int RecursiveDivision::generateMaze() {
 
     width = cols * 2 + 2;
     height = rows * 2 + 2;
-
+    labPrinter->setDimensions(width, height);
     auto *mazeField = initMaze(width, height);
 
     divideField(mazeField, 1, width - 1, 1, height - 1);
@@ -199,8 +173,12 @@ int RecursiveDivision::generateMaze() {
     makeMazeOpening(mazeField, rows, width);
 
     // Enabled for printing result
-    debugMode = true;
-    drawMaze(mazeField);
-
+    drawMaze(mazeField, std::cout);
+    if (!debugMode) {
+        labPrinter->setLab(mazeField);
+        labPrinter->graphToPic("jpe");
+        labPrinter->graphToPic("bnp");
+        labPrinter->makeVideo();
+    }
     return 0;
 }

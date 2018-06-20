@@ -3,6 +3,7 @@
 //
 
 #include <iostream>
+#include <array>
 
 
 #include "LabGraph.h"
@@ -36,7 +37,7 @@ std::ostream &operator<<(std::ostream &os, const LabGraph &graph) {
                 else if(curNode == graph.current)
                     os << "    \"" << curNode->getId() << "\" [label=\"\" color=green style=filled rank="  << curNode->y_pos << "];" << endl;
                 else
-                    os << "    \"" << curNode->getId() << "\" [label=\"\" rank="  << curNode->y_pos << "];" << endl;
+                    os << "    \"" << curNode->getId() << "\" [label=\"\" style=filled color="<< curNode->color <<" rank="  << curNode->y_pos << "];" << endl;
         }
         os << "}" << endl;
 
@@ -79,9 +80,16 @@ std::ostream &operator<<(std::ostream &os, const LabGraph &graph) {
 
 LabGraph::LabGraph() {
     long ms = chrono::system_clock::now().time_since_epoch().count();
+
+
+#ifdef __linux__
     dirPath = "../Plots/bsp" + to_string(ms);
     const string sysCom = "mkdir -p " + dirPath;
     system(sysCom.data());
+#else
+    dirPath = "";
+#endif
+
     height = LG_HEIGHT;
     width = LG_WIDTH;
 }
@@ -151,17 +159,14 @@ LabGraph::Node* LabGraph::newNode(int y, int x) {
 
 void LabGraph::easyTest() {
 
-
-    Node* n = new Node(0,0);
-    n->addEdge(new Edge(5));
-    n->addEdge(new Edge(3));
-    n->addEdge(new Edge(8));
-
     initGraph();
     buildLabWithRecBac();
-  //  buildLabWithPrim();
+ //   buildLabWithPrim();
     if(VIDEO)makeVideo();
     graphToPic("png");
+    cout << "Dot file created under " << dirPath << "/graph.dot" << endl;
+    cout << "Picture created under " << dirPath << "/graph<time ms>.png" << endl;
+
 }
 
 void LabGraph::buildLabWithPrim() {
@@ -188,7 +193,7 @@ void LabGraph::buildLabWithPrim() {
         labEdges.pop();
         //If the connected node i not already visited, add it to the labyrinth and make the edge a passage.
         if(curEdge->left->isVisited() && curEdge->right->isVisited()){
-
+            curEdge->setVisited(true);
             hasChanged = false;
             //do nothing
         }else{
@@ -237,7 +242,8 @@ void LabGraph::buildLabWithRecBac(){
                 if(!c->otherEnd(current)->isVisited()) {
                     curEdge = c;
                     break;
-                }
+                } else
+                    c->setVisited(true);
             }
         }
         if(curEdge != nullptr){
@@ -258,7 +264,8 @@ void LabGraph::buildLabWithRecBac(){
             nodeStack.pop();
         }
         if(VIDEO)graphToPic("jpe");
-    }while(!nodeStack.empty() && visitedNodes < (height-2) * (width-2));
+    }while(!nodeStack.empty() );
+//&& visitedNodes < (height-2) * (width-2)
     if(VIDEO)graphToPic("jpe");
 
 }
@@ -267,12 +274,17 @@ void LabGraph::buildLabWithRecBac(){
 void LabGraph::graphToPic(string format) {
     ofstream myfile;
 
+#ifdef __linux__
+    const string sysCom = "mkdir -p " + dirPath;
+    system(sysCom.data());
+#endif
+
     long ms = chrono::system_clock::now().time_since_epoch().count();
   //  string fileName = "../Plots/graph" + to_string(ms) + ".dot";
     string picName = dirPath + "/graph" + to_string(ms) + "." + format;
-    string fileName = dirPath + "/graph2.dot";
+    string fileName = dirPath + "/graph.dot";
     //  string picName = "graph.png";
-    const string dotExec = "dot -T"+format+" -v " + fileName + " -o " + picName;
+    const string dotExec = "dot -T"+format+" " + fileName + " -o " + picName;
     myfile.open(fileName);
     myfile << *this;
     myfile.close();
@@ -280,10 +292,28 @@ void LabGraph::graphToPic(string format) {
 }
 
 void LabGraph::makeVideo() {
-    const string sysCom = "mencoder mf://" + dirPath + "/*.jpe -mf w=800:h=600:fps=15:type=jpg -ovc lavc -lavcopts vcodec=mpeg4:mbd=2:trell -oac copy -o "+ dirPath+"/animation.avi";
-    const string rmCom = "rm "+ dirPath + "/*.jpe";
+    const string sysCom = "mencoder mf://" + dirPath + "/*.jpe -mf w=800:h=600:fps=10:type=jpg -ovc lavc -lavcopts vcodec=mpeg4:mbd=2:trell -oac copy -o "+ dirPath+"/animation.avi";
     system(sysCom.data());
+#ifdef __linux__
+    const string rmCom = "rm "+ dirPath + "/*.jpe";
     system(rmCom.data());
+#endif
+
+}
+
+void LabGraph::setLab(bool ** boolArray) {
+    for (int i = 0; i < height; i++) {
+        for (int j = 0; j < width; j++) {
+            if(boolArray[i][j]) graphNodes[i*height+j]->color = BLACK;
+        }
+    }
+}
+
+void LabGraph::setDimensions(int x, int y) {
+    height = y;
+    width = x;
+    initGraph();
+    for(auto e: graphEdges)e->setWall(false);
 }
 
 

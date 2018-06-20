@@ -15,13 +15,15 @@
 #include <chrono>
 #include <stack>
 #include <algorithm>
-
+#include "gtest/gtest.h"
 
 using namespace std;
 
-#define VIDEO false
-#define LG_WIDTH 30
-#define LG_HEIGHT 30
+
+#define LG_WIDTH 10
+#define LG_HEIGHT 10
+#define  BLACK "black"
+#define WHITE "white"
 
 class LabGraph {
 
@@ -51,7 +53,7 @@ private:
      */
     void newEdge(LabGraph::Node *start, LabGraph::Node *end);
     /**
-     * Creates a new node at position x,y. Sets the border member acoordingliy.
+     * Creates a new node at position x,y. Sets the border member acoordingliy.#define VIDEO true
      * @return Pointer to the new node
      */
     Node* newNode(int y, int x);
@@ -156,6 +158,7 @@ private:
         /**
          * X and y coordinate of the node.
          */
+        string color = WHITE;
         int x_pos,y_pos;
         /**
          * Indicates if this node has been visited in creation process of the labyrinth.
@@ -193,8 +196,21 @@ private:
          */
         bool isBorder();
     };
-
+    /**
+     * Directory for plots and animation. Only set on linux.
+     */
     string dirPath;
+    bool VIDEO = false;
+    FRIEND_TEST(primTest, innitTestNodes);
+    FRIEND_TEST(primTest, innitTestEdges);
+    FRIEND_TEST(primTest, compareEdgesTest);
+    FRIEND_TEST(primTest, setDimensionsTest);
+    FRIEND_TEST(primTest, setLabTest);
+    FRIEND_TEST(primTest, otherEndTest);
+    FRIEND_TEST(primTest, primsAlgoTestNodes);
+    FRIEND_TEST(primTest, primsAlgoTestEdges);
+    FRIEND_TEST(primTest, recursiveBacktrackingTestNodes);
+    FRIEND_TEST(primTest, recursiveBacktrackingEdges);
 public:
     LabGraph();
     /**
@@ -211,9 +227,13 @@ public:
      * Creates a square with heigt x width nodes connected by edges.
      */
     void initGraph();
-
+    /**
+     * Creates a Labyrinth on the Graph with prims algorithm.
+     */
     void buildLabWithPrim();
-
+    /**
+     * Creates a Labyrinth on the Graph with recursive backtracing algorithm.
+     */
     void buildLabWithRecBac();
     /**
      * Creates a picture of the current graph using graphviz.
@@ -225,6 +245,17 @@ public:
      */
     void makeVideo();
 
+    /**
+     * Sets the color of all edges to black or white. This is used to diplay the labyrinth created by recursive division.
+     */
+    void setLab(bool **);
+    /**
+     * Can only be used on an uninizialized graph. Sets the height and width and initializes the graph. This is used to diplay the labyrinth created by recursive division.
+     */
+    void setDimensions(int, int);
+    /**
+     * Once a simple test method this became the starter:).
+     */
     void easyTest();
     /**
      * Outputs the graph in DOT-form so it can be interpreted by graphviz.

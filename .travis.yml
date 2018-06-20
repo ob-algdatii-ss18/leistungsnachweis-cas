@@ -1,32 +1,50 @@
 dist: trusty
 language: cpp
-compiler:
-  - gcc
 
 os: linux
 
-before_script:
-  - pip install --user cpp-coveralls
-  - mkdir build
-  - cd build
-
 addons:
   apt:
-    sources:
-      - ubuntu-toolchain-r-test
-      - llvm-toolchain-trusty-5.0
-    packages:
-      - gcc-6
-      - g++-6
+      sources:
+ #       - ubuntu-toolchain-r-test
+      packages:
+        - doxygen
+        - graphviz
+
+
+before_install:
+  - pip install --user cpp-coveralls
 
 
 script:
-
-  - cmake -DENABLE_COVERAGE=ON -DCMAKE_CXX_COMPILER="g++-6" ..
+  - cmake -H. -Bbuild
+  - cd build
   - cmake --build .
-  - test/mainTest
+  - ctest -V
+  - cd ..
+  - ls -la
+  - ls build/ -la
+  - ls Plots/ -la
 
 
 
 after_success:
-  - coveralls --verbose --root .. --exclude build/CMakeFiles/ --exclude build/googletest-src/ --gcov-options '\-lp'
+  - coveralls --root . --verbose --exclude build/CMakeFiles/ --exclude build/googletest-src/ --gcov-options '\-lp'
+  - doxygen Doxyfile
+  - cp ./README.md ./doxygen_doc/README.md
+  - cp ./_config.yml ./doxygen_doc/_config.yml
+  - cp -r ./Plots ./doxygen_doc/Plots
+
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: $GH_REPO_TOKEN
+  keep-history: true
+  local-dir: doxygen_doc
+  on:
+    branch: master
+
+
+
+notifications:
+  email: false

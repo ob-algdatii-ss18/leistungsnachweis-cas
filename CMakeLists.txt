@@ -4,21 +4,20 @@ project(leistungsnachweis-cas)
 
 
 set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fprofile-arcs")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -ftest-coverage")
 
 add_subdirectory(prims)
 add_subdirectory(recursiveDivision)
 add_subdirectory(recursiveBacktracker)
 
-set(SOURCE_FILES testMain.cpp)
-add_executable(Main ${SOURCE_FILES})
+#set(SOURCE_FILES testMain.cpp)
+add_executable(Main ${SOURCE_FILES} testMain.cpp)
 #include_directories(D:\\Programme\\gtest\\googletest-master\\googletest-master\\googletes\\include D:\\Programme\\gtest\\googletest-master\\googletest-master\\googletest)
 
 target_link_libraries(Main LINK_PUBLIC prims recursiveDivision recursiveBacktracker)
 
-if (COVERAGE)
-    target_compile_options(test PRIVATE --coverage)
-    target_link_libraries(test PRIVATE --coverage)
-endif()
+
 
 #Gtests
 
@@ -39,10 +38,22 @@ set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 add_subdirectory("${CMAKE_BINARY_DIR}/googletest-src"
         "${CMAKE_BINARY_DIR}/googletest-build")
 
+
+
+
+
+
+
 add_subdirectory(test)
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fprofile-arcs -ftest-coverage")
+
 enable_testing()
 
-add_test(primTest test/primTest --gtest_output=xml:report.xml)
-add_test(testRecursiveBacktracker test/testRecursiveBacktracker --gtest_output=xml:report.xml)
-add_test(testRecursiveDivision test/testRecursiveDivision --gtest_output=xml:report.xml)
+
+add_test(main-Test test/mainTest --gtest_output=xml:report.xml)
+
+
+#add_test(prims-Test test/primsTest --gtest_output=xml:report.xml)
+#add_test(recBac-Test test/recursiveBacktrackerTest --gtest_output=xml:report.xml)
+#add_test(recDiv-Test test/recursiveDivisionTest --gtest_output=xml:report.xml)
+#add_test(randPrim-Test test/randPrimTest --gtest_output=xml:report.xml)
+
